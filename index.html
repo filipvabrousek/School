@@ -137,5 +137,357 @@
 
     </div>
 
-    
+<style>
+* {
+	margin: 0;
+	padding: 0
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+nav {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+	list-style: none;
+	background: #ffffff;
+}
+
+.nav-item a {
+	display: block;
+	padding: 1.2em;
+	color: #000000;
+	font-size: 1.4em;
+	text-decoration: none;
+	margin-left: -1em;
+}
+
+.navigation {
+	list-style-type: none;
+	background: white;
+	color: black;
+}
+
+.nav-item>a {
+	color: black;
+}
+
+.site-wrap {
+	min-height: 100%;
+	min-width: 100%;
+	background-color: white;
+	position: relative;
+	top: 0;
+	bottom: 100%;
+	right: 0;
+	z-index: 1;
+	padding: 0em;
+	background-size: 200%
+}
+
+.nav-trigger {
+	position: absolute;
+	clip: rect(0, 0, 0, 0)
+}
+
+label[for="nav-trigger"] {
+	position: fixed;
+	left: 15px;
+	top: 15px;
+	z-index: 2;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+	background-size: contain;
+}
+
+.nav-trigger+label, .site-wrap {
+	transition: left 0.2s;
+}
+
+.nav-trigger:checked+label {
+	left: 215px;
+}
+
+.nav-trigger:checked~.site-wrap {
+	left: 200px;
+}
+
+body {
+	overflow-x: hidden
+}
+
+.F-main, .F-content {
+	padding: 3em;
+	display: flex;
+	flex-direction: column;
+	background: white
+}
+
+.F-main {
+	align-items: center;
+	height: 20em;
+	padding-top: 10em;
+}
+
+.F-content>h2 {
+	padding-left: 1em;
+	padding-bottom: 1em
+}
+
+.F-content>p {
+	padding-left: 1.9em
+}
+
+.btn {
+	padding: 1em;
+	font-size: 1.3em;
+	/*background: #4FC3F7;*/
+	border: none;
+	color: white;
+	border-radius: .188em;
+	margin-top: 3em;
+	width: 10em;
+	text-align: center;
+	text-decoration: none
+}
+
+.btn:hover {
+	background: #81D4FA;
+	color: #fff;
+	transition: 0.5s;
+}
+
+.outline {
+	background: #fff;
+	border: none;
+	color: rgba(230, 126, 34, 1.0);
+}
+
+.clear:hover {
+	background: rgba(230, 126, 34, 1.0);
+	transition: 0.9s;
+}
+
+.F-bold {
+	font-size: 1.3em;
+	background: #EEE;
+}
+
+.clear {
+	background: #FFFFFF;
+	color: rgba(230, 126, 34, 1.0);
+}
+
+h1 {
+	font-size: 5em;
+	color: #fff;
+}
+
+h2 {
+	font-size: 4rem;
+	margin: 0.3em;
+}
+
+p {
+	font-size: 1.5em;
+}
+
+.color {
+	background: #81D4FA;
+	color: white;
+	background: linear-gradient(to right, rgba(243, 156, 18, 1.0) 0%, rgba(230, 126, 34, 1.0) 100%);
+}
+
+.F-card h2 {
+	text-align: center;
+	padding-top: 0.4em;
+}
+
+/*------------------------------*/
+
+/*------------------------------*/
+
+.contact>section li {
+	list-style-type: none;
+	font-size: 1.2em;
+	color: black;
+}
+
+footer {
+	background: rgba(230, 126, 34, 1.0);
+	color: white;
+	text-align: center;
+	padding: 1em;
+}
+
+img {
+	width: 100%
+}
+
+#wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 1em;
+}
+
+.F-card {
+	background-color: #fff;
+	margin: .5em;
+	border-radius: .125em
+}
+
+.F-card:hover {
+	transition: 0.5s;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, .75);
+}
+
+.no-padding>h2 {
+	font-size: 2em;
+	padding-bottom: .6em;
+}
+
+.no-padding>p {
+	font-size: 1em;
+	margin: 0.5em;
+}
+
+.no-padding {
+	padding: 1.3em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 14em;
+}
+
+/*--------------------------- COLORS -------------------------*/
+
+.green, .blue, .red, .dark, .orange {
+	color: #fff;
+}
+
+.green {
+	background: #1abc9c;
+	color: #fff;
+}
+
+.blue {
+	background: #81D4FA;
+}
+
+.red {
+	background: #e74c3c;
+}
+
+.orange {
+	background: #f39c12;
+}
+
+.circle {
+	border: none;
+	border-radius: 50%;
+	width: 3em;
+	height: 3em;
+	color: red;
+	font-size: 1.2em;
+}
+
+.circle:hover {
+	transition: 0.8s;
+	padding: 1em;
+}
+
+.circle a {
+	text-decoration: none;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:72.5em) {
+	#wrapper {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:59em) {
+	#wrapper {
+		grid-template-columns: 1fr 1fr;
+	}
+	.nav-item a {
+		font-size: 2.5em;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:40em) {
+	#wrapper {
+		grid-template-columns: 1fr;
+	}
+	h1 {
+		font-size: 5em;
+	}
+	.F-content>h2 {
+		font-size: 4em;
+		padding-left: 0.4em;
+		padding-bottom: 0.5em
+	}
+	.F-content>p {
+		padding-left: 1em;
+		font-size: 1.1em;
+	}
+	.btn {
+		padding: 0.6em;
+	}
+	nav {
+		font-size: 0.8em;
+	}
+	ul {
+		font-size: 1.1em;
+	}
+	.no-padding {
+		height: 10em;
+	}
+}
+
+/*additional styles*/
+
+ul {
+	font-size: 1.3em;
+	margin-left: 2.2em;
+}
+
+.contact ul {
+	list-style-type: none;
+	color: #fff;
+}
+
+iframe {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90em;
+}
+
+.bckg {
+	background: url("images/bckg.jpg");
+}
+
+/*added*/
+
+.F-video {
+	width: 60em;
+}	   
+</style>
 </body>
