@@ -1,19 +1,26 @@
-namespace avg
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+namespace avga
 {
-    class Program
+    class Programa
     {
         static void Main(string[] args)
         {
 
             /*
             double sum = 0, avg = 0;
-
             int[] arr = new int[6];
             for (int i = 0; i < arr.Length; i++) {
                 arr[i] = i;
                 sum += arr[i];
             }
-
             sum = sum - arr.Min() - arr.Max();
             avg = sum / 4;
             Console.WriteLine(avg);
@@ -30,7 +37,7 @@ namespace avg
                 Console.WriteLine("Zadejte menší číslo");
             }
 
-
+/* */
             for (int i = 0; i < maxLen; i++){
                 arr[i] = int.Parse(Console.ReadLine());
 
