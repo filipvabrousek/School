@@ -1,4 +1,4 @@
- int x, y, r, s, pom;
+  int x, y, r, s, pom;
             double sum, avg;
 
             x = 3;
@@ -6,6 +6,10 @@
             r = 0;
             s = 0;
             sum = 0;
+
+            int success = 0;
+            int fail = 0;
+
 
             int[,] arr = new int[y, x];
 
@@ -29,7 +33,7 @@
             }
 
 
-            Console.WriteLine("Kam chcete vystřelit ?");
+            Console.WriteLine("Kam chcete vystřelit ? Zadejte všechny souřadnice na které chcete vystřelit");
             int[,] shot = new int[y, x];
             for (r = 0; r < x; r++)
             {
@@ -49,9 +53,14 @@
                  {
                      if (arr[s, r] == shot[s, r])
                      {
-                         Console.Write("Zásah na souřadnici " + arr[s, r]);
-                     }
-                 }
+                         Console.Write(" Zásah na souřadnici " + arr[s, r]);
+                        success += 1;
+                     } else
+                    {
+                        Console.Write("Mimo :)");
+                        fail += 1;
+                    }
+                }
                  Console.WriteLine();
              }
 
@@ -64,6 +73,12 @@
 
 
             Console.WriteLine("Výpis:");
+            Console.WriteLine("Zasáhli jste " + success + " minuli jste " + fail);
+
+            Console.ReadKey();
+
+
+            /*
             for (s = 0; s < y; s++)
             {
                 pom = arr[s, 0];
@@ -74,3 +89,5 @@
 
 
             Console.ReadKey();
+
+    */
