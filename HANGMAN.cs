@@ -1,4 +1,4 @@
-   string text = ""; // use enters the string
+            string text = ""; // use enters the string
 
             int tries = 0;
             char guess = 'O';
