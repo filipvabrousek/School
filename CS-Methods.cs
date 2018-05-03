@@ -37,7 +37,7 @@
 
             for (int i = 0; i < count; i++) {
                 Console.WriteLine(i + ". Zadejte číslo");
-                 numbers[i] = Int32.Parse(Console.ReadLine());
+                numbers[i] = Int32.Parse(Console.ReadLine());
             }
 
 
