@@ -31,7 +31,6 @@
 
             
                 Console.WriteLine(new string(empty));
-                Console.WriteLine(empty.Length);
 
             }
 
