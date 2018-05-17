@@ -1,4 +1,4 @@
- int[] n = new int[6];
+            int[] n = new int[6];
             int odd = 0;
             int even = 0;
             int same = 0;
