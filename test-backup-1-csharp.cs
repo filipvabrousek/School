@@ -1,7 +1,8 @@
+
             int[] n = new int[6];
             int odd = 0;
             int even = 0;
-            int same = 0;
+           
 
             for (var i = 0; i < n.Length; i++)
             {
@@ -13,13 +14,6 @@
 
             for (var i = 0; i < n.Length; i++)
             {
-                
-
-               /* if (n[i] == el){
-                    
-                }*/
-
-
 
                 if (n[i] % 2 == 0){
                     odd += 1;
@@ -52,12 +46,27 @@
                 int third = n[i + 2];
 
 
-                if (first == second && second == third /*|| second == third || third == first*/){
+                if (first == second && second == third){
                     Console.WriteLine("Hodil jste 3 stejná čísla po sobě.");
                 }
+              
 
             }
+           
+            // nestihl jsem: čísla 1 - 6
+            if (n[0] != n[1] && n[0] != n[2] && n[0] != n[3] && n[0] != n[4] && n[0] != n[5] 
+              && n[1] != n[0] && n[1]!= n[2] && n[1] != n[3] && n[1] != n[4] && n[1] != n[5]
+              && n[2] != n[0] && n[2] != n[1] && n[2] != n[3] && n[2] != n[4] && n[2] != n[5]
+                && n[3] != n[0] && n[3] != n[0] && n[3] != n[4] && n[3] != n[4] && n[4] != n[5]
+                && n[4] != n[0] && n[4] != n[0] && n[4] != n[5] && n[4] != n[4] && n[4] != n[5]
+                && n[5] != n[0] && n[5] != n[0] && n[5] != n[3] && n[5] != n[6] && n[5] != n[7]
+               )
+            {
+                Console.WriteLine("Hodili jste čísla 1 - 6");
+               }
 
+
+    
 
 
             Console.WriteLine("Hodili jste " + even + " liché (ých) čísel");
