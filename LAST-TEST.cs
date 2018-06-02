@@ -38,36 +38,44 @@ namespace test
                 Console.WriteLine("Kolik sedadel chcete vedle sebe ?");
                 count = int.Parse(Console.ReadLine());
 
-                // is the seat free
-                if (seats[xp, yp] == 'O') // || != "X"
-                {
-                    Console.WriteLine("Entered values x:" + xp + " y:" + yp + "count: " + count);
-                    // x: 2, y: 3, count: 3
-
-                    seats[xp, yp] = 'X'; // "."
-
-                    for (i = 0; i < count; i++)
-                    {
-                        Console.WriteLine("Value of count " + count);
-                        if (seats[xp + i, yp] == 'O')
-                        {
-                            seats[xp + i, yp] = 'X';
-                        }
-
-                    }
-
-                    writeSeats(10, 10, seats);
-
-                } else {
-                    Console.WriteLine("Nelze zadat. Zadejte prosím jinou řadu.");
-                }
-               
+                request(xp, yp, count, seats);
             }
 
            Console.ReadKey();
         }
 
 
+
+        static void request(int xp, int yp, int count, char[,] arr){
+            // is the seat free
+            var i = 0;
+
+            if (arr[xp, yp] == 'O') // || != "X"
+            {
+                Console.WriteLine("Entered values x:" + xp + " y:" + yp + "count: " + count);
+                // x: 2, y: 3, count: 3
+
+                arr[xp, yp] = 'X'; // "."
+
+                for (i = 0; i < count; i++)
+                {
+                    Console.WriteLine("Value of count " + count);
+                    if (arr[xp + i, yp] == 'O')
+                    {
+                        arr[xp + i, yp] = 'X';
+                    }
+
+                }
+
+                writeSeats(10, 10, arr);
+
+            }
+            else
+            {
+                Console.WriteLine("Nelze zadat. Zadejte prosím jinou řadu.");
+            }
+
+        }
 
 
 
@@ -107,26 +115,6 @@ namespace test
                 Console.WriteLine();
             }
         }
-
-
-
-        static void isFree(int x, int y, char[,] arr)
-        {
-
-            // každá vstupenka jedinečné číslo
-            var s = 0;
-            var r = 0;
-
-            for (s = 0; s < x; r++)
-            {
-
-                Console.Write(arr[s, 0]);
-
-            }
-
-        }
-
-
 
 
     }
