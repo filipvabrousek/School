@@ -19,6 +19,7 @@ namespace test
             int yp = 0;
             int count = 0;
             int id = 0;
+          
             string[,] seats = new string[10, 10];
 
 
@@ -51,26 +52,18 @@ namespace test
         static void request(int xp, int yp, int count, int id, string[,] arr){
 
             var res = Convert.ToString(id);
-            Console.WriteLine("sn: " + res);
-
-            // is the seat free
             var i = 0;
 
             if (arr[xp, yp] == "O") // || != "X"
             {
-                // Console.WriteLine("Entered values x:" + xp + " y:" + yp + "count: " + count);
-                // x: 2, y: 3, count: 3
-
-                // arr[xp, yp] = 'X'; // "."
+                
                 arr[xp, yp] = Convert.ToString(id);
 
 
                 for (i = 0; i < count; i++)
                 {
-                    Console.WriteLine("Value of count " + count);
                     if (arr[xp + i, yp] == "O")
                     {
-                        // arr[xp + i, yp] = 'X';
                         arr[xp + i, yp] = Convert.ToString(id);
                     }
 
@@ -81,7 +74,9 @@ namespace test
             }
             else
             {
+                
                 Console.WriteLine("Nelze zadat. Zadejte prosím jinou řadu.");
+
             }
 
         }
@@ -91,7 +86,6 @@ namespace test
         static string[,] fillSeats(int x, int y, string[,] arr)
         {
 
-            // každá vstupenka jedinečné číslo
             var s = 0;
             var r = 0;
 
@@ -111,7 +105,6 @@ namespace test
         static void writeSeats(int x, int y, string[,] arr)
         {
             
-            // každá vstupenka jedinečné číslo
            var s = 0;
             var r = 0;
 
