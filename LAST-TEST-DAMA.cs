@@ -54,8 +54,8 @@ namespace test
 
 
                     moveStone(xp, yp, player, seats);
-                    writeSeats(size, size, seats);
 
+                    writeSeats(size, size, seats);
                     //request(xp, yp, size, id, seats);
                 }
             
@@ -81,60 +81,28 @@ namespace test
 
 
 
-            if (arr[x, y] == "0" || arr[x, y] == "1" || arr[x, y] == "2"){
+            if (arr[x, y] == "O" || arr[x, y] == "1" || arr[x, y] == "2"){
 
-
+                Console.WriteLine("Jsem zde");
             
 
                 if (arr[x, y] == contra){
-                    Console.WriteLine("Chcete obsadit pozici protivníka.");
+                    Console.WriteLine("Obsadil jste protivníka.");
                     arr[x, y] = res;
                 } else if (arr[x, y] == res){
                     Console.WriteLine("Chcete zabrat sám sebe? To jako fakt?");
-                } else if (arr[x, y] == "0") {
+                } else if (arr[x, y] == "O") {
                     Console.WriteLine("Nikdo tam není.");
-                    
+                    arr[x, y] = res;
                 }
+
+               
             }
 
 
         }
 
-        /*
-
-        static void request(int xp, int yp, int count, int id, string[,] arr){
-
-            var res = Convert.ToString(id);
-            var i = 0;
-
-            if (arr[xp, yp] == "O") // || != "X"
-            {
-                
-                arr[xp, yp] = Convert.ToString(id);
-
-
-                for (i = 0; i < count; i++)
-                {
-                    if (arr[xp + i, yp] == "O")
-                    {
-                        arr[xp + i, yp] = Convert.ToString(id);
-                        count = count - 1;
-                    }
-
-                }
-
-                writeSeats(count, count, arr);
-
-            }
-            else
-            {
-                
-                Console.WriteLine("Nelze zadat. Zadejte prosím jinou řadu.");
-
-            }
-
-        }
-        */
+      
 
 
 
