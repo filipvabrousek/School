@@ -8,16 +8,13 @@ namespace test
         public static void Main(string[] args)
         {
 
-
-            int xp = 0;
-            int yp = 0;
-
-            int size = 4; // 4 - 8
+            // velikost pole (4 - 8)
+            int size = 4;
             int player = 2;
 
             int wx = 0;
             int wy = 0;
-           
+
             string[,] seats = new string[0, 0];
 
             int option = 0;
@@ -25,23 +22,26 @@ namespace test
             string finished = "n";
             string carryon = "a";
 
-            while(carryon == "a"){
+            // ---------------------------- ptát se tak dlouho dokud není hodnota v rozmezí 4 - 8
+            while (carryon == "a")
+            {
 
                 Console.WriteLine("Dobrý den, vítá vás program Dáma");
                 Console.WriteLine("Jak velké chcete hrací pole? povoleny jsou pouze hodnoty v rozmezí 4 - 8");
                 size = int.Parse(Console.ReadLine());
-            
+
 
                 if (size >= 4 && size <= 8)
                 {
                     carryon = "n";
                     seats = new string[size, size];
                     initBoard(size, seats); // vyplní sedadla symbolem "O"
-                    fillSeatsf(size, 1, seats);  // vyplnění 1. řady 1
+                    fillSeatsf(size, 1, seats); // vyplnění 1. řady 1
                     fillSeatsl(size, 2, seats); // vyplnění 2. řady 2
                     writeSeats(size, size, seats);
                 }
-                else {
+                else
+                {
                     Console.WriteLine("Zadejte menší velikost pole.");
                 }
 
@@ -52,7 +52,14 @@ namespace test
             while (finished != "a")
             {
                 //  střídání hráčů
-                if (player == 1) { player = 2; } else { player = 1; }
+                if (player == 1)
+                {
+                    player = 2;
+                }
+                else
+                {
+                    player = 1;
+                }
 
 
                 //  (x musí být mezi 1 až velikost pole), (y musí být 1), 
@@ -80,7 +87,8 @@ namespace test
                 // vyhodnocení konce hry (horní i dolní řada jsou prázdné)
                 bool done = endGame(size, seats);
 
-                if (done == true){
+                if (done == true)
+                {
                     finished = "a";
                 }
             }
@@ -111,7 +119,14 @@ namespace test
                 // protivník
                 string contra = "";
 
-                if (res == "1") { contra = "2"; } else { contra = "1"; }
+                if (res == "1")
+                {
+                    contra = "2";
+                }
+                else
+                {
+                    contra = "1";
+                }
 
 
 
@@ -253,99 +268,116 @@ namespace test
 
 
         // ---------------------------------------- VYPLNĚNÍ HORNÍ ŘADY ČÍSLEM 1
-    static string[,] fillSeatsf(int count, int id, string[,] arr)
-    {
-        for (var i = 0; i < count; i++)
+        static string[,] fillSeatsf(int count, int id, string[,] arr)
         {
-            arr[i, 0] = Convert.ToString(id);
+            for (var i = 0; i < count; i++)
+            {
+                arr[i, 0] = Convert.ToString(id);
+            }
+            return arr;
         }
-        return arr;
-    }
 
 
 
         // ---------------------------------------- VYPLNĚNÍ DOLNÍ ŘADY ČÍSLEM 2
-    static string[,] fillSeatsl(int count, int id, string[,] arr)
-    {
-        for (var i = 0; i < count; i++)
+        static string[,] fillSeatsl(int count, int id, string[,] arr)
         {
-            arr[i, count - 1] = Convert.ToString(id);
+            for (var i = 0; i < count; i++)
+            {
+                arr[i, count - 1] = Convert.ToString(id);
+            }
+            return arr;
         }
-        return arr;
-    }
-       
 
-        // ---------------------------------------- HRA KONČÍ POKUD JE HORNÍ A DOLNÍ ŘADA PRÁZDNÁ
-    static bool endGame(int count, string[,] arr){
+
+        // ---------------------------------------- HRA KONČÍ POKUD ZBYDE JEN JEDEN KÁMEN 
+        // JEHO NÁZEV  ("1" nebo "2") JE VÍTĚZ
+        static bool endGame(int count, string[,] arr)
+        {
 
             bool end = false;
 
-            for (var i = 0; i < count; i++)
+
+            int onecount = 0;
+            int twocount = 0;
+
+
+            var s = 0;
+            var r = 0;
+
+            for (r = 0; r < count; r++)
             {
-                // dolní řada prázdná
-                if ( arr[i, 0] == "O"){
-                    end = true;
-                }
-
-                // horní řada prázdná 
-                else if (arr[i, count - 1] == "O")
+                for (s = 0; s < count; s++)
                 {
-                    end = true;
-                }
 
-                // jinak hra ještě neskončila
-                else {
-                    end = false; 
-                }
+                    if (arr[s, r] == "1")
+                    {
+                        onecount += 1;
+                    }
 
+                    if (arr[s, r] == "2")
+                        twocount += 1;
+                }
 
 
             }
 
+
+
+            if (onecount == 1 && twocount == 0)
+            {
+                Console.WriteLine("zvítězil hráč číslo 1.");
+            }
+
+            if (twocount == 1 && onecount == 0)
+            {
+                Console.WriteLine("zvítězil hráč číslo 2.");
+            }
+            else
+            {
+                Console.WriteLine("Zatím nikdo nezvítězil.");
+            }
             return end;
         }
 
 
 
         // ---------------------------------------- VYPLNĚNÍ HRACÍHO POLE "O"
-    static void initBoard(int size, string[,] arr)
-    {
-        var s = 0;
-        var r = 0;
-
-        for (r = 0; r < size; r++)
+        static void initBoard(int size, string[,] arr)
         {
-            for (s = 0; s < size; s++)
-            {
-                arr[s, r] = "O";
+            var s = 0;
+            var r = 0;
 
+            for (r = 0; r < size; r++)
+            {
+                for (s = 0; s < size; s++)
+                {
+                    arr[s, r] = "O";
+
+                }
             }
+
         }
 
-    }
 
-
-       // ---------------------------------------- VÝPIS HRACÍHO POLE
-    static void writeSeats(int x, int y, string[,] arr)
-    {
-
-        var s = 0;
-        var r = 0;
-
-        for (r = 0; r < x; r++)
+        // ---------------------------------------- VÝPIS HRACÍHO POLE
+        static void writeSeats(int x, int y, string[,] arr)
         {
-            for (s = 0; s < y; s++)
+
+            var s = 0;
+            var r = 0;
+
+            for (r = 0; r < x; r++)
             {
-                Console.Write(arr[s, r]);
+                for (s = 0; s < y; s++)
+                {
+                    Console.Write(arr[s, r]);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+
         }
 
     }
 
 }
-
-}
-
-
- 
