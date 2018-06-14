@@ -63,9 +63,9 @@ namespace test
 
                 Console.WriteLine("Na jakou pozici chcete posunout váš kámen?");
                 Console.WriteLine("Zadejte řadu"); //2*2, 1*1
-                yp = int.Parse(Console.ReadLine()) - 1;
+               xp = int.Parse(Console.ReadLine()) - 1;
                 Console.WriteLine("Zadejte sloupec."); //2*2, 1*1
-                xp = int.Parse(Console.ReadLine()) - 1;
+                yp = int.Parse(Console.ReadLine()) - 1;
 
 
 
@@ -90,6 +90,7 @@ namespace test
          
         var res = Convert.ToString(player);
 
+
             if (arr[myX, myY] != res)
             {
                 Console.WriteLine("Není to váš kámen");
@@ -99,43 +100,50 @@ namespace test
                 // protivník
                 string contra = "";
 
+
+
                 if (res == "1") { contra = "2"; } else { contra = "1"; }
 
 
                 // --------------------------------------- hraje hráč číslo 1 SHORA
                 if (contra == "2")
                 {
+
+                    bool allow = true;
                     Console.WriteLine("Player 2");
 
 
                     // je vpravo nahoře protivník ?
-                    if (arr[x - 1, y - 1] == contra)
+                    if (arr[x - 1, y - 1] == contra && allow == true)
                     {
                         Console.WriteLine("Vpravo nahoře je protivník.");
                     }
                     else
                     {
                         arr[x - 1, y - 1] = res; // pohnout vpravo nahoru (jde to)
+                        allow = false;
                     }
 
 
                     // je vlevo nahoře protivník ?
-                    if (arr[x + 1, y - 1] == contra)
+                    if (arr[x + 1, y - 1] == contra && allow == true)
                     {
                         Console.WriteLine("Vlevo nahoře je protivník.");
                     }
                     else
                     {
                         arr[x + 1, y - 1] = res; // pohnout dopředu (jde to)
+                        allow = false;
                     }
 
-                    if (arr[x, y - 1] == contra)
+                    if (arr[x, y - 1] == contra && allow == true)
                     {
                         Console.WriteLine("Kolmo nahoře je protivník");
                     }
                     else
                     {
                         arr[x, y - 1] = res;
+                        allow = false;
                     }
                 }
 
@@ -145,37 +153,41 @@ namespace test
                 // ------------------------------------ hraje hráč číslo 2 ZESPODU
                 if (contra == "1")
                 {
+                    bool allow = true;
                     Console.WriteLine("Player 1");
 
 
                     // je vpravo nahoře protivník ?
-                    if (arr[x + 1, y + 1] == contra)
+                    if (arr[x + 1, y + 1] == contra && allow == true)
                     {
                         Console.WriteLine("Vpravo nahoře je protivník.");
                     }
                     else
                     {
                         arr[x + 1, y + 1] = res; // pohnout vpravo nahoru (jde to)
+                        allow = false;
                     }
 
 
                     // je vlevo nahoře protivník ?
-                    if (arr[x - 1, y + 1] == contra)
+                    if (arr[x - 1, y + 1] == contra && allow == true)
                     {
                         Console.WriteLine("Vlevo nahoře je protivník.");
                     }
                     else
                     {
                         arr[x - 1, y + 1] = res; // pohnout dopředu (jde to)
+                        allow = false;
                     }
 
-                    if (arr[x, y + 1] == contra)
+                    if (arr[x, y + 1] == contra && allow == true)
                     {
                         Console.WriteLine("Kolmo nahoře je protivník");
                     }
                     else
                     {
                         arr[x, y + 1] = res;
+                        allow = false;
                     }
 
                 }
@@ -278,7 +290,7 @@ namespace test
 
 
 
-
+        /*
 
         static void moveStone(int x, int y, int player, string[,] arr, int wx, int wy)
         {
@@ -331,7 +343,7 @@ namespace test
 
         }
 
-
+*/
 }
 
 }
