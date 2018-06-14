@@ -20,7 +20,7 @@ namespace test
            
             string[,] seats = new string[0, 0];
 
-
+            int option = 0;
 
             string finished = "n";
             string carryon = "a";
@@ -54,6 +54,8 @@ namespace test
                 //  střídání hráčů
                 if (player == 1) { player = 2; } else { player = 1; }
 
+
+                //  (x musí být mezi 1 až velikost pole), (y musí být 1), 
                 Console.WriteLine("Vyberte x pozici kamene se kterým chcete pohnout? hraje hráč číslo " + player);
                 wx = int.Parse(Console.ReadLine()) - 1;
                 Console.WriteLine("Vyberte y pozici kamene se kterým chcete pohnout");
@@ -62,18 +64,20 @@ namespace test
 
 
                 Console.WriteLine("Na jakou pozici chcete posunout váš kámen?");
-                Console.WriteLine("Zadejte řadu"); //2*2, 1*1
-               xp = int.Parse(Console.ReadLine()) - 1;
-                Console.WriteLine("Zadejte sloupec."); //2*2, 1*1
-                yp = int.Parse(Console.ReadLine()) - 1;
 
 
+                Console.WriteLine("kam chcete pohnout s vaším kamenem?");
+                Console.WriteLine("Doprava úhlopříčka - 1");
+                Console.WriteLine("Doleva úhlopříčka - 2");
+                Console.WriteLine("Rovně - 3");
+                option = int.Parse(Console.ReadLine());
 
-                moveInDir(xp, yp, seats, player, wx, wy);
+
+                moveInDir(seats, player, option, wx, wy); // wx, wy bude myX, myY
                 writeSeats(size, size, seats);
 
 
-                // vyhodnocení konce hry
+                // vyhodnocení konce hry (horní i dolní řada jsou prázdné)
                 bool done = endGame(size, seats);
 
                 if (done == true){
@@ -83,24 +87,27 @@ namespace test
 
         }
 
-    
 
 
-        static void moveInDir(int x, int y, string[,] arr, int player, int myX, int myY){
-         
-        var res = Convert.ToString(player);
+        // -------------------------------- posune kámen v požadovaném směru
+        static void moveInDir(string[,] arr, int player, int option, int myX, int myY)
+        {
+
+            var res = Convert.ToString(player);
 
 
-            if (arr[myX, myY] != res)
+            if (arr[myX, myY] != res){
+                Console.WriteLine("Na této pozici nemáte kámen.");
+            } else
+                
             {
-                Console.WriteLine("Není to váš kámen");
-            }
-            else
-            {
+
+                // nechat zmizet hráče z místa se kterým jsme táhli.
+                arr[myX, myY] = "O";
+
+
                 // protivník
                 string contra = "";
-
-
 
                 if (res == "1") { contra = "2"; } else { contra = "1"; }
 
@@ -108,91 +115,63 @@ namespace test
                 // --------------------------------------- hraje hráč číslo 1 SHORA
                 if (contra == "2")
                 {
-
-                    bool allow = true;
-                    Console.WriteLine("Player 2");
-
-
-                    // je vpravo nahoře protivník ?
-                    if (arr[x - 1, y - 1] == contra && allow == true)
+  
+                    // je VPRAVO DOLE protivník ?
+                    if (option == 1)
                     {
-                        Console.WriteLine("Vpravo nahoře je protivník.");
-                    }
-                    else
-                    {
-                        arr[x - 1, y - 1] = res; // pohnout vpravo nahoru (jde to)
-                        allow = false;
+                        if (arr[myX + 1, myY + 1] == contra)
+                        {
+                            Console.WriteLine("vpravo dole je protivník. Zabíráte ho.");
+                            arr[myX + 1, myY + 1] = res;
+                        }
+                        else { Console.WriteLine("vpravo dole jste nikoho jste nezabrali. ");
+                            arr[myX + 1, myY + 1] = res;
+                        }
                     }
 
 
-                    // je vlevo nahoře protivník ?
-                    if (arr[x + 1, y - 1] == contra && allow == true)
-                    {
-                        Console.WriteLine("Vlevo nahoře je protivník.");
-                    }
-                    else
-                    {
-                        arr[x + 1, y - 1] = res; // pohnout dopředu (jde to)
-                        allow = false;
+                    // je VLEVO DOLE protivník ?
+                    if (option == 2){
+                        if (arr[myX - 1, myY + 1] == contra)
+                        {
+                            Console.WriteLine("vlevo dole je protivník. Zabíráte ho.");
+                            arr[myX - 1, myY + 1] = res;
+                        }
+                        else { Console.WriteLine("vlevo dole jste nikoho nezabrali");
+                            arr[myX - 1, myY + 1] = res;
+                        }
                     }
 
-                    if (arr[x, y - 1] == contra && allow == true)
+
+
+                    // je VLEVO DOLE protivník ?
+                    if (option == 3)
                     {
-                        Console.WriteLine("Kolmo nahoře je protivník");
-                    }
-                    else
-                    {
-                        arr[x, y - 1] = res;
-                        allow = false;
+                        if (arr[myX, myY + 1] == contra)
+                        {
+                            Console.WriteLine("VPRAVO NAHOŘE je protivník. Zabíráte ho.");
+                            arr[myX, myY + 1] = res;
+                        } else {
+                            Console.WriteLine("Nikoho jste nezabrali.");
+                            arr[myX, myY + 1] = res;
+                        }
                     }
                 }
 
 
 
 
-                // ------------------------------------ hraje hráč číslo 2 ZESPODU
-                if (contra == "1")
-                {
-                    bool allow = true;
-                    Console.WriteLine("Player 1");
+                    // ------------------------------------ hraje hráč číslo 2 ZESPODU
+                    if (contra == "1")
+                    {
+                    Console.WriteLine("Not done yet");
 
-
-                    // je vpravo nahoře protivník ?
-                    if (arr[x + 1, y + 1] == contra && allow == true)
-                    {
-                        Console.WriteLine("Vpravo nahoře je protivník.");
-                    }
-                    else
-                    {
-                        arr[x + 1, y + 1] = res; // pohnout vpravo nahoru (jde to)
-                        allow = false;
-                    }
-
-
-                    // je vlevo nahoře protivník ?
-                    if (arr[x - 1, y + 1] == contra && allow == true)
-                    {
-                        Console.WriteLine("Vlevo nahoře je protivník.");
-                    }
-                    else
-                    {
-                        arr[x - 1, y + 1] = res; // pohnout dopředu (jde to)
-                        allow = false;
-                    }
-
-                    if (arr[x, y + 1] == contra && allow == true)
-                    {
-                        Console.WriteLine("Kolmo nahoře je protivník");
-                    }
-                    else
-                    {
-                        arr[x, y + 1] = res;
-                        allow = false;
+ 
                     }
 
                 }
             }
-        }
+
 
 
         // ---------------------------------------- VYPLNĚNÍ HORNÍ ŘADY ČÍSLEM 1
@@ -286,64 +265,6 @@ namespace test
 
     }
 
-
-
-
-
-        /*
-
-        static void moveStone(int x, int y, int player, string[,] arr, int wx, int wy)
-        {
-
-            var res = Convert.ToString(player);
-
-            // protivník
-            string contra = "";
-
-            if (res == "1") { contra = "2"; } else { contra = "1"; }
-
-            // chci pohnout s kamenem
-
-            if (arr[x, y] == "O" || arr[x, y] == "1" || arr[x, y] == "2")
-            {
-
-                Console.WriteLine("Jsem zde");
-
-                if (arr[wx, wx] == res)
-                {
-                    Console.WriteLine("Můžete táhnout.");
-                    arr[wx, wy] = "O";
-                }
-                else
-                {
-                    Console.WriteLine("Na této pozici nemáte kámen.");
-                }
-
-
-
-                if (arr[x, y] == contra)
-                {
-                    Console.WriteLine("Obsadil jste protivníka.");
-                    arr[x, y] = res;
-                }
-                else if (arr[x, y] == res)
-                {
-                    Console.WriteLine("Chcete zabrat sám sebe? To jako fakt?");
-                }
-
-                else if (arr[x, y] == "O")
-                {
-                    Console.WriteLine("Nikdo tam není.");
-                    arr[x, y] = res;
-                }
-
-
-            }
-
-
-        }
-
-*/
 }
 
 }
