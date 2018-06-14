@@ -96,10 +96,12 @@ namespace test
             var res = Convert.ToString(player);
 
 
-            if (arr[myX, myY] != res){
+            if (arr[myX, myY] != res)
+            {
                 Console.WriteLine("Na této pozici nemáte kámen.");
-            } else
-                
+            }
+            else
+
             {
 
                 // nechat zmizet hráče z místa se kterým jsme táhli.
@@ -112,65 +114,213 @@ namespace test
                 if (res == "1") { contra = "2"; } else { contra = "1"; }
 
 
-                // --------------------------------------- hraje hráč číslo 1 SHORA
-                if (contra == "2")
+
+                // :::::::::::::::::::::::::::::::::::::::::::::::::::::: DOPRAVA (OPTION IS 1)
+                if (option == 1)
                 {
-  
+
+                    // --------------------------------------- hraje hráč číslo 1 SHORA DOPRAVA DOLŮ
                     // je VPRAVO DOLE protivník ?
-                    if (option == 1)
+                    if (contra == "2")
                     {
                         if (arr[myX + 1, myY + 1] == contra)
                         {
-                            Console.WriteLine("vpravo dole je protivník. Zabíráte ho.");
+                            Console.WriteLine("vpravo dole je protivník hrače 1. Zabíráte ho.");
                             arr[myX + 1, myY + 1] = res;
                         }
-                        else { Console.WriteLine("vpravo dole jste nikoho jste nezabrali. ");
+                        else
+                        {
+                            Console.WriteLine("vpravo dole jste nikoho jste nezabrali. ");
                             arr[myX + 1, myY + 1] = res;
                         }
                     }
 
 
+                    // --------------------------------------- hraje hráč číslo 2 ZDOLA DOPRAVA NAHORU
+                    // je VPRAVO NAHOŘE protivník ?
+                    else if (contra == "1")
+                    {
+
+                        if (arr[myX + 1, myY - 1] == contra)
+                        {
+                            Console.WriteLine("vpravo nahoře je protivník hrače 2. Zabíráte ho.");
+                            arr[myX + 1, myY - 1] = res;
+                        }
+                        else
+                        {
+                            Console.WriteLine("vpravo dole jste nikoho jste nezabrali. ");
+                            arr[myX + 1, myY - 1] = res;
+                        }
+                    }
+
+
+                }
+
+
+
+
+                // :::::::::::::::::::::::::::::::::::::::::::::::::::::: DOLEVA (OPTION IS 2)
+                if (option == 2)
+                {
+
+                    // --------------------------------------- hraje hráč číslo 1 SHORA DOLEVA DOLŮ
+                    // je VLEVO DOLE protivník ?
+                    if (contra == "2")
+                    {
+                        if (arr[myX - 1, myY + 1] == contra)
+                        {
+                            Console.WriteLine("vlevo dole je protivník hrače 1. Zabíráte ho.");
+                            arr[myX - 1, myY + 1] = res;
+                        }
+                        else
+                        {
+                            Console.WriteLine("vlevo dole jste nikoho jste nezabrali. ");
+                            arr[myX - 1, myY + 1] = res;
+                        }
+                    }
+
+
+                    // --------------------------------------- hraje hráč číslo 2 ZDOLA DOLEVA NAHORU
+                    // je VLEVO NAHOŘE protivník ?
+                    else if (contra == "1")
+                    {
+
+                        if (arr[myX - 1, myY - 1] == contra)
+                        {
+                            Console.WriteLine("vlevo nahoře je protivník hrače 2. Zabíráte ho.");
+                            arr[myX - 1, myY - 1] = res;
+                        }
+                        else
+                        {
+                            Console.WriteLine("vlevo dole jste nikoho jste nezabrali. ");
+                            arr[myX - 1, myY - 1] = res;
+                        }
+                    }
+
+
+                }
+
+
+
+
+
+
+                // :::::::::::::::::::::::::::::::::::::::::::::::::::::: KOLMO (OPTION IS 3)
+                if (option == 3)
+                {
+
+                    // --------------------------------------- hraje hráč číslo 1 SHORA KOLMO DOLŮ
+                    // je KOLMO dole protivník ?
+                    if (contra == "2")
+                    {
+                        if (arr[myX, myY + 1] == contra)
+                        {
+                            Console.WriteLine("kolmo dole je protivník hrače 1. Zabíráte ho.");
+                            arr[myX, myY + 1] = res;
+                        }
+                        else
+                        {
+                            Console.WriteLine("kolmo dole jste nikoho jste nezabrali. ");
+                            arr[myX, myY + 1] = res;
+                        }
+                    }
+
+
+                    // --------------------------------------- hraje hráč číslo 2 ZDOLA KOLMO NAHORU
+                    // je KOLMO NAHOŘE protivník ?
+                    else if (contra == "1")
+                    {
+
+                        if (arr[myX, myY - 1] == contra)
+                        {
+                            Console.WriteLine("kolmo nahoře je protivník hrače 2. Zabíráte ho.");
+                            arr[myX, myY - 1] = res;
+                        }
+                        else
+                        {
+                            Console.WriteLine("kolmo dole jste nikoho jste nezabrali. ");
+                            arr[myX, myY - 1] = res;
+                        }
+                    }
+
+
+                }
+
+
+
+
+
+
+                /*
                     // je VLEVO DOLE protivník ?
                     if (option == 2){
+
+                    if (contra == "2"){
+
+
                         if (arr[myX - 1, myY + 1] == contra)
                         {
                             Console.WriteLine("vlevo dole je protivník. Zabíráte ho.");
                             arr[myX - 1, myY + 1] = res;
                         }
-                        else { Console.WriteLine("vlevo dole jste nikoho nezabrali");
+                        else
+                        {
+                            Console.WriteLine("vlevo dole jste nikoho nezabrali");
                             arr[myX - 1, myY + 1] = res;
                         }
+
                     }
 
+                    */
 
 
-                    // je VLEVO DOLE protivník ?
-                    if (option == 3)
+
+
+                /*
+
+                // je vlevo nahoře ? 
+                if (arr[myX - 1, myY + 1] == contra)
+                {
+                    Console.WriteLine("vlevo dole je protivník. Zabíráte ho.");
+                    arr[myX - 1, myY + 1] = res;
+                }
+                else
+                {
+                    Console.WriteLine("vlevo dole jste nikoho nezabrali");
+                    arr[myX - 1, myY + 1] = res;
+                }
+
+
+                }
+
+
+
+                // je VLEVO DOLE protivník ?
+                if (option == 3)
+                {
+                    if (arr[myX, myY + 1] == contra)
                     {
-                        if (arr[myX, myY + 1] == contra)
-                        {
-                            Console.WriteLine("VPRAVO NAHOŘE je protivník. Zabíráte ho.");
-                            arr[myX, myY + 1] = res;
-                        } else {
-                            Console.WriteLine("Nikoho jste nezabrali.");
-                            arr[myX, myY + 1] = res;
-                        }
+                        Console.WriteLine("VPRAVO NAHOŘE je protivník. Zabíráte ho.");
+                        arr[myX, myY + 1] = res;
+                    } else {
+                        Console.WriteLine("Nikoho jste nezabrali.");
+                        arr[myX, myY + 1] = res;
                     }
                 }
 
 
 
 
-                    // ------------------------------------ hraje hráč číslo 2 ZESPODU
-                    if (contra == "1")
-                    {
-                    Console.WriteLine("Not done yet");
 
- 
-                    }
+                // ------------------------------------ hraje hráč číslo 2 ZESPODU
+                if (contra == "1")
+                {
+                Console.WriteLine("Not done yet");
+                */
 
-                }
             }
+        }
+
 
 
 
