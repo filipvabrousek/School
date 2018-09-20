@@ -11,28 +11,25 @@
             tries = int.Parse(Console.ReadLine());
             int correct = 0;
 
-            for (var i = 0; i < tries; i++)
-            {
-                Console.WriteLine("Zadejte písmeno");
+            for (var i = 0; i < tries; i++) {
+             Console.WriteLine("Zadejte písmeno");
 
-                guess = char.Parse(Console.ReadLine());
-                for (var n = 0; n < text.Length; n++)
-                {
-                    if (text[n].ToString().ToUpper() == guess.ToString().ToUpper())
-                    {
-                        empty[n] = guess;
-                        correct += 1;
-                        if (correct == text.Length) {
-                            Console.WriteLine("Vyhráli jste!");
-                    }
-                    }
+             guess = char.Parse(Console.ReadLine());
+             for (var n = 0; n < text.Length; n++) {
+              if (text[n].ToString().ToUpper() == guess.ToString().ToUpper()) {
+               empty[n] = guess;
+               correct += 1;
+               if (correct == text.Length) {
+                Console.WriteLine("Vyhráli jste!");
+               }
+              }
 
-                }
+             }
 
-            
-                Console.WriteLine(new string(empty));
+
+             Console.WriteLine(new string(empty));
 
             }
 
-       
+
             Console.ReadKey();
