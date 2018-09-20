@@ -175,9 +175,5 @@ namespace arraymethods
 
             Console.WriteLine("All numbers are odd " + isOdd);
         }
-
-
-
-   
     }
 }
