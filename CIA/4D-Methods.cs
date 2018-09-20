@@ -6,20 +6,14 @@ namespace arraymethods
     {
         public static void Main(string[] args)
         {
-
-
-            /*   Console.WriteLine("zadejte délku pole.");
-               int mlen = int.Parse(Console.ReadLine());
-               median(mlen); */
             
             int len = 3;
-            int[] arr = { 2, 6, 7 };
+            int[] arr = { 2, 6, 7, 2, 3, 8 };
 
             // WRITE EACH
             string res = writeEach(arr);
             Console.WriteLine("Výpis: " + res);
             Console.ReadKey();
-
 
             // SUM
             int sumo = sum(arr);
@@ -34,19 +28,15 @@ namespace arraymethods
             median(arr);
             Console.ReadKey();
 
-
-
-
-
-
-
-
-            // Výpis pole
-
-         
         }
 
-
+        static bool isEmpty(int[] arr){
+            if (arr.Length == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         static string writeEach(int[] arr){
             string resdata = "";
@@ -76,6 +66,7 @@ namespace arraymethods
 
             for (var i = 0; i < arr.Length; i++)
             {
+                
                 if (arr[i] < currmin)
                 {
                     currmin = arr[i];
@@ -88,31 +79,17 @@ namespace arraymethods
             }
 
             Console.WriteLine("Min value: " + currmin, "Max value " + currmax);
-
-
         }
 
 
-        static void median(int[] arr)
+        static void median(int[] arr) // does not work for odd length
         {
-            /* int[] arr = new int[len];
-
-             int sum, i, j, helper = 0;
-
-             // 1 - Naplnění hodnotami
-             for (i = 0; i < arr.Length; i++)
-             {
-                 Console.WriteLine("Zadejte hodnotu pro medián " + (i + 1));
-                 arr[i] = int.Parse(Console.ReadLine());
-
-             } */
-
+            
             int len = arr.Length;
             int i, j, helper = 0;
 
-
-
-            // 2 - bubble sort (seřazení a výpis)
+            int res = 0;
+            // 1 - bubble sort (seřazení a výpis)
             for (j = 0; j < len - 1; j++)
             {
 
@@ -131,49 +108,16 @@ namespace arraymethods
             }
 
 
-            // 3 - zjištění zda jsou čísla lichá
-            int[] marr = new int[len];
 
-            bool isOdd = false;
-
-
-            for (var q = 0; q < marr.Length; q++)
-            {
-                if (marr[q] % 2 == 0)
-                { // máme liché číslo
-                    isOdd = false;
-                }
-                isOdd = true;
+            if ((len % 2) == 0){
+                res = (arr[len / 2] + arr[(len / 2) + 1]) / 2;
+            } else {
+                res = arr[len / 2];  
             }
 
-            for (var g = 0; g < marr.Length; g++)
-            {
-                if (isOdd == false)
-                { // only even numbers
-                    if (marr.Length % 2 == 0)
-                    { // the array has even length
-                        int half = arr.Length / 2;
-                        int halfn = marr[half];
-                        Console.WriteLine("Median of even array is " + halfn);
-                    }
-                    else
-                    {
-                        // prostřední 2 a z nich průměr
-                        if (arr.Length >= 2)
-                        {
-                            int half = arr.Length / 2;
-                            int halfn = marr[half]; // první z  těch dvou
-                            int halfa = marr[half + 1]; // druhý z těch dvou
-
-                            int res = (halfa + halfn) / 2;
-                            Console.WriteLine("Median of odd array is " + res);
-
-                        }
-                    }
-                }
-            }
-
-            Console.WriteLine("All numbers are odd " + isOdd);
+            Console.WriteLine("Res is " + res);
         }
     }
 }
+
+
