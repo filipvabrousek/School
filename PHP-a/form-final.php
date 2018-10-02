@@ -103,7 +103,7 @@ if($sekce=="formular"){
         <!--if (isset($_REQUEST["odeslat"]))-->
 		<label for="phone">Telefon:* </label><input type="text" name="phone" value="<?php if (isset($phone)){print($phone);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $phoneerr; }?></span> <!--<br> --->
 		
-		<!---  <input type="radio" checked="checked" name="gender"> --->
+		
 		<span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $gendererr; }?></span><br>
 		<label for="select">Select:</label>
 		
@@ -116,11 +116,6 @@ if($sekce=="formular"){
 		</select>
 		<br>
        
-		<!--
-Jméno, prijimeni, email
-heslo, telefon, pohlavi
-
--->
 	<label for = "radio">Man</label>
 	<input type="radio" name = "radio" checked = "checked">	
 		</label>
