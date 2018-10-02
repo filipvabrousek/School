@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Dokument bez názvu</title>
+<title>Formulář</title>
 </head>
 
 <body>
@@ -109,7 +109,7 @@ if($sekce=="formular"){
 		<label for="select">Select:</label>
 		
 		<select name = "select">
-        <option name = "selectv" value = "<?php if (isset($selectv)){print($selectv);}?>">Select at least one element.</option>
+
 		<option name = "selectv" value = "iPhone Xs">iPhone Xs</option>
 		<option name = "selectv" value = "iPhone Xs Max">iPhone Xs Max</option>
 		<option name = "selectv" value = "iPhone Xr">iPhone Xr</option>
