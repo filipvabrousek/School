@@ -29,6 +29,10 @@ if($sekce=="hlavnistrana"){
 if($sekce=="formular"){
 	
 	if (isset($_REQUEST["odeslat"])){//prisla data z formulare? Byl odeslan?
+        
+         $nameerr = "";  $surnameerr = "";  $passworderr = ""; $emailerr = ""; $phoneerr = ""; $gendererr = ""; 
+        
+        
 		$jmeno = $_REQUEST["jmeno"];
 		if ($jmeno==""){
 			print("NEBYLO VYPLNENO JMENO..."."<br>");
@@ -98,10 +102,10 @@ if($sekce=="formular"){
 			<label for="gender">Pohlaví:* </label><input type="text" name="gender" value="<?php if (isset($gender)){print($gender);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $gendererr; }?></span><br>
         
         <!--if (isset($_REQUEST["odeslat"]))-->
-		<label for="phone">Telefon:* </label><input type="text" name="phone" value="<?php if (isset($phone)){print($phone);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $phoneerr; }?></span><br> 
+		<label for="phone">Telefon:* </label><input type="text" name="phone" value="<?php if (isset($phone)){print($phone);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $phoneerr; }?></span> <!--<br> --->
 		
-		  <input type="radio" checked="checked" name="gender">
-		
+		<!---  <input type="radio" checked="checked" name="gender"> --->
+		<span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $gendererr; }?></span><br>
 		<label for="select">Select:</label>
 		
 		<select name = "select">
