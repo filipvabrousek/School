@@ -8,8 +8,8 @@
 <body>
 
 <ul>
-	<li><a href="index.php?sekce=hlavnistrana">hlavni strana</a></li>	
-	<li><a href="index.php?sekce=formular">formular</a></li>	
+	<li><a href="filip.php?sekce=hlavnistrana">hlavni strana</a></li>	
+	<li><a href="filip.php?sekce=formular">formular</a></li>	
 </ul>	
 
 <?php
@@ -38,12 +38,12 @@ if($sekce=="formular"){
 		$surname = $_REQUEST["surname"];
 		if ($surname==""){
 			print("NEBYLO VYPLNENO PRIJIMENI..."."<br>");
-            $surnameerrr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
+            $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
 		}
 		
 		$password = $_REQUEST["password"];
 		if ($password==""){
-			print("NEBYLO NALEZENO HESLO"."<br>");
+			print("NEBYLO VYPLNENO HESLO"."<br>");
             $passworderr = "NEBYLO VYPLNĚNO HESLO";
 		}
 		
@@ -80,18 +80,25 @@ if($sekce=="formular"){
 	?>
 	<h1>Formular</h1>
 	
-	<form action="index.php" method="get">
-	<label for="jmeno">Jméno:* </label><input type="text" name="jmeno" value="<?php  if (isset($jmeno)){print($jmeno);}?>"><span style="color: red"> <?php print($nameerr) ?></span><br>
-	<label for="surname">Příjmení: </label><input type="text" name="surname" value="<?php  if (isset($surname)){print($surname);}?>"><span style="color: red"> <?php print($surnameerr) ?></span><br>
-			
-        <label for="password">Password:* </label><input type="password" name="password" value="<?php if (isset($password)){print($password);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print($passworderr) }?></span><br>
+	<form action="filip.php" method="get">
+	<label for="jmeno">Jméno:* </label><input type="text" name="jmeno" value="<?php  if (isset($jmeno)){print($jmeno);}?>">
+        <span style="color: red"> <?php print $nameerr ?></span><br>
+	<label for="surname">Příjmení: </label>
+   
+    <input type="text" name="surname" value="<?php  if (isset($surname)){print($surname);}?>">
+    <span style="color: red"> <?php print $surnameerr ?></span><br>
         
-			<label for="email">Email:* </label><input type="email" name="email" value="<?php if (isset($email)){print($email);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print($emailerr) }?></span><br>
+    <label for="password">Password:* </label><input type="password" name="password" value="<?php if (isset($password)){print($password);}?>">
+    <span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print($passworderr); }?></span><br>
         
-			<label for="gender">Pohlaví:* </label><input type="text" name="gender" value="<?php if (isset($gender)){print($gender);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print(gendererr) }?></span><br>
+        
+        
+			<label for="email">Email:* </label><input type="email" name="email" value="<?php if (isset($email)){print($email);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print($emailerr); }?></span><br>
+        
+			<label for="gender">Pohlaví:* </label><input type="text" name="gender" value="<?php if (isset($gender)){print($gender);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print(gendererr); }?></span><br>
         
         <!--if (isset($_REQUEST["odeslat"]))-->
-		<label for="phone">Telefon:* </label><input type="text" name="phone" value="<?php if (isset($phone)){print($phone);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print($phoneerr) }?></span><br> 
+		<label for="phone">Telefon:* </label><input type="text" name="phone" value="<?php if (isset($phone)){print($phone);}?>"><span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print($phoneerr); }?></span><br> 
 		
 		  <input type="radio" checked="checked" name="gender">
 		
