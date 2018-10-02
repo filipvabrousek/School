@@ -116,14 +116,14 @@ if($sekce=="formular"){
 		
 		</select>
 		<br>
-		<checkbox  name = "check" value = "Souhlasím s podmínkami užití."></checkbox>
+       
 		<!--
 Jméno, prijimeni, email
 heslo, telefon, pohlavi
 
 -->
 	<label for = "radio">Man</label>
-	<input type="radio" name = "radio">	
+	<input type="radio" name = "radio" checked = "checked">	
 		</label>
 	
 	<label for = "radio">Woman</label>
@@ -131,6 +131,12 @@ heslo, telefon, pohlavi
 		</label>
 	
 	<br>
+    
+    
+     <label for = "terms">Souhlasím s podmínkami užití.</label>
+		<input type = "checkbox" name = "terms" value = "Souhlasím s podmínkami užití">
+        <br>
+    
 	<input type="submit" name="odeslat" value="Odešli data">
 		
 	<input type="hidden" name="sekce" value="formular">
