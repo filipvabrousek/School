@@ -30,7 +30,7 @@ if($sekce=="formular"){
 	
 	if (isset($_REQUEST["odeslat"])){//prisla data z formulare? Byl odeslan?
         
-         $nameerr = "";  $surnameerr = "";  $passworderr = ""; $emailerr = ""; $phoneerr = ""; $gendererr = ""; 
+         $nameerr = "";  $surnameerr = "";  $passworderr = ""; $emailerr = ""; $phoneerr = ""; $gendererr = ""; $termserr = ""; 
         
         
 		$jmeno = $_REQUEST["jmeno"];
@@ -72,12 +72,11 @@ if($sekce=="formular"){
 		}
 		
 		
-       $selectv = $_REQUEST["selectv"];
-		if ($selectv==""){
-			print("je potřeba vybrat minimálně 1 produkt.");
-             $selectv = "JE POTŘEBA VYBRAT MINIMÁLNĚ 1 PRODUKT";
+        $terms = $_REQUEST["terms"];
+		if ($terms==""){
+			print("MUSÍTE SOUHLASIT S PODMÍNKAMI");
+             $termserr = "MUSÍTE SOUHLASIT S PODMÍNKAMI";
 		}
-		
 		
 	}
 	
@@ -134,7 +133,8 @@ heslo, telefon, pohlavi
     
     
      <label for = "terms">Souhlasím s podmínkami užití.</label>
-		<input type = "checkbox" name = "terms" value = "Souhlasím s podmínkami užití">
+		<input type = "checkbox" name = "terms" value = "<?php if (isset($terms)){print($terms);}?>">
+    <span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $termserr; }?></span> <!--<br> --->
         <br>
     
 	<input type="submit" name="odeslat" value="Odešli data">
