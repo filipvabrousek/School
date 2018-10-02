@@ -134,7 +134,7 @@ heslo, telefon, pohlavi
     
      <label for = "terms">Souhlasím s podmínkami užití.</label>
 		<input type = "checkbox" name = "terms" value = "<?php if (isset($terms)){print($terms);}?>">
-    <span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $termserr; }?></span> <!--<br> --->
+    <span style="color: red"> <?php if (isset($_REQUEST["odeslat"])){ print $termserr; }?></span> 
         <br>
     
 	<input type="submit" name="odeslat" value="Odešli data">
