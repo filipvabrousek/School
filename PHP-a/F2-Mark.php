@@ -89,6 +89,7 @@ if ($sekce == "formular") {
         $termserr    = "";
         $errors = array();
         $namelenerr = "";
+        $product = "";
         
         $name = trim($_REQUEST["name"]); // remove whitespace
         $characters = "qwertzuioplkjhgfdsayxcvbnm";
@@ -145,11 +146,11 @@ if ($sekce == "formular") {
               $errors[] = "phone";
         }
         
-        $gender = $_REQUEST["gender"];
+        $gender = $_REQUEST["radio-gender"];
         if ($gender == "") {
             print("<p class=\"err\">NEBYLO VYPLNĚNO POHLAVÍ...</p>");
             $gendererr = "NEBYLO VYPLNĚNO POHLAVÍ";
-              $errors[] = "gender";
+              $errors[] = "radio-gender";
         }
         
         
@@ -160,6 +161,13 @@ if ($sekce == "formular") {
               $errors[] = "terms";
         }
         
+            $product = $_REQUEST["product"];
+        if ($product == "") {
+            print("MUSÍTE VYBRAT ALESPOŇ 1 PRODUKT");
+            $termserr = "MUSÍTE VYBRAT ALESPOŇ 1 PRODUKT";
+              $errors[] = "product";
+        }
+        
     }
     
 ?>
@@ -167,7 +175,7 @@ if ($sekce == "formular") {
     
     <form action="filip.php" method="get">
     <label for="name">Jméno:* </label>
-<input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name",$errors)){print("marko");}?>" >
+<input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name", $errors)){print("marko");}?>" >
    <br>
         
         
@@ -195,17 +203,26 @@ if ($sekce == "formular") {
         
         <label for="select">Select your product:</label>
         <br>
-        <label for = "radio">iPhone XS</label>
-    <input type="radio" name = "radio" checked = "checked">
-        <br>
+        <label for = "radio" name = "radio">iPhone XS</label>
+    <input type="radio" name = "radio" checked = "checked" <?php if (isset($_REQUEST["odeslat"])) {$product = $_REQUEST["product"]; if($product == "iPhoneXS"){print "checked = \"checked\"";}} else {print("checked");}?>>
+      
+     <label for = "radio" name = "radio">iPhone Xc</label>
+      <input type="radio" name = "radio" checked = "checked" <?php if (isset($_REQUEST["odeslat"])) {$product = $_REQUEST["product"]; if($product == "iPhoneXS Max"){print "checked = \"checked\"";}} else {print("checked");}?>>
+        
+     <label for = "radio" name = "radio">iPhone XS Max</label>
+      <input type="radio" name = "radio" checked = "checked" <?php if (isset($_REQUEST["odeslat"])) {$product = $_REQUEST["product"]; if($product == "iPhoneXS Max"){print "checked = \"checked\"";}} else {print("checked");}?>>
+   <!--     <br>
      <label for = "radio">iPhone Xs Max</label>
     <input type="radio" name = "radio" >
         <br>
      <label for = "radio">iPhone Xc</label>
     <input type="radio" name = "radio" >
-        
+        -->
         <br><br>
-       
+     
+        
+        
+        
      <label for="select">Select your gender:</label>
     <br>
     <label for = "radio">Man</label>
