@@ -156,30 +156,22 @@ if ($sekce == "formular") {
    <br>
         
     <label for="password">Heslo:* </label>
-<input type="password" name="password" placeholder="Enter password" value="<?php  if (isset($password)){print($password);}?>" class="<?php if(in_array("password",$errors)){print("marko"); }?>" >
+<input type="password" name="password" placeholder="Enter password" value="<?php if (isset($password)){print($password);}?>" class="<?php if(in_array("password",$errors)){print("marko"); }?>" >
    <br>
          
         
 <label for="email">Email:* </label>
- <input type="text" name="email" placeholder="Enter email" value="<?php  if (isset($email)){print($email);}?>" class="<?php if(in_array("email",$errors)){print("marko");}?>" >
+ <input type="text" name="email" placeholder="Enter email" value="<?php if (isset($email)){print($email);}?>" class="<?php if(in_array("email",$errors)){print("marko");}?>" >
 <br>
         
 
-<label for="gender">Pohlaví:* </label><input type="text" name="gender" value="<?php
-    if (isset($gender)) {
-        print($gender);
-    }
-?>"><br>
+
         
         <!--if (isset($_REQUEST["odeslat"]))-->
-        <label for="phone">Telefon:* </label><input type="text" name="phone" value="<?php
-    if (isset($phone)) {
-        print($phone);
-    }
-?>"> <!--<br> --->
+    <label for="phone">Telefon:* </label>
+    <input type="text" name="phone" placeholder="Enter email" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
+<br>
         
-        
-       <br>
         <label for="select">Select your product:</label>
         <br>
         <label for = "radio">iPhone XS</label>
