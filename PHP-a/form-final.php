@@ -1,8 +1,42 @@
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Formulář</title>
+    
+ <style>
+    
+    /*POD TO NAPSAT NEVYPLNĚNO + OZNAČIT POLE !!!!! */
+    input[type="text"],input[type="email"], input[type="password"]  {
+        padding: 0.3em;
+        border-radius: 6px;
+        border-color: #1abc9c;
+        margin-bottom: 1em;
+    }
+    
+    select {
+        margin-bottom: 1em;
+    }
+    
+    input[type="submit"]{
+    margin-top: 1em;
+    background: #1abc9c;
+    color: white;
+    padding: 0.6em;
+    font-weight: bold;
+    border: none;
+    }
+    
+    .new {
+        margin: 2em;
+        border: red 1px solid;
+    }
+    
+</style>
+   
+    
+    
 </head>
 
 <body>
@@ -37,12 +71,31 @@ if ($sekce == "formular") {
         $phoneerr    = "";
         $gendererr   = "";
         $termserr    = "";
+        $errors = array();
+        $namelenerr = "";
         
+        $name = trim($_REQUEST["name"]); // remove whitespace
+        $characters = "qwertzuioplkjhgfdsayxcvbnm";
         
-        $jmeno = $_REQUEST["jmeno"];
-        if ($jmeno == "") {
+        if ($name == "") {
             print("NEBYLO VYPLNENO JMENO..." . "<br>");
             $nameerr = "NEBYLO VYPLNĚNO JMÉNO";
+        } else {
+            
+            
+            if (strlen($name) > 2) {
+                // namelenerr = "NEDOSTATEČNÁ DÉLKA JMÉNA";
+                for ($i = 0; $i<strlen($name); $i++){
+                   // print(($i + 1).". ".$name[$i]."<br>");
+                    $pos = strpos($characters, $name[$i]); 
+                        
+                    if ($pos === false) {
+                        
+                    } else {
+                       print("NEPOVOLENÝ ZNAK: ".$name[$i]."<br>");
+                    }
+                }
+            }
         }
         
         $surname = $_REQUEST["surname"];
@@ -90,11 +143,16 @@ if ($sekce == "formular") {
    <h1>Formular</h1>
     
     <form action="filip.php" method="get">
-    <label for="jmeno">Jméno:* </label><input type="text" name="jmeno" value="<?php
-    if (isset($jmeno)) {
-        print($jmeno);
+    <label for="name">Jméno:* </label>
+    <input type="text" name="name" value="<?php if (isset($name)) {print($name); }?>"  
+     
+    class = "<?php
+    if (isset($name)) { // check if field contains value !!!!!
+        echo 'new';
+    } else {
+        echo 'empty';
     }
-?>">
+?>"  >
         <span style="color: red"> <?php
     if (isset($_REQUEST["odeslat"])) {
         print $nameerr;
@@ -165,7 +223,7 @@ if ($sekce == "formular") {
 ?></span><br>
         <label for="select">Select:</label>
         
-        <select name = "select">
+        <select name = "select" multiple = "yes">
 
         <option name = "selectv" value = "iPhone Xs">iPhone Xs</option>
         <option name = "selectv" value = "iPhone Xs Max">iPhone Xs Max</option>
@@ -203,6 +261,9 @@ if ($sekce == "formular") {
     <input type="hidden" name="sekce" value="formular">
     </form>
     
+
+
+
     <?php
 }
 
