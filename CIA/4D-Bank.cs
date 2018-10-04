@@ -32,7 +32,7 @@ namespace Payout
 
             getDivision(money);
 
-            // 1 - načíst platy zamětanců
+            /// 1 - načíst platy zamětanců
             // 2 - celková suma, průměr, nejnižší + nejvyšší součet
             // 3 - počty bankovek a mincí, potřebných k vyplacení (5000, 2000, 1000, 500, 200, 100, 150, 
             // 4 - výpis pro každého
