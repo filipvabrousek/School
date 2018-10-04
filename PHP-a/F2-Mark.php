@@ -10,7 +10,7 @@
     input[type="text"],input[type="email"], input[type="password"]  {
         padding: 0.3em;
         border-radius: 6px;
-        border-color: #1abc9c;
+        border-color: 2px solid green;
         margin-bottom: 1em;
     }
     
@@ -27,13 +27,16 @@
     border: none;
     }
     
-    .new {
-        margin: 2em;
-        border: red 1px solid;
-    }
+   
      
-     #marko{
+     .marko{
          border: 6px solid red;
+         border-color: red;
+     }
+     
+     .greeny {
+         border: 6px solid green;
+         border-color: green;
      }
     
 </style>
@@ -55,7 +58,7 @@ if (isset($_REQUEST["sekce"])) {
     $sekce = $_REQUEST["sekce"];
 }
 if ($sekce == "hlavnistrana") {
-    print("<h1>Uvodni strana</h1>");
+    print("<h1 style=\"color: \"green\">Uvodni strana</h1>");
     
 }
 if ($sekce == "formular") {
@@ -117,7 +120,7 @@ if ($sekce == "formular") {
         if ($email == "") {
             print("NEBYL VYPLNEN EMAIL" . "<br>");
             $emailerr = "NEBYLO VYPLNĚN EMAIL";
-             $chybnapole[] = "email";
+             $errors[] = "email";
         }
         
         $phone = $_REQUEST["phone"];
@@ -149,25 +152,20 @@ if ($sekce == "formular") {
     
     <form action="filip.php" method="get">
     <label for="name">Jméno:* </label>
-<input class= "txt" type="text" name="name" placeholder="Name" value="<?php  if (isset($name)){print($name);}?>" id="<?php if(in_array("name",$errors)){print("marko");}?>" >
+<input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name",$errors)){print("marko");}?>" >
    <br>
         
-    <label for="password">Password:* </label><input type="password" name="password" value="<?php
-    if (isset($password)) {
-        print($password);
-    }
-?>">
-  <br>
+    <label for="password">Heslo:* </label>
+<input type="password" name="password" placeholder="Enter password" value="<?php  if (isset($password)){print($password);}?>" class="<?php if(in_array("password",$errors)){print("marko"); }?>" >
+   <br>
+         
         
+<label for="email">Email:* </label>
+ <input type="text" name="email" placeholder="Enter email" value="<?php  if (isset($email)){print($email);}?>" class="<?php if(in_array("email",$errors)){print("marko");}?>" >
+<br>
         
-        
-            <label for="email">Email:* </label><input type="email" name="email" value="<?php
-    if (isset($email)) {
-        print($email);
-    }
-?>"><br>
-        
-            <label for="gender">Pohlaví:* </label><input type="text" name="gender" value="<?php
+
+<label for="gender">Pohlaví:* </label><input type="text" name="gender" value="<?php
     if (isset($gender)) {
         print($gender);
     }
@@ -182,8 +180,8 @@ if ($sekce == "formular") {
         
         
        <br>
-        <label for="select">Select:</label>
-        
+        <label for="select">Select your product:</label>
+        <br>
         <label for = "radio">iPhone XS</label>
     <input type="radio" name = "radio" checked = "checked">
         <br>
@@ -193,8 +191,10 @@ if ($sekce == "formular") {
      <label for = "radio">iPhone Xc</label>
     <input type="radio" name = "radio" checked = "checked">
         
-        <br>
+        <br><br>
        
+     <label for="select">Select your gender:</label>
+    <br>
     <label for = "radio">Man</label>
     <input type="radio" name = "radio" checked = "checked">    
         </label>
@@ -204,7 +204,7 @@ if ($sekce == "formular") {
         </label>
     
     <br>
-    
+    <br>
     
      <label for = "terms">Souhlasím s podmínkami užití.</label>
         <input type = "checkbox" name = "terms" value = "<?php
