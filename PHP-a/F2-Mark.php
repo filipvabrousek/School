@@ -10,8 +10,9 @@
     input[type="text"],input[type="email"], input[type="password"]  {
         padding: 0.3em;
         border-radius: 6px;
-        border-color: 2px solid green;
+        border-color: 3px solid green;
         margin-bottom: 1em;
+        width: 13em;
     }
     
     select {
@@ -38,7 +39,21 @@
          border: 6px solid green;
          border-color: green;
      }
+     
+     input[type="checkbox"] {
+        padding-left: 30px;
+     }
     
+     
+     h1 {
+         color: #1abc9c;
+         font-family: sans-serif;
+     }
+     
+     .err {
+         font-weight: bold;
+         color: red;
+     }
 </style>
    
     
@@ -79,7 +94,7 @@ if ($sekce == "formular") {
         $characters = "qwertzuioplkjhgfdsayxcvbnm";
         
         if ($name == "") {
-            print("NEBYLO VYPLNENO JMENO..." . "<br>");
+            print("<p class=\"err\">NEBYLO VYPLNENO JMENO...</p>"."<br>");
             $nameerr = "NEBYLO VYPLNĚNO JMÉNO";
              $errors[] = "name";
         } else {
@@ -102,14 +117,14 @@ if ($sekce == "formular") {
         
         $surname = $_REQUEST["surname"];
         if ($surname == "") {
-            print("NEBYLO VYPLNENO PRIJIMENI..." . "<br>");
+            print("<p class=\"err\">NEBYLO VYPLNENO PRIJIMENI...</p>");
             $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
             $errors[] = "surname";
         }
         
         $password = $_REQUEST["password"];
         if ($password == "") {
-            print("NEBYLO VYPLNENO HESLO" . "<br>");
+            print("<p class=\"err\">NEBYLO VYPLNENO HESLO...</p>");
             $passworderr = "NEBYLO VYPLNĚNO HESLO";
               $errors[] = "password";
         }
@@ -118,21 +133,21 @@ if ($sekce == "formular") {
         
         $email = $_REQUEST["email"];
         if ($email == "") {
-            print("NEBYL VYPLNEN EMAIL" . "<br>");
+             print("<p class=\"err\">NEBYL VYPLNEN EMAIL...</p>");
             $emailerr = "NEBYLO VYPLNĚN EMAIL";
              $errors[] = "email";
         }
         
         $phone = $_REQUEST["phone"];
         if ($phone == "") {
-            print("NEBYLO VYPLNENO TELEFONNÍ ČÍSLO" . "<br>");
+             print("<p class=\"err\">NEBYLO VYPLNĚNO TELEFONÍ ČÍSLO...</p>");
             $phoneerr = "NEBYLO VYPLNĚNO MOBILNÍ ČÍSLO";
               $errors[] = "phone";
         }
         
         $gender = $_REQUEST["gender"];
         if ($gender == "") {
-            print("NEBYLO VYPLNENO POHLAVÍ");
+            print("<p class=\"err\">NEBYLO VYPLNĚNO POHLAVÍ...</p>");
             $gendererr = "NEBYLO VYPLNĚNO POHLAVÍ";
               $errors[] = "gender";
         }
@@ -148,12 +163,18 @@ if ($sekce == "formular") {
     }
     
 ?>
-   <h1>Formular</h1>
+   <h1>Formulář</h1>
     
     <form action="filip.php" method="get">
     <label for="name">Jméno:* </label>
 <input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name",$errors)){print("marko");}?>" >
    <br>
+        
+        
+    <label for="name">Přijímení:* </label>
+<input type="text" name="surname" placeholder="Enter surname" value="<?php  if (isset($surname)){print($surname);}?>" class="<?php if(in_array("surname",$errors)){print("marko");}?>" >
+   <br>
+        
         
     <label for="password">Heslo:* </label>
 <input type="password" name="password" placeholder="Enter password" value="<?php if (isset($password)){print($password);}?>" class="<?php if(in_array("password",$errors)){print("marko"); }?>" >
@@ -169,7 +190,7 @@ if ($sekce == "formular") {
         
         <!--if (isset($_REQUEST["odeslat"]))-->
     <label for="phone">Telefon:* </label>
-    <input type="text" name="phone" placeholder="Enter email" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
+    <input type="text" name="phone" placeholder="Enter your phone number" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
 <br>
         
         <label for="select">Select your product:</label>
@@ -178,37 +199,31 @@ if ($sekce == "formular") {
     <input type="radio" name = "radio" checked = "checked">
         <br>
      <label for = "radio">iPhone Xs Max</label>
-    <input type="radio" name = "radio" checked = "checked">
+    <input type="radio" name = "radio" >
         <br>
      <label for = "radio">iPhone Xc</label>
-    <input type="radio" name = "radio" checked = "checked">
+    <input type="radio" name = "radio" >
         
         <br><br>
        
      <label for="select">Select your gender:</label>
     <br>
     <label for = "radio">Man</label>
-    <input type="radio" name = "radio" checked = "checked">    
+    <input type="radio" name = "radio-gender" checked = "checked">    
         </label>
     
     <label for = "radio">Woman</label>
-    <input type="radio" name = "radio">    
+    <input type="radio" name = "radio-gender">    
         </label>
     
     <br>
     <br>
     
-     <label for = "terms">Souhlasím s podmínkami užití.</label>
-        <input type = "checkbox" name = "terms" value = "<?php
-    if (isset($terms)) {
-        print($terms);
-    }
-?>">
-    <span style="color: red"> <?php
-    if (isset($_REQUEST["odeslat"])) {
-        print $termserr;
-    }
-?></span> 
+    <label for = "terms">Souhlasím s podmínkami</label>
+ <input type="checkbox" name="terms" value="<?php if (isset($terms)){print($terms);}?>" class="<?php if(in_array("terms", $errors)) {print("marko");}?>" >
+<br>
+    
+    
         <br>
     
     <input type="submit" name="odeslat" value="Odešli data">
