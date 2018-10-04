@@ -92,7 +92,7 @@ if ($sekce == "formular") {
         $product = "";
         
         $name = trim($_REQUEST["name"]); // remove whitespace
-        $characters = "qwertzuioplkjhgfdsayxcvbnm";
+        $characters = "qwertzuioplkjhgfdsayxcvbnmQWERTZUIOPLKJHGFDSAMNBVCXY";
         
         if ($name == "") {
             print("<p class=\"err\">NEBYLO VYPLNENO JMENO...</p>"."<br>");
@@ -108,9 +108,9 @@ if ($sekce == "formular") {
                     $pos = strpos($characters, $name[$i]); 
                         
                     if ($pos === false) {
-                        
+                         print("NEPOVOLENÝ ZNAK: ".$name[$i]."<br>");
                     } else {
-                       print("NEPOVOLENÝ ZNAK: ".$name[$i]."<br>");
+                      
                     }
                 }
             }
