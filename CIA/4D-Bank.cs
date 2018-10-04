@@ -16,10 +16,10 @@ namespace Payout
                 money[i] = int.Parse(Console.ReadLine());
             }
 
-
-           /* for (var i = 0; i < money.Length; i++) {
+            Console.WriteLine("Výpis");
+            for (var i = 0; i < money.Length; i++) {
                 Console.Write(money[i] + ", ");
-            } */ // výpis pole
+            }  // výpis pole
 
             int sumo = sum(money);
             Console.WriteLine("Celková suma je " + sumo);
@@ -208,7 +208,7 @@ namespace Payout
                 }
             }
 
-
+            // 129 ???
 
             Console.WriteLine("5000 x " + c5000);
             Console.WriteLine("1000 x " + c1000);
@@ -220,121 +220,10 @@ namespace Payout
             Console.WriteLine("10 x " + c10);
             Console.WriteLine("5 x " + c5);
 
-
-            /*
-            string res = "";
-
-            if (c5000 != 0){
-                res += c5000;
-            }
-
-            if (c1000 != 0)
-            {
-                res += c1000;
-            }
-
-            if (c500 != 0)
-            {
-                res += c500;
-            }
-
-            if (c200 != 0)
-            {
-                res += c200;
-            }
-
-            if (c100 != 0)
-            {
-                res += c100;
-            }*/
-
-
-                
-            /* 
-             * int m = n
-             * while (stop != "y"){
-
-                   int val = largestSubstr(n);
-                   n = val;
-                   if (val > 100){
-                       stop = "n";
-                       Console.WriteLine("Value " + val);
-                   } else {
-                       stop = "y";
-                   }
-               } */
-
-           
-            /*int inc = 0;
-            while (inc < 4)
-            {
-
-                int val = largestSubstr(n); // 2000
-                n = val;
-                if (val > 100)
-                {
-                    stop = "n";
-                    Console.WriteLine("Value " + val);
-                }
-                else
-                {
-                    Console.WriteLine("Cannot divide more.");
-                }
-                inc++;
-            }
-*/
-
-
         }
 
 
-
-
-
-
-
-
-        static int getCount(int m)
-        {
-
-
-            int temp = m;
-
-            int res = largestSubstr(temp); // 
-            Console.WriteLine("Largest subsctractable value " + res);
-
-            int rem = 0;
-            if (res > 0)
-            {
-                rem = temp % res;
-            }
-            else
-            {
-                Console.WriteLine("Res is 0 or lower");
-
-            }
-
-            Console.WriteLine("Largest subtractable value is " + rem);
-
-            int stopper = 0;
-            while (rem > 0 && stopper < 3)
-            { // will run only twice
-                rem = largestSubstr(rem);
-                Console.WriteLine("Remaining " + rem);
-                stopper += 1;
-            }
-
-
-
-
-
-            //  Console.WriteLine("Largest value that canbe subtracted without going to negative values is " + m);
-
-
-
-            return rem;
-        }
-
+ 
 
         static int sum(int[] arr)
         {
@@ -352,8 +241,8 @@ namespace Payout
 
         static void minMax(int[] arr)
         {
-            int currmin = 0;
-            int currmax = 0;
+            int currmin = arr[0];
+            int currmax = arr[0];
 
             for (var i = 0; i < arr.Length; i++)
             {
@@ -387,14 +276,6 @@ namespace Payout
             }
             return res;
         }
-
-
-
-
-
-
-
-
 
         static bool isEmpty(int[] arr){
             if (arr.Length == 0) {
