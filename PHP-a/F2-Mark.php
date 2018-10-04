@@ -31,6 +31,10 @@
         margin: 2em;
         border: red 1px solid;
     }
+     
+     #marko{
+         border: 6px solid red;
+     }
     
 </style>
    
@@ -74,6 +78,7 @@ if ($sekce == "formular") {
         if ($name == "") {
             print("NEBYLO VYPLNENO JMENO..." . "<br>");
             $nameerr = "NEBYLO VYPLNĚNO JMÉNO";
+             $errors[] = "name";
         } else {
             
             
@@ -96,12 +101,14 @@ if ($sekce == "formular") {
         if ($surname == "") {
             print("NEBYLO VYPLNENO PRIJIMENI..." . "<br>");
             $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
+            $errors[] = "surname";
         }
         
         $password = $_REQUEST["password"];
         if ($password == "") {
             print("NEBYLO VYPLNENO HESLO" . "<br>");
             $passworderr = "NEBYLO VYPLNĚNO HESLO";
+              $errors[] = "password";
         }
         
         
@@ -110,18 +117,21 @@ if ($sekce == "formular") {
         if ($email == "") {
             print("NEBYL VYPLNEN EMAIL" . "<br>");
             $emailerr = "NEBYLO VYPLNĚN EMAIL";
+             $chybnapole[] = "email";
         }
         
         $phone = $_REQUEST["phone"];
         if ($phone == "") {
             print("NEBYLO VYPLNENO TELEFONNÍ ČÍSLO" . "<br>");
             $phoneerr = "NEBYLO VYPLNĚNO MOBILNÍ ČÍSLO";
+              $errors[] = "phone";
         }
         
         $gender = $_REQUEST["gender"];
         if ($gender == "") {
             print("NEBYLO VYPLNENO POHLAVÍ");
             $gendererr = "NEBYLO VYPLNĚNO POHLAVÍ";
+              $errors[] = "gender";
         }
         
         
@@ -129,6 +139,7 @@ if ($sekce == "formular") {
         if ($terms == "") {
             print("MUSÍTE SOUHLASIT S PODMÍNKAMI");
             $termserr = "MUSÍTE SOUHLASIT S PODMÍNKAMI";
+              $errors[] = "terms";
         }
         
     }
@@ -138,23 +149,7 @@ if ($sekce == "formular") {
     
     <form action="filip.php" method="get">
     <label for="name">Jméno:* </label>
-    <input type="text" name="name" value="<?php if (isset($name)) {print($name); }?>"  
-     
-    class = "<?php
-    if (isset($name)) { // check if field contains value !!!!!
-        echo 'new';
-    } else {
-        echo 'empty';
-    }
-?>"  >
-       <br>
-    <label for="surname">Příjmení: </label>
-   
-    <input type="text" name="surname" value="<?php
-    if (isset($surname)) {
-        print($surname);
-    }
-?>">
+<input class= "txt" type="text" name="name" placeholder="Name" value="<?php  if (isset($name)){print($name);}?>" id="<?php if(in_array("name",$errors)){print("marko");}?>" >
    <br>
         
     <label for="password">Password:* </label><input type="password" name="password" value="<?php
