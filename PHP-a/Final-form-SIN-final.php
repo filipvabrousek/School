@@ -121,6 +121,20 @@ if ($sekce == "formular") {
             print("<p class=\"err\">NEBYLO VYPLNENO PRIJIMENI...</p>");
             $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
             $errors[] = "surname";
+        } else {
+               if (strlen($surname) > 2) {
+                // namelenerr = "NEDOSTATEČNÁ DÉLKA JMÉNA";
+                for ($i = 0; $i<strlen($surname); $i++){
+                   // print(($i + 1).". ".$name[$i]."<br>");
+                    $pos = strpos($characters, $surname[$i]); 
+                        
+                    if ($pos === false) {
+                         print("NEPOVOLENÝ ZNAK: ".$surname[$i]."<br>");
+                    } else {
+                      
+                    }
+                }
+            }
         }
         
         $password = $_REQUEST["password"];
