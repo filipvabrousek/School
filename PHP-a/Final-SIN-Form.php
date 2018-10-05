@@ -204,11 +204,16 @@ if ($sekce == "formular") {
         <label for="select">Select your product:</label>
         <br>
         <label for = "radio" name = "radio">iPhone XS</label>
-    <input type="radio" name = "product" value="iPhone XS" <?php if (isset($_REQUEST["odeslat"])) {$product = $_REQUEST["product"]; if($product == "iPhoneXS"){print "checked = \"checked\"";}} else {print("checked");}?>>
-      
+    <input type="radio" name = "product" value="iPhone XS" <?php if (isset($product)) {$product = $_REQUEST["product"]; if($product == "iPhoneXS"){print "checked = \"checked\"";}} else {print("checked");}?>>
+      <br>
          <label for = "radio" name = "radio">iPhone XS Max</label>
-    <input type="radio" name = "product" value="iPhone XS Max" <?php if (isset($_REQUEST["odeslat"])) {$product = $_REQUEST["product"]; if($product == "iPhoneXS Max"){print "checked = \"checked\"";}} else {print("checked");}?>>
-     
+    <input type="radio" name = "product" value="iPhone XS Max" <?php if (isset($product)) {$product = $_REQUEST["product"]; if($product == "iPhoneXS Max"){print "checked = \"checked\"";}} else {print("checked");}?>>
+     <br>
+        
+        <label for = "radio" name = "radio">iPhone Xr</label>
+    <input type="radio" name = "product" value="iPhone Xr" <?php if (isset($product)) {$product = $_REQUEST["product"]; if($product == "iPhoneXr"){print "checked = \"checked\"";}} else {print("checked");}?>>
+        
+    <br>
    <!--     <br>
      <label for = "radio">iPhone Xs Max</label>
     <input type="radio" name = "radio" >
@@ -235,7 +240,7 @@ if ($sekce == "formular") {
     <br>
     
     <label for = "terms">Souhlasím s podmínkami</label>
- <input type="checkbox" name="terms" value="<?php if (isset($terms)){print($terms);}?>" class="<?php if(in_array("terms", $errors)) {print("marko");}?>" >
+ <input type="checkbox" name="terms" value="<?php if (isset($REQUEST["terms"])){print($terms);}?>" class="<?php if(in_array("terms", $errors)) {print("marko");}?>" >
 <br>
     
     
