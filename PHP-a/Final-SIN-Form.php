@@ -6,7 +6,6 @@
     
  <style>
     
-    /*POD TO NAPSAT NEVYPLNĚNO + OZNAČIT POLE !!!!! */
     input[type="text"],input[type="email"], input[type="password"]  {
         padding: 0.3em;
         border-radius: 6px;
