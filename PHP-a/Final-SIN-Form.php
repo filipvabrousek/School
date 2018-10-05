@@ -156,7 +156,7 @@ if ($sekce == "formular") {
         
         $terms = $_REQUEST["terms"];
         if ($terms == "") {
-            print("MUSÍTE SOUHLASIT S PODMÍNKAMI");
+            print("<p class=\"err\">MUSÍTE SOUHLASIT S PODMÍNKAMI...</p>");
             $termserr = "MUSÍTE SOUHLASIT S PODMÍNKAMI";
               $errors[] = "terms";
         }
@@ -240,7 +240,7 @@ if ($sekce == "formular") {
     <br>
     
     <label for = "terms">Souhlasím s podmínkami</label>
- <input type="checkbox" name="terms" value="<?php if (isset($REQUEST["terms"])){print($terms);}?>" class="<?php if(in_array("terms", $errors)) {print("marko");}?>" >
+ <input type="checkbox" name="terms" value=" terms" <?php if (isset($REQUEST["terms"])){$terms = $_REQUEST["terms"]; if ($terms == "agreed"){print"checked = \"checked\"";}}?>
 <br>
     
     
