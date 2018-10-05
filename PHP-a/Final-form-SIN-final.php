@@ -201,7 +201,7 @@ if ($sekce == "formular") {
     <input type="text" name="phone" placeholder="Zadejte telefonní číslo" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
 <br>
         
-        <label for="select">Select your product:</label>
+        <label for="select">Vyberte alespoň 1 produkt:</label>
         <br>
         <label for = "radio" name = "radio">iPhone XS</label>
     <input type="checkbox" name = "product" value="iPhone XS" <?php if (isset($product)) {$product = $_REQUEST["product"]; if($product == "iPhoneXS"){print "checked = \"checked\"";}} /*else {print("checked");}*/?>>
@@ -226,13 +226,13 @@ if ($sekce == "formular") {
         
         
         
-     <label for="select">Select your gender:</label>
+     <label for="select">Vyberte pohlaví</label>
     <br>
-    <label for = "radio">Man</label>
+    <label for = "radio">Muž</label>
     <input type="radio" name = "radio-gender" checked = "checked">    
         </label>
     
-    <label for = "radio">Woman</label>
+    <label for = "radio">Žena</label>
     <input type="radio" name = "radio-gender">    
         </label>
     
