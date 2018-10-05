@@ -175,22 +175,22 @@ if ($sekce == "formular") {
     
     <form action="filip.php" method="get">
     <label for="name">Jméno:* </label>
-<input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name", $errors)){print("marko");}?>" >
+<input type="text" name="name" placeholder="Zadejte jméno" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name", $errors)){print("marko");}?>" >
    <br>
         
         
     <label for="name">Přijímení:* </label>
-<input type="text" name="surname" placeholder="Enter surname" value="<?php  if (isset($surname)){print($surname);}?>" class="<?php if(in_array("surname",$errors)){print("marko");}?>" >
+<input type="text" name="surname" placeholder="Zadejte přijímení" value="<?php  if (isset($surname)){print($surname);}?>" class="<?php if(in_array("surname",$errors)){print("marko");}?>" >
    <br>
         
         
     <label for="password">Heslo:* </label>
-<input type="password" name="password" placeholder="Enter password" value="<?php if (isset($password)){print($password);}?>" class="<?php if(in_array("password",$errors)){print("marko"); }?>" >
+<input type="password" name="password" placeholder="Zadejte heslo" value="<?php if (isset($password)){print($password);}?>" class="<?php if(in_array("password",$errors)){print("marko"); }?>" >
    <br>
          
         
 <label for="email">Email:* </label>
- <input type="text" name="email" placeholder="Enter email" value="<?php if (isset($email)){print($email);}?>" class="<?php if(in_array("email",$errors)){print("marko");}?>" >
+ <input type="text" name="email" placeholder="Zadejte email" value="<?php if (isset($email)){print($email);}?>" class="<?php if(in_array("email",$errors)){print("marko");}?>" >
 <br>
         
 
@@ -198,7 +198,7 @@ if ($sekce == "formular") {
         
         <!--if (isset($_REQUEST["odeslat"]))-->
     <label for="phone">Telefon:* </label>
-    <input type="text" name="phone" placeholder="Enter your phone number" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
+    <input type="text" name="phone" placeholder="Zadejte telefonní číslo" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
 <br>
         
         <label for="select">Select your product:</label>
