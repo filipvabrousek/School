@@ -295,7 +295,7 @@ if ($sekce == "formular") {
 
     <?php
 }
-    
+    // http://localhost/filip.php?sekce=formular
    // Homework - http://localhost/php-homew/index.php?sekce=zamestnanci
 ?>
    
