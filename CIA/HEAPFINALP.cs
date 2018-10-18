@@ -5,7 +5,7 @@ namespace HeapSort
     public class HeapSort
     {
 
-        // Driver program 
+       
         public static void Main()
         {
 
@@ -28,7 +28,6 @@ namespace HeapSort
             int length = arr.Length;
 
             // funkce "heapify()" řadí prvky pole odleva nakonec
-            // 
             for (int i = length / 2 - 1; i >= 0; i--)
             { // A - loop
                 Console.WriteLine("--- work of LOOP A (posunutí největšího prvku na začátek pole)-------------");
@@ -55,7 +54,7 @@ namespace HeapSort
         {
 
             Console.WriteLine("Funkce heapify  " + length + "i " + i);
-            int largest = i; // Initialize largest as root (
+            int largest = i; // Initialize largest as root 
             int l = 2 * i + 1; // left = 2*i + 1 
             int r = 2 * i + 2; // right = 2*i + 2 
 
