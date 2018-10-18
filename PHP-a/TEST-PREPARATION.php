@@ -115,6 +115,8 @@ if ($sekce == "formular") {
                          print("Jméno nesmí obsahovat znak: ".$name[$i]."<br>");
                     } 
                 }
+            } else {
+                print("<p class=\"notice\">Jméno má nedostatčnou délku (musí mít minimálně 2 znaky)");
             }
         }
         
@@ -137,6 +139,8 @@ if ($sekce == "formular") {
                         print("<p class=\"notice\">Přijímení nesmí obsahovat znak: ".$surname[$i]."<br>");
                     } 
                 }
+            } else {
+                print("<p class=\"notice\">Přijímení má nedostatčnou délku (musí mít minimálně 2 znaky)");
             }
         }
         
