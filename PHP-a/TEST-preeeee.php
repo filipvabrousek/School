@@ -62,6 +62,11 @@
      .info {
          color: blue;
      }
+     
+     span {
+         font-weight: bold;
+         color: red;
+     }
 </style>
    
     
@@ -110,9 +115,7 @@ if ($sekce == "formular") {
            // print("<p class=\"err\">NEBYLO VYPLNENO PŘIJÍMENÍ...</p>"."<br>");
           //  $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
           //  $errors[] = "surname";
-        } else {
-             print("<p class=\"info\">Počet lidí: ".$peoplecount."</p>");
-         }
+        } 
         
         
           $name = trim($_REQUEST["name"]); // remove whitespace
@@ -181,19 +184,24 @@ if ($sekce == "formular") {
              
              print("<p class=\"info\">Počet kuřecích řízků ".$anumber."</p>");
                 print("<p class=\"info\">Počet párků v rohlíku ".$bnumber."</p>");
-                print("<p class=\"info\">Počet smažených sýrů ".$cnumber."</p>");
+                print("<p class=\"info\">Počet palačinek ".$cnumber."</p>");
              
-            print("<p class=\"info\">Počet lidí: ".$peoplecount."</p>");
+            $foodsum = $anumber + $bnumber + $cnumber;
+           
              
-             $foodsum = $anumber + $bnumber + $cnumber;
-              print("<p class=\"info\">Počet jídel ".$foodsum."</p>");
-            
+             $groupMoney = $peoplecount * ($anumber + $bnumber + $cnumber);
+            /*
+            řízek: 120kč
+            párek: 30kč
+            palačinka: 100kč
+            */
              
              
             if ($foodsum == $peoplecount){
-                print("<p class=\"info\">Počet lidí".$peoplecount."odpovídá počtu jídel ".$anumber + $bnumber + $cnumber."</p>");
+                print("<p class=\"info\">Počet lidí (".$peoplecount.") <span>ODPOVÍDÁ</span> počtu jídel (".$foodsum.")</p>");
+                 print("<p class=\"info\">Celková cena za <span>".$peoplecount."</span> lidí a za <span>".$foodsum."</span> jídel, je <span>".$groupMoney."</span></p>");
             } else {
-                   print("<p class=\"info\">Počet lidí".$peoplecount."NEODPOVÍDÁ počtu jídel ".$anumber + $bnumber + $cnumber."</p>");
+                print("<p class=\"info\">Počet lidí (".$peoplecount.") <span>NEODPOVÍDÁ</span> počtu jídel (".$foodsum.")</p>");
             }
          }
         
@@ -238,17 +246,17 @@ if ($sekce == "formular") {
 <!-----------------------------HLAVNÍ JÍDLO----------------------------->       
         
  
-<label for = "terms">Počet kuřecích řízků: </label>        
+<label for = "terms">Počet kuřecích řízků: (120 Kč) </label>        
 <input type = "number" name="anumber" value = "<?php if (isset($anumber)){print($anumber);}?>">
 <br>
      
         
-<label for = "terms">Počet párků v rohlíku: </label>        
+<label for = "terms">Počet párků v rohlíku: (30 Kč) </label>        
 <input type = "number" name="bnumber" value = "<?php if (isset($bnumber)){print($bnumber);}?>">
 <br>
      
         
-<label for = "terms">Počet palačinek </label>        
+<label for = "terms">Počet palačinek (100 Kč) </label>        
 <input type = "number" name="cnumber" value = "<?php if (isset($cnumber)){print($cnumber);}?>">
 <br>
      
