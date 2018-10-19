@@ -286,24 +286,19 @@ if ($sekce == "formular") {
         
         
     <select name="soup">
-    <option value="13">Polévka A</option> 
-
+    <option value="13">kuřecí polévka</option> 
+<option value="20">hovězí polévka</option> 
+    <option value="30">telecí polévka</option> 
     
         
     </select>
         
-   <!---  <label for="select">Select your gender:</label>
-    <br>
-    <label for = "radio">Man</label>
-    <input type="radio" name = "radio-gender">    
-        </label>
-    
-    <label for = "radio">Woman</label>
-    <input type="radio" name = "radio-gender">    
-        </label>
-    --->
-    <br>
-    <br>
+<label>Chci dezert</label>  
+<input type="checkbox" name="terms" value=" terms" <?php if (isset($REQUEST["dessert"])){$terms = $_REQUEST["dessert"]; if ($terms == "agreed"){print"checked = \"checked\"";}}?>
+       
+       
+        
+   
     
     
     
