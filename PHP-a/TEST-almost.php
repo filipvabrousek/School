@@ -119,19 +119,22 @@ if ($sekce == "formular") {
         $anumber = "";
         $dessert = "";
         $soup = "";
-         $soupprice = 0;
+        $soupprice = 0;
+        $addsoup = 0;
         
         /*------------------------ SOUP ------------------------ */
         $soup = $_REQUEST["soup"];
         if ($soup == ""){
             
         } else {
-         print("<p class=\"info\">Vybrali jste polévku ".$soup."</p>");
-            
+         print("<p class=\"info\">Vybrali jste polévku ".$soup."</p>"); 
+        }
         
-    
-            
-            
+        if (isset($_REQUEST["terms"])){
+             print("<p class=\"info\">Dezert: Ano</p>"); 
+        } else {
+            // print("<p class=\"err\">Musíte souhlasit s podmínkami </p>"); 
+             print("<p class=\"info\">Dezert: Ne</p>"); 
         }
         
         /*------------------------ PEOPLE COUNT ------------------------ */
@@ -139,11 +142,11 @@ if ($sekce == "formular") {
          if ($peoplecount == "") {
         } 
         
-          /*------------------------ DESSERT ------------------------ */
+          /*------------------------ DESSERT ------------------------ 
         $dessert = trim($_REQUEST["dessert"]); // remove whitespace
          if ($dessert == "") {
         } 
-        
+        */
           /*------------------------ NAME ------------------------ */
           $name = trim($_REQUEST["name"]); // remove whitespace
          if ($name == "") {
@@ -193,7 +196,7 @@ if ($sekce == "formular") {
                 print("<p class=\"info\">Počet palačinek ".$cnumber."</p>");
              
              
-                 if ($soup == "kuřecí"){
+        if ($soup == "kuřecí"){
             $soupprice = 90;
         } else if ($soup == "hovězí") {
              $soupprice = 100;
@@ -202,7 +205,19 @@ if ($sekce == "formular") {
         }
           print("<p class=\"info\">Byla vybrána polévka v ceně ".$soupprice."</p>");
              
-            $foodsum = $anumber + $bnumber + $cnumber;
+             
+             
+             if ($soup != "none"){
+                 $addsoup = 1;
+             }
+             
+            $foodsum = $anumber + $bnumber + $cnumber + ($addsoup * $peoplecount);
+             
+             if (isset($_REQUEST["terms"])){
+                 $foodsum += ($peoplecount * 30);
+             }
+             
+             
             $groupMoney = ($anumber * 120) + ($bnumber * 30) + ($cnumber * 100) + ($peoplecount * $soupprice);
             /*
             řízek: 120kč
@@ -211,11 +226,13 @@ if ($sekce == "formular") {
             */
              
              
-            if ($foodsum == $peoplecount){
-                print("<p class=\"info\">Počet lidí (".$peoplecount.") <span>ODPOVÍDÁ</span> počtu jídel (".$foodsum.")</p>");
+            if ($foodsum >= $peoplecount){
+                print("<p class=\"info\">Počet jídel (".$foodsum.") <span>JE DOSTATEČNÝ</span> pro".$peoplecount." lidí </p>");
                  print("<p class=\"info\">Celková cena za <span>".$peoplecount."</span> lidí a za <span>".$foodsum."</span> jídel, je <span>".$groupMoney." Kč</span></p>");
             } else {
-                print("<p class=\"info\">Počet lidí (".$peoplecount.") <span>NEODPOVÍDÁ</span> počtu jídel (".$foodsum.")</p>");
+                print("<p class=\"info\">Počet jídel (".$foodsum.") <span> JE NEDOSTATEČNÝ </span> pro ".$peoplecount." lidí </p>");
+                
+                  print("<p class=\"info\">Celková cena za <span>".$peoplecount."</span> lidí a za <span>".$foodsum."</span> jídel, je <span>".$groupMoney." Kč</span></p>");
             }
          }
         
@@ -299,16 +316,16 @@ if ($sekce == "formular") {
         
         <h1>Polévky</h1>
     <select name="soup">
-        
+          <option value="žádná">-- vyberte polévku</option> 
     <option value="kuřecí">kuřecí polévka (90 Kč)</option> 
  <option value="hovězí">hovězí polévka (100 Kč)</option> 
     <option value="telecí">telecí polévka (110 Kč)</option> 
     
     </select>
         
-<label>Chci dezert</label>  
+<label>Chci dezert (30 Kč)</label>  
 
-<input type="checkbox" name="terms" value=" terms" <?php if (isset($REQUEST["dessert"])){$dessert = $_REQUEST["dessert"]; if ($dessert == "agreed"){print"checked = \"checked\"";}}?>
+<input type="checkbox" name="terms" value=" terms">
     
     
     
