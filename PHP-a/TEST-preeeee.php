@@ -67,6 +67,15 @@
          font-weight: bold;
          color: red;
      }
+     
+     #wrapper {
+         display: flex;
+         width: 15em;
+         justify-content: center;
+         flex-direction: column;
+         margin-left: auto;
+         margin-right: auto;
+     }
 </style>
    
     
@@ -85,7 +94,7 @@
     
     
 <?php
-$sekce = "hlavnistrana";
+$sekce = "formular";
 if (isset($_REQUEST["sekce"])) {
     $sekce = $_REQUEST["sekce"];
 }
@@ -108,52 +117,52 @@ if ($sekce == "formular") {
         $namelenerr = "";
         $product = "";
         $anumber = "";
+        $dessert = "";
+        $soup = "";
         
+        /*------------------------ SOUP ------------------------ */
+        $soup = $_REQUEST["soup"];
+        if ($soup == ""){
+            
+        } else {
+         print("<p class=\"info\">Vybrali jste polévku ".$soup."</p>");
+        }
         
-           $peoplecount = trim($_REQUEST["peoplecount"]); // remove whitespace
+        /*------------------------ PEOPLE COUNT ------------------------ */
+        $peoplecount = trim($_REQUEST["peoplecount"]); // remove whitespace
          if ($peoplecount == "") {
-           // print("<p class=\"err\">NEBYLO VYPLNENO PŘIJÍMENÍ...</p>"."<br>");
-          //  $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
-          //  $errors[] = "surname";
         } 
         
+          /*------------------------ DESSERT ------------------------ */
+        $dessert = trim($_REQUEST["dessert"]); // remove whitespace
+         if ($dessert == "") {
+        } 
         
+          /*------------------------ NAME ------------------------ */
           $name = trim($_REQUEST["name"]); // remove whitespace
          if ($name == "") {
-           // print("<p class=\"err\">NEBYLO VYPLNENO JMÉNO...</p>"."<br>");
-           // $surnameerr = "NEBYLO VYPLNĚNO JMÉNO";
-           // $errors[] = "name";
         } else {
              print("<p class=\"info\">Jméno: ".$name."</p>");
          }
         
         
+          /*------------------------SURNAME ------------------------ */
          $surname = trim($_REQUEST["surname"]); // remove whitespace
          if ($surname == "") {
-           // print("<p class=\"err\">NEBYLO VYPLNENO PŘIJÍMENÍ...</p>"."<br>");
-          //  $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
-          //  $errors[] = "surname";
-        } else {
+         } else {
              print("<p class=\"info\">Přijímení: ".$surname."</p>");
          }
         
         
-
-        
+         /*-------------------------------EMAIL OR PHONE ------------------------------ */
         $email = $_REQUEST["email"];
         $phone = $_REQUEST["phone"];
         if ($email == "" && $phone == "") {
              print("<p class=\"err\">MUSÍTE VYPLNIT EMAIL NEBO TELEFONNÍ ČÍSLO...</p>");
             $emailerr = "NEBYLO VYPLNĚN EMAIL";
              $errors[] = "email";
-           //  print("<p class=\"err\">NEBYLO VYPLNĚNO TELEFONÍ ČÍSLO...</p>");
-            $phoneerr = "NEBYLO VYPLNĚNO MOBILNÍ ČÍSLO";
-            $errors[] = "phone";
-            
-            
-            
-            
-            
+          //  $phoneerr = "NEBYLO VYPLNĚNO MOBILNÍ ČÍSLO";
+            $errors[] = "phone";    
         } else {
             if ($email != ""){
                  print("<p class=\"info\">Zadali jste email: ".$email."</p>");
@@ -165,31 +174,19 @@ if ($sekce == "formular") {
            
         }
         
-        
-       /* if ($phone == "") {
-            print("<p class=\"err\">NEBYLO VYPLNĚNO TELEFONÍ ČÍSLO...</p>");
-            $phoneerr = "NEBYLO VYPLNĚNO MOBILNÍ ČÍSLO";
-            $errors[] = "phone";
-        }*/
+      
         
         $anumber = $_REQUEST["anumber"]; // remove whitespace
         $bnumber = $_REQUEST["bnumber"]; // remove whitespace
         $cnumber = $_REQUEST["cnumber"]; // remove whitespace
          if ($anumber == "" && $bnumber == "" && $cnumber = "") {
-           // print("<p class=\"err\">NEBYLO VYPLNENO PŘIJÍMENÍ...</p>"."<br>");
-          //  $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
-          //  $errors[] = "surname";
         } else {
-             
-             
              print("<p class=\"info\">Počet kuřecích řízků ".$anumber."</p>");
                 print("<p class=\"info\">Počet párků v rohlíku ".$bnumber."</p>");
                 print("<p class=\"info\">Počet palačinek ".$cnumber."</p>");
              
             $foodsum = $anumber + $bnumber + $cnumber;
-           
-             
-             $groupMoney = $peoplecount * ($anumber + $bnumber + $cnumber);
+            $groupMoney = ($anumber * 120) + ($bnumber * 30) + ($cnumber * 100);
             /*
             řízek: 120kč
             párek: 30kč
@@ -199,7 +196,7 @@ if ($sekce == "formular") {
              
             if ($foodsum == $peoplecount){
                 print("<p class=\"info\">Počet lidí (".$peoplecount.") <span>ODPOVÍDÁ</span> počtu jídel (".$foodsum.")</p>");
-                 print("<p class=\"info\">Celková cena za <span>".$peoplecount."</span> lidí a za <span>".$foodsum."</span> jídel, je <span>".$groupMoney."</span></p>");
+                 print("<p class=\"info\">Celková cena za <span>".$peoplecount."</span> lidí a za <span>".$foodsum."</span> jídel, je <span>".$groupMoney." Kč</span></p>");
             } else {
                 print("<p class=\"info\">Počet lidí (".$peoplecount.") <span>NEODPOVÍDÁ</span> počtu jídel (".$foodsum.")</p>");
             }
@@ -210,10 +207,10 @@ if ($sekce == "formular") {
 ?>
    <h1>Formulář</h1>
     
-    <form action="filip.php" method="get">
+    <form action="filip-fixed.php" method="get">
    
         
-        
+<section id="wrapper">     
  <!-----------------------------JMÉNO----------------------------->        
 <label for="name">Počet lidí (musí odpovídat počtu jídel) </label>
 <input type="number" name="peoplecount" placeholder="Enter number of food" value="<?php  if (isset($peoplecount)){print($peoplecount);}?>" class="<?php if(in_array("peoplecount", $errors)){print("marko");}?>" >
@@ -239,7 +236,7 @@ if ($sekce == "formular") {
 <br>
  
 <label for="phone">Telefon:* </label>
-    <input type="text" name="phone" placeholder="Enter your phone number" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
+    <input type="text" pattern = "[0-9]{3} [0-9]{3} [0-9]{3}" name="phone" placeholder="Enter your phone number" value="<?php if (isset($phone)){print($phone);}?>" class="<?php if(in_array("phone",$errors)) {print("marko");}?>" >
 <br>
         
        
@@ -274,36 +271,29 @@ if ($sekce == "formular") {
         
         
         
-   <!--     <br>
-     <label for = "radio">iPhone Xs Max</label>
-    <input type="radio" name = "radio" >
-        <br>
-     <label for = "radio">iPhone Xc</label>
-    <input type="radio" name = "radio" >
+   <!--     // print("<p class=\"err\">NEBYLO VYPLNENO PŘIJÍMENÍ...</p>"."<br>");
+          //  $surnameerr = "NEBYLO VYPLNĚNO PŘIJÍMENÍ";
+          //  $errors[] = "surname";
         -->
         <br><br>
      
         
         
     <select name="soup">
-    <option value="13">kuřecí polévka</option> 
-<option value="20">hovězí polévka</option> 
-    <option value="30">telecí polévka</option> 
+    <option value="kuřecí">kuřecí polévka (90 Kč)</option> 
+<option value="hovězí">hovězí polévka (100 Kč)</option> 
+    <option value="telecí">telecí polévka (110 Kč)</option> 
     
         
     </select>
         
 <label>Chci dezert</label>  
-<input type="checkbox" name="terms" value=" terms" <?php if (isset($REQUEST["dessert"])){$terms = $_REQUEST["dessert"]; if ($terms == "agreed"){print"checked = \"checked\"";}}?>
-       
+
        
         
    
+<input type="checkbox" name="terms" value=" terms" <?php if (isset($REQUEST["dessert"])){$dessert = $_REQUEST["dessert"]; if ($dessert == "agreed"){print"checked = \"checked\"";}}?>
     
-    
-    
-    
-   
     
     
         <br>
@@ -313,7 +303,7 @@ if ($sekce == "formular") {
     <input type="hidden" name="sekce" value="formular">
     </form>
     
-
+        </section>
 
 
     <?php
