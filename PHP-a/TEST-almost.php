@@ -6,7 +6,7 @@
     
  <style>
     
-    input[type="text"],input[type="email"], input[type="password"]  {
+    input[type="text"],input[type="email"], input[type="password"], input[type="number"]  {
         padding: 0.3em;
         border-radius: 6px;
         border-color: 3px solid green;
@@ -99,7 +99,7 @@ if (isset($_REQUEST["sekce"])) {
     $sekce = $_REQUEST["sekce"];
 }
 if ($sekce == "hlavnistrana") {
-    print("<h1 style=\"color: \"green\">Uvodni strana</h1>");
+    print("<h1 style=\"color: \"green\"; \"text-align: \"center\">Uvodni strana</h1>");
     
 }
 if ($sekce == "formular") {
@@ -119,6 +119,7 @@ if ($sekce == "formular") {
         $anumber = "";
         $dessert = "";
         $soup = "";
+         $soupprice = 0;
         
         /*------------------------ SOUP ------------------------ */
         $soup = $_REQUEST["soup"];
@@ -126,6 +127,11 @@ if ($sekce == "formular") {
             
         } else {
          print("<p class=\"info\">Vybrali jste polévku ".$soup."</p>");
+            
+        
+    
+            
+            
         }
         
         /*------------------------ PEOPLE COUNT ------------------------ */
@@ -176,17 +182,28 @@ if ($sekce == "formular") {
         
       
         
-        $anumber = $_REQUEST["anumber"]; // remove whitespace
-        $bnumber = $_REQUEST["bnumber"]; // remove whitespace
-        $cnumber = $_REQUEST["cnumber"]; // remove whitespace
+        $anumber = intval($_REQUEST["anumber"]); // remove whitespace
+        $bnumber = intval($_REQUEST["bnumber"]); // remove whitespace
+        $cnumber = intval($_REQUEST["cnumber"]); // remove whitespace
+            $soup = $_REQUEST["soup"];
          if ($anumber == "" && $bnumber == "" && $cnumber = "") {
         } else {
              print("<p class=\"info\">Počet kuřecích řízků ".$anumber."</p>");
                 print("<p class=\"info\">Počet párků v rohlíku ".$bnumber."</p>");
                 print("<p class=\"info\">Počet palačinek ".$cnumber."</p>");
              
+             
+                 if ($soup == "kuřecí"){
+            $soupprice = 90;
+        } else if ($soup == "hovězí") {
+             $soupprice = 100;
+        } else if ($soup == "telecí"){
+             $soupprice = 110;
+        }
+          print("<p class=\"info\">Byla vybrána polévka v ceně ".$soupprice."</p>");
+             
             $foodsum = $anumber + $bnumber + $cnumber;
-            $groupMoney = ($anumber * 120) + ($bnumber * 30) + ($cnumber * 100);
+            $groupMoney = ($anumber * 120) + ($bnumber * 30) + ($cnumber * 100) + ($peoplecount * $soupprice);
             /*
             řízek: 120kč
             párek: 30kč
@@ -212,20 +229,22 @@ if ($sekce == "formular") {
         
 <section id="wrapper">     
  <!-----------------------------JMÉNO----------------------------->        
+
+   <h1>Osobní údaje</h1>    
 <label for="name">Počet lidí (musí odpovídat počtu jídel) </label>
-<input type="number" name="peoplecount" placeholder="Enter number of food" value="<?php  if (isset($peoplecount)){print($peoplecount);}?>" class="<?php if(in_array("peoplecount", $errors)){print("marko");}?>" >
+<input type="number" name="peoplecount" placeholder="Enter number of food" value="<?php  if (isset($peoplecount)){print($peoplecount);}?>" >
    <br>       
         
         
         
 <!-----------------------------JMÉNO----------------------------->        
 <label for="name">Jméno:* </label>
-<input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" class="<?php if(in_array("name", $errors)){print("marko");}?>" >
+<input type="text" name="name" placeholder="Enter name" value="<?php  if (isset($name)){print($name);}?>" >
    <br>
         
 <!-----------------------------PŘIJÍMENÍ----------------------------->      
 <label for="surname">Přijímení:* </label>
-<input type="text" name="surname" placeholder="Enter surname" value="<?php  if (isset($surname)){print($surname);}?>" class="<?php if(in_array("surname",$errors)){print("marko");}?>" >
+<input type="text" name="surname" placeholder="Enter surname" value="<?php  if (isset($surname)){print($surname);}?>" >
    <br>
         
         
@@ -242,7 +261,7 @@ if ($sekce == "formular") {
        
 <!-----------------------------HLAVNÍ JÍDLO----------------------------->       
         
- 
+ <h1>Hlavní jídla</h1>
 <label for = "terms">Počet kuřecích řízků: (120 Kč) </label>        
 <input type = "number" name="anumber" value = "<?php if (isset($anumber)){print($anumber);}?>">
 <br>
@@ -278,20 +297,17 @@ if ($sekce == "formular") {
         <br><br>
      
         
-        
+        <h1>Polévky</h1>
     <select name="soup">
+        
     <option value="kuřecí">kuřecí polévka (90 Kč)</option> 
-<option value="hovězí">hovězí polévka (100 Kč)</option> 
+ <option value="hovězí">hovězí polévka (100 Kč)</option> 
     <option value="telecí">telecí polévka (110 Kč)</option> 
     
-        
     </select>
         
 <label>Chci dezert</label>  
 
-       
-        
-   
 <input type="checkbox" name="terms" value=" terms" <?php if (isset($REQUEST["dessert"])){$dessert = $_REQUEST["dessert"]; if ($dessert == "agreed"){print"checked = \"checked\"";}}?>
     
     
