@@ -230,8 +230,7 @@ Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "
         
           /*------------------------ PEOPLE COUNT ------------------------ */
         $peoplecount = trim($_REQUEST["peoplecount"]); // remove whitespace
-         if ($peoplecount == "") {
-        } 
+         
         
         
         
@@ -244,7 +243,7 @@ Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "
             print("<h1>Nedostatečný počet lidí</h1>"); 
         } else {
             for ($i = 0; $i<count($foodids); $i++){
-                $food = $foodids[$i];
+                $food = $foodnames[$i];
                $summary = $summary."<p>".$foodnames[$i]."<p>";
                 $foodprice = $foodprice + ($foodprices[$i] * $_REQUEST[$food]);
                 $foodcount = $peoplecount + $_REQUEST[$food];
@@ -259,7 +258,7 @@ Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "
             
             if ($foodcount == $peoplecount){
                 print($summary);
-                print("<h1>Hurá, celková cena je asi: ".$foodprice."</h1>");
+                print("<h1>Celková cena je asi: ".$foodprice."</h1>");
             } else {
                 print("<h1>Nesedí počet osob</h1>");
             }
@@ -316,8 +315,8 @@ FUNCTION TO DETERMINE A PHONE NUMBER
   <?php
      for ($i = 0; $i < count($foodnames); $i++){
          print("<h3 class=\"food-title\">".$foodnames[$i]." $foodprices[$i] Kč</h3>");
-         print("<input type=\"number\" name=".$foodids[$i]." value=\"0\" ".$foodnames[$i]."/>");
-       
+        // print("<input type=\"number\" name=".$foodids[$i]." value=\"0\" ".$foodnames[$i]."/>");
+      	print("<p><input type=\"number\" name=\"foodnames".$i."\" value=\"0\"> ".$foodnames[$i]." (".$foodprices[$i]."&nbsp;Kč)</p>");	
          
     }
     
