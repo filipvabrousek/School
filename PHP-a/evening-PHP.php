@@ -159,19 +159,19 @@ if ($sekce == "formular") {
         $addsoup = 0;
         
         
-        $foodids = array("f1", "f2");
+      //  $foodids = array("f1", "f2");
         $foodnames = array("KUŘECÍ ŘÍZEK", "HOVĚZÍ");
-    $foodshorts = array("chicken", "pork");
+        $foodshorts = array("chicken", "pork");
         $foodprices = array("200", "300");
         
         
         $soups = array("soup1", "soup2");
         $soupnames = array("hovězí", "telecí");
         $soupsprices = array("120", "130");
-        $recipes = array("Maso nakrájíme na plátky. ...
+       /* $recipes = array("Maso nakrájíme na plátky. ...
 Do tří hlubokých talířů si připravíme: hladkou mouku; dvě nevařená vajíčka bez skořápky + mléko + špetka soli + trocha pepře - to vše pořádně promícháme; strouhanka.
 Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "jj");
-    
+    */
     
     if (isset($_REQUEST["send"])) { //prisla data z formulare? Byl odeslan?
       
@@ -182,7 +182,7 @@ Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "
         if ($soup == ""){
             
         } else {
-         print("<p class=\"info\">Vybrali jste polévku ".$soup."</p>"); 
+         print("<p class=\"info\">Vybrali jste ".$soup." polévku. </p>"); 
         }
         
         if (isset($_REQUEST["terms"])){
@@ -248,13 +248,12 @@ Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "
         } else {
             for ($i = 0; $i<count($foodnames); $i++){
                 $food = $foodshorts[$i];
-               $summary = $summary."<p>".$foodnames[$i]."<p>";
+                $summary = $summary."<p>".$foodnames[$i]."<p>";
                 $foodprice = $foodprice + ($foodprices[$i] * $_REQUEST[$food]);
                 $foodcount = $foodcount + $_REQUEST[$food];
                 
                 
-                echo "Počet jídel";
-                echo $foodcount;
+              
              
               /*  echo $peoplecount;
                 echo "<br>";
@@ -338,7 +337,7 @@ FUNCTION TO DETERMINE A PHONE NUMBER
    
     <?php 
     for ($i = 0; $i < count($soups); $i++){
-        print(" <option value=\"".soups[$i]."\">".$soupnames[$i]." $soupsprices[$i] Kč </option> ");
+        print(" <option value=\"".$soupnames[$i]."\">".$soupnames[$i]." $soupsprices[$i] Kč </option> ");
     }
         
         ?>    
