@@ -259,7 +259,7 @@ if ($sekce == "formular") {
         
 
  <!-----------------------------EMAIL NEBO TEL. Č----------------------------->   
-<label for="email">Email:* </label>
+<label for="email">E-mail:* </label>
  <input type="text" name="email" placeholder="Enter email" value="<?php
     if (isset($email)) {
         print($email);
@@ -402,7 +402,7 @@ FUNCTION TO DETERMINE A PHONE NUMBER
             $errors[] = "phone";
         } else {
             if ($email != "") {
-                print("<p class=\"info\">Zadali jste email: " . $email . "</p>");
+                print("<p class=\"info\">Zadali jste e-mail: " . $email . "</p>");
             }
             
             if ($phone != "") {
