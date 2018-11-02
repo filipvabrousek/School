@@ -11,19 +11,23 @@
      	padding: 0;
      	font-family: Arial, sans-serif;
      }
-
+    
+    .top {
+        margin-top: 2em;
+        
+    }
      body {
-     	/*background: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/BRDf5QkViozx5sck/heavenly-tropical-island-background_rmmmmsln__F0000.png");
-     	background-blend-mode: hard-light; */
-         background: #ecf0f1;
+     	background: url("https://thewallpaper.co/wp-content/uploads/2017/08/full-screen-focusdownload-smart-phones-ioslights-karachi-widescreen-images-pakistan-blur-free-images-abstract-wallpapers.jpg");
+         background-size: 100%;
+     	background-blend-mode: hard-light; 
+        
      }
-
      .info {
      	margin: 1em;
-     	color: #1abc9c;
+     	/*color: #e74c3c;*/
+         color: white;
      	font-weight: bold;
      }
-
      input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
      	padding: 0.3em;
      	font-size: 1em;
@@ -31,13 +35,11 @@
      	margin-bottom: 1em;
      	height: 2em;
      }
-
      select {
      	appearance: none;
      	padding: 1em;
      	margin-bottom: 1em;
      }
-
      input[type="submit"] {
      	margin-top: 1em;
      	background: white;
@@ -48,51 +50,41 @@
      	border: none;
      	width: 20em;
      }
-
      .marko {
      	border: 6px solid red;
      	border-color: red;
      }
-
      .greeny {
      	border: 6px solid green;
      	border-color: green;
      }
-
      input[type="checkbox"] {
      	padding-left: 30px;
      }
-
      #background {
-     	opacity: 1.0;
+     	opacity: 0.88;
      	background: #e74c3c;
      }
-
      label {
      	font-weight: bold;
      	color: white;
      }
-
      h1 {
      	color: #e74c3c;
      	font-family: sans-serif;
      }
-
      .err {
      	font-weight: bold;
      	color: red;
      }
-
      .notice {
      	font-weight: bold;
      	color: orange;
      }
-
      span {
      	font-weight: bold;
      	color: red;
      }
-
      #wrapper {
      	display: flex;
      	width: 20em;
@@ -101,15 +93,13 @@
      	margin-left: auto;
      	margin-right: auto;
      }
-
      .title {
      	text-align: center;
      	margin-bottom: 1em;
      	font-size: 3em;
         margin-top: 1em;
-        
+        color: white;
      }
-
      .food-title {
      	color: white;
      }
@@ -118,7 +108,6 @@
         color: white;
         text-align: center;
     }
-
      select {
      	background: #d6d6d6;
      	font-weight: bold;
@@ -133,7 +122,6 @@
      	/* margin-left: calc(100vw / 2 - 10em); */
      	background: url(https://i.imgur.com/rzODlvQ.jpg) 96% / 15% no-repeat #ffffff;
      }
-
      #float {
      	float: left;
      } 
@@ -147,6 +135,10 @@
     
 </head>
 <?php
+    
+    
+$show = True;    
+
 $sekce = "formular";
 if (isset($_REQUEST["sekce"])) {
     $sekce = $_REQUEST["sekce"];
@@ -154,7 +146,6 @@ if (isset($_REQUEST["sekce"])) {
 if ($sekce == "hlavnistrana") {
     print("<h1 style=\"color: \"green\"; \"text-align: \"center\">Uvodni strana</h1>");
 }
-
 if ($sekce == "formular") {
     
     
@@ -226,21 +217,23 @@ if ($sekce == "formular") {
 <section id="wrapper">     
  <!-----------------------------JMÉNO----------------------------->        
 
-   <h1 class="white">Osobní údaje</h1>    
+   <h1 class="white top">Osobní údaje</h1>    
 <br>
 <label for="name">Počet lidí (musí odpovídat počtu jídel) </label>
-<input type="number" name = "peoplecount" value="<?php
+<input type="number" placeholder="Počet lidí" name = "peoplecount" value="<?php
     if (isset($peoplecount)) {
         print($peoplecount);
     }
 ?>" >
    <br>       
         
-        
+    
+    
+
         
 <!-----------------------------JMÉNO----------------------------->        
 <label for="name">Jméno:* </label>
-<input type="text" name="name" placeholder="Enter name" value="<?php
+<input type="text" name="name" placeholder="Jméno" value="<?php
     if (isset($name)) {
         print($name);
     }
@@ -249,7 +242,7 @@ if ($sekce == "formular") {
         
 <!-----------------------------PŘIJÍMENÍ----------------------------->      
 <label for="surname">Přijímení:* </label>
-<input type="text" name="surname" placeholder="Enter surname" value="<?php
+<input type="text" name="surname" placeholder="Přijímení" value="<?php
     if (isset($surname)) {
         print($surname);
     }
@@ -260,7 +253,7 @@ if ($sekce == "formular") {
 
  <!-----------------------------EMAIL NEBO TEL. Č----------------------------->   
 <label for="email">E-mail:* </label>
- <input type="text" name="email" placeholder="Enter email" value="<?php
+ <input type="text" name="email" placeholder="E-mail" value="<?php
     if (isset($email)) {
         print($email);
     }
@@ -272,7 +265,7 @@ if ($sekce == "formular") {
 <br>
  
 <label for="phone">Telefon:* </label>
-    <input type="text" pattern = "[0-9]{3} [0-9]{3} [0-9]{3}" name="phone" placeholder="Enter your phone number" value="<?php
+    <input type="text" pattern = "[0-9]{3} [0-9]{3} [0-9]{3}" name="phone" placeholder="123 456 789" value="<?php
     if (isset($phone)) {
         print($phone);
     }
@@ -293,13 +286,22 @@ FUNCTION TO DETERMINE A PHONE NUMBER
 
 <h1 class="white">Hlavní jídlo</h1>
 <br>
+    
+    
   <?php
+    
+    
+    
+    
+    
+    
     for ($i = 0; $i < count($foodnames); $i++) {
         print("<h3 class=\"food-title\">" . $foodnames[$i] . " $foodprices[$i] Kč</h3>");
         print("<input type=\"number\" name=" . $foodshorts[$i] . " value=\"0\"/>");
         //    print("<p><input type=\"number\" name=\"foodnames".$i."\" value=\"0\"> ".$foodnames[$i]." (".$foodprices[$i]."&nbsp;Kč)</p>");    
         
     }
+    
     
 ?>
     
@@ -348,7 +350,6 @@ FUNCTION TO DETERMINE A PHONE NUMBER
         </div>
 
    <?php
-
     /* $recipes = array("Maso nakrájíme na plátky. ...
     Do tří hlubokých talířů si připravíme: hladkou mouku; dvě nevařená vajíčka bez skořápky + mléko + špetka soli + trocha pepře - to vše pořádně promícháme; strouhanka.
     Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "jj");
@@ -463,7 +464,7 @@ FUNCTION TO DETERMINE A PHONE NUMBER
             
             if ($foodcount == $peoplecount) {
                 print($summary);
-                print("<h1>Celková cena je: " . $foodprice . " Kč</h1>");
+                print("<h1 class=\"white\">Celková cena je: " . $foodprice . " Kč</h1>");
                 print("<button>Odeslat do databáze</button>");
             } else {
                 print("<h1>Nesedí počet osob</h1>");
