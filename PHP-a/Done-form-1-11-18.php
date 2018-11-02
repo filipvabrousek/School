@@ -16,6 +16,11 @@
         margin-top: 2em;
         
     }
+    
+    .reset {
+        margin-bottom: 1em;
+    }
+    
      body {
      	background: url("https://thewallpaper.co/wp-content/uploads/2017/08/full-screen-focusdownload-smart-phones-ioslights-karachi-widescreen-images-pakistan-blur-free-images-abstract-wallpapers.jpg");
          background-size: 100%;
