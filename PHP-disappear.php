@@ -165,8 +165,11 @@ if (isset($_REQUEST["sekce"])) {
 if ($sekce == "hlavnistrana") {
     print("<h1 style=\"color: \"green\"; \"text-align: \"center\">Uvodni strana</h1>");
 }
-if ($sekce == "formular") {
     
+    
+    
+    
+if ($sekce == "formular") {
     
     $nameerr     = "";
     $surnameerr  = "";
@@ -354,8 +357,7 @@ FUNCTION TO DETERMINE A PHONE NUMBER
         
     <input type="hidden" name="sekce" value="formular">
     </form>
-    
-        </section>
+    </section>
         
     <script>
     document.querySelector("form").addEventListener("submit", function(e){
@@ -369,19 +371,20 @@ FUNCTION TO DETERMINE A PHONE NUMBER
         </div>
 
    <?php
-    /* $recipes = array("Maso nakrájíme na plátky. ...
-    Do tří hlubokých talířů si připravíme: hladkou mouku; dvě nevařená vajíčka bez skořápky + mléko + špetka soli + trocha pepře - to vše pořádně promícháme; strouhanka.
-    Maso obalíme v prvním talíři, pak v druhém a nakonec ve třetím.", "ff", "jj");
-    */
+  
        $allow = true;
     
-    if (!isset($_REQUEST["send"])) { //prisla data z formulare? Byl odeslan?
-        
-     
+    if (isset($_REQUEST["send"])) { //prisla data z formulare? Byl odeslan?
+ 
+        $sekce = "fsummary";
+   
+    }
+}
+    
 
-        
-      // allow == true
-        
+    
+if ($sekce == "fsummary"){
+    
         /*------------------------ SOUP ------------------------ */
         $soup = $_REQUEST["soup"];
         if ($soup == "") {
@@ -469,24 +472,75 @@ FUNCTION TO DETERMINE A PHONE NUMBER
         }  else {
            // $allow = true;
         }
-        
-          if ($allow == TRUE){
-         print("<h1>Allow</h1>");
-    }
     
-    if ($allow == FALSE) {
-        print("<h1>Disallow</h1>");
-    }
-        
-      
+    
+    
+    if ($peoplecount > 1 && $email != "" && $soup != "" && terms != "" && (email != "" || phone != "")) {
+      print("<script>");
+      //  print("alert('Wow');");
+        print("document.querySelector('form').style.display = 'none'");
    
-    } 
+        print("</script>");   
+        
+        
+        
+           
+         $peoplecount = trim($_REQUEST["peoplecount"]); // remove wh
+            for ($i = 0; $i < count($foodnames); $i++) {
+                $food      = $foodshorts[$i];
+                $summary   = $summary . "<li class=\"info\">" . $foodnames[$i] . "</li>";
+                $foodprice = $foodprice + ($foodprices[$i] * $_REQUEST[$food]);
+                
+                
+                if ($soup == "kuřecí") {
+                    $foodprice = $foodprice + $peoplecount * 120;
+                }
+                
+                if ($soup == "hovězí") {
+                    $foodprice = $foodprice + $peoplecount * 130;
+                }
+                
+                if (isset($_REQUEST["terms"])) {
+                    $foodprice = $foodprice + $peoplecount * 30; // dezert
+                }
+                
+                
+                $foodcount = $foodcount + $_REQUEST[$food];
+                
+               
+            }
+            
+            if ($foodcount == $peoplecount) {
+                print($summary);
+                print("<h1 class=\"white\">Celková cena je: " . $foodprice . " Kč</h1>");
+                print("<button class=\"reset\">Odeslat do databáze</button>");
+            } else {
+                print("<h1>Nesedí počet osob</h1>");
+            }
+    }
+    
+    
+    
+    // ::::::::::::: There are ::::::::::::::::
+    
+        
+        
+}
     
     
   
   
     
-   else {  // check if alllow == true
+  
+    
+    
+    
+    
+    
+
+    
+  /*  
+ if ($_REQUEST["sekce"] == "fsummary") {  // check if alllow == true
         
          $peoplecount = trim($_REQUEST["peoplecount"]); // remove wh
             for ($i = 0; $i < count($foodnames); $i++) {
@@ -510,13 +564,7 @@ FUNCTION TO DETERMINE A PHONE NUMBER
                 
                 $foodcount = $foodcount + $_REQUEST[$food];
                 
-                
-               // echo $peoplecount;
-                
-                /*  echo $peoplecount;
-                echo "<br>";
-                echo "<h1>prices</h1>";
-                echo $foodprices[$i];*/
+               
             }
             
             if ($foodcount == $peoplecount) {
@@ -540,10 +588,18 @@ FUNCTION TO DETERMINE A PHONE NUMBER
     }
     
     
+    */
     
     
     
-}
+    
+    
+    
+    
+    
+    
+    
+    
     
 ?>
     </div>
