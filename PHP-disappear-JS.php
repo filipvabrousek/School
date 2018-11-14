@@ -385,7 +385,82 @@ FUNCTION TO DETERMINE A PHONE NUMBER
     
 if ($sekce == "fsummary"){
     
-        /*------------------------ SOUP ------------------------ */
+      
+        
+        
+        
+        /*------------------------ PEOPLE COUNT ------------------------ */
+        $peoplecount = trim($_REQUEST["peoplecount"]); // remove whitespace
+        
+        $foodprice = 0;
+        $foodcount = 0;
+        $summary   = "<h2 class=\"info\">Objednávka: </h2>";
+        
+        
+        if ($peoplecount < 1) {
+            print("<p class='err'>Nedostatečný počet lidí</h1>");
+            $allow = false;
+        }  
+    
+      $soup = $_REQUEST["soup"];
+     if ($soup == "") {
+            print("<p class='err'>Nebyla vyplněna polévka</p>");
+     }
+    
+   
+    
+     $email = $_REQUEST["email"];
+    $phone = $_REQUEST["phone"];
+     if ($email == "" && $phone == "") {
+            print("<p class='err'>Musíte vyplnit email nebo telefonní číslo.</p>");
+     }
+    
+        $name = $_REQUEST["name"];
+     if ($name == "") {
+            print("<p class='err'>Nebylo vyplněno jméno.</p>");
+     }
+    
+        $surname = $_REQUEST["surname"];
+     if ($surname == "") {
+            print("<p class='err'>Nebylo vyplněno přijímení.</p>");
+     }
+    
+    
+  /*  
+    $foodcount = trim($_REQUEST["foodcount"]);
+    echo $foodcount;
+    echo "HI";
+    echo $peoplecount;
+ if ($foodcount != $peoplecount){
+     print("<p class='err'>Nedostatečný počet lidí .$peoplecount. Pro .$foodcount. jídel.</p>");
+ }
+    
+    */
+    
+              
+         $peoplecount = trim($_REQUEST["peoplecount"]); // remove wh
+            for ($i = 0; $i < count($foodnames); $i++) {
+                $food      = $foodshorts[$i];
+                $foodcount = $foodcount + $_REQUEST[$food];
+                
+    
+            }
+    
+      echo $foodcount;
+    echo "HI";
+    echo $peoplecount;
+ if ($foodcount != $peoplecount){
+     print("<p class='err'>Nedostatečný počet lidí .$peoplecount. Pro .$foodcount. jídel.</p>");
+ }
+    
+    if ($peoplecount > 1 && $email != "" && $soup != "" && (email != "" || phone != "") && ($foodcount == $peoplecount)){
+     print("<script>");
+        print("document.querySelector('form').style.display = 'none'");
+        print("</script>");   
+        
+
+//     strip_tags("<form></form>");
+          /*------------------------ SOUP ------------------------ */
         $soup = $_REQUEST["soup"];
         if ($soup == "") {
                $allow = false;
@@ -426,7 +501,7 @@ if ($sekce == "fsummary"){
         $email = $_REQUEST["email"];
         $phone = $_REQUEST["phone"];
         if ($email == "" && $phone == "") {
-            print("<p class=\"err\">MUSÍTE VYPLNIT EMAIL NEBO TELEFONNÍ ČÍSLO...</p>");
+            print("<p class=\"err\">Musíte vyplnit email nebo telefonní číslo</p>");
             $emailerr = "NEBYLO VYPLNĚN EMAIL";
             $errors[] = "email";
             //  $phoneerr = "NEBYLO VYPLNĚNO MOBILNÍ ČÍSLO";
@@ -452,37 +527,6 @@ if ($sekce == "fsummary"){
            
             
         }
-        
-        
-        
-        /*------------------------ PEOPLE COUNT ------------------------ */
-        $peoplecount = trim($_REQUEST["peoplecount"]); // remove whitespace
-        
-        
-        
-        
-        $foodprice = 0;
-        $foodcount = 0;
-        $summary   = "<h2 class=\"info\">Objednávka: </h2>";
-        
-        
-        if ($peoplecount < 1) {
-            print("<h1>Nedostatečný počet lidí</h1>");
-            $allow = false;
-        }  else {
-           // $allow = true;
-        }
-    
-    
-    
-    if ($peoplecount > 1 && $email != "" && $soup != "" && terms != "" && (email != "" || phone != "")) {
-      print("<script>");
-      //  print("alert('Wow');");
-        print("document.querySelector('form').style.display = 'none'");
-   
-        print("</script>");   
-        
-        
         
            
          $peoplecount = trim($_REQUEST["peoplecount"]); // remove wh
@@ -510,13 +554,12 @@ if ($sekce == "fsummary"){
                
             }
             
-            if ($foodcount == $peoplecount) {
-                print($summary);
+           print($summary);
                 print("<h1 class=\"white\">Celková cena je: " . $foodprice . " Kč</h1>");
                 print("<button class=\"reset\">Odeslat do databáze</button>");
-            } else {
-                print("<h1>Nesedí počet osob</h1>");
-            }
+        
+        
+        $sekce = "fsummary";
     }
     
     
@@ -528,7 +571,9 @@ if ($sekce == "fsummary"){
 }
     
     
-  
+   if ($_REQUEST["sekce"] == "fsummary") {
+       print("<h1>All clear.$summary.</h1>");
+   }
   
     
   
