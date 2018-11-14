@@ -59,6 +59,7 @@
      .marko {
      	border: 6px solid red;
      	border-color: red;
+         background: blue;
      }
      .greeny {
      	border: 6px solid green;
@@ -82,6 +83,8 @@
      .err {
      	font-weight: bold;
      	color: red;
+         text-align: center;
+         padding: 1em;
      }
      .notice {
      	font-weight: bold;
@@ -91,6 +94,18 @@
      	font-weight: bold;
      	color: red;
      }
+    
+    .frame {
+        border: 2px solid red;
+        background: #e74c3c;
+        color: white;
+    }
+    
+    .frame > * {
+        color: white;
+    }
+    
+    
      #wrapper {
      	display: flex;
      	width: 20em;
@@ -104,20 +119,27 @@
      	margin-bottom: 1em;
      	font-size: 3em;
         margin-top: 1em;
-        color: white;
+
+         color:#e74c3c;
      }
      .food-title {
      	color: white;
      }
     
-    .white {
-        color: orange;
-        text-align: center;
+    img {
+        
+       width: 70vw;
+        margin-left: calc(100vw / 2 - 35vw);
+        
     }
     
-    .title {
-    color:orange;
+    .white {
+        color: #e74c3c;
+        text-align: center;
+        font-size: 1.5em;
     }
+    
+    
     
     
     
@@ -142,11 +164,16 @@
      } 
     
     .info {
-        color: orange;
+        color: #e74c3c;
     }
     
     h2 {
         color: white;
+    }
+    
+    .wh {
+        color: white;
+        text-align: center;
     }
 </style>
     
@@ -191,7 +218,7 @@ if ($sekce == "formular") {
     //  $foodids = array("f1", "f2");
     $foodnames  = array(
         "Kuřecí řízek",
-        "hovězí"
+        "Hovězí"
     );
     $foodshorts = array(
         "chicken",
@@ -239,7 +266,7 @@ if ($sekce == "formular") {
 <section id="wrapper">     
  <!-----------------------------JMÉNO----------------------------->        
 
-   <h1 class="white top">Osobní údaje</h1>    
+   <h1 class="wh top">Osobní údaje</h1>    
 <br>
 <label for="name">Počet lidí (musí odpovídat počtu jídel) </label>
 <input type="number" placeholder="Počet lidí" name = "peoplecount" value="<?php
@@ -306,7 +333,7 @@ if ($sekce == "formular") {
 FUNCTION TO DETERMINE A PHONE NUMBER
 -->   
 
-<h1 class="white">Hlavní jídlo</h1>
+<h1 class="wh">Hlavní jídlo</h1>
 <br>
     
     
@@ -331,7 +358,7 @@ FUNCTION TO DETERMINE A PHONE NUMBER
         <br><br>
      
         
-        <h1 class="white">Polévky</h1>
+        <h1 class="wh">Polévky</h1>
     <select name="soup">
     <option value="žádnou">-- vyberte polévku</option> 
    
@@ -394,7 +421,7 @@ if ($sekce == "fsummary"){
         
         $foodprice = 0;
         $foodcount = 0;
-        $summary   = "<h2 class=\"info\">Objednávka: </h2>";
+        $summary   = "<div class=\"frame\"><h2 class=\"info wh\">Objednávka: </h2>";
         
         
         if ($peoplecount < 1) {
@@ -413,6 +440,9 @@ if ($sekce == "fsummary"){
     $phone = $_REQUEST["phone"];
      if ($email == "" && $phone == "") {
             print("<p class='err'>Musíte vyplnit email nebo telefonní číslo.</p>");
+         
+         $errors[] = "email";
+         $errors[] = "phone";
      }
     
         $name = $_REQUEST["name"];
@@ -446,11 +476,9 @@ if ($sekce == "fsummary"){
     
             }
     
-      echo $foodcount;
-    echo "HI";
-    echo $peoplecount;
- if ($foodcount != $peoplecount){
-     print("<p class='err'>Nedostatečný počet lidí .$peoplecount. Pro .$foodcount. jídel.</p>");
+     
+ if ($foodcount < $peoplecount){
+     print("<p class='err'>Nedostatečný počet lidí (".$peoplecount.") Pro ".$foodcount." jídel </p>");
  }
     
     if ($peoplecount > 1 && $email != "" && $soup != "" && (email != "" || phone != "") && ($foodcount == $peoplecount)){
@@ -458,23 +486,15 @@ if ($sekce == "fsummary"){
         print("document.querySelector('form').style.display = 'none'");
         print("</script>");   
         
+        
+        print("<img src='https://o.aolcdn.com/images/dims3/GLOB/crop/5760x2880+0+480/resize/630x315!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F1e6a11c0ceb369bee739518f2618916d%2F205881769%2Fhealth-food-for-fitness-picture-id855098134'>");
 
 //     strip_tags("<form></form>");
           /*------------------------ SOUP ------------------------ */
-        $soup = $_REQUEST["soup"];
-        if ($soup == "") {
-               $allow = false;
-        } else {
-            print("<p class=\"info\">Vybrali jste " . $soup . " polévku. </p>");
+       
              //  $allow = true;
-        }
-        
-        if (isset($_REQUEST["terms"])) {
-            print("<p class=\"info\">Dezert: Ano</p>");
-        } else {
-            // print("<p class=\"err\">Musíte souhlasit s podmínkami </p>"); 
-            print("<p class=\"info\">Dezert: Ne</p>");
-        }
+       // }
+  
         
         
         
@@ -532,7 +552,7 @@ if ($sekce == "fsummary"){
          $peoplecount = trim($_REQUEST["peoplecount"]); // remove wh
             for ($i = 0; $i < count($foodnames); $i++) {
                 $food      = $foodshorts[$i];
-                $summary   = $summary . "<li class=\"info\">" . $foodnames[$i] . "</li>";
+                $summary   = $summary . "<p class=\"info wh\">" . $foodnames[$i] . "</p>";
                 $foodprice = $foodprice + ($foodprices[$i] * $_REQUEST[$food]);
                 
                 
@@ -553,9 +573,30 @@ if ($sekce == "fsummary"){
                 
                
             }
+        
+        
             
            print($summary);
-                print("<h1 class=\"white\">Celková cena je: " . $foodprice . " Kč</h1>");
+      
+         $soup = $_REQUEST["soup"];
+       /* if ($soup == "") {
+               $allow = false;
+        } else {*/
+            print("<p class=\"info wh\">".$soup." polévka</p>");
+              
+              
+        if (isset($_REQUEST["terms"])) {
+            print("<p class=\"info wh\">Dezert: Ano</p>");
+        } else {
+            // print("<p class=\"err\">Musíte souhlasit s podmínkami </p>"); 
+            print("<p class=\"info wh\">Dezert: Ne</p>");
+        }
+          print("</div>");
+          print("</div>");
+        
+        
+        
+        print("<h1 class=\"white top\">Celková cena za ". $foodcount ." jídel je " . $foodprice . " Kč</h1>");
                 print("<button class=\"reset\">Odeslat do databáze</button>");
         
         
