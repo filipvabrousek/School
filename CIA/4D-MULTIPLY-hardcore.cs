@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-
+using System.IO;
+            
 namespace h
 {
     class MainClass
@@ -15,7 +15,7 @@ namespace h
         {
 
 
-
+            Console.WriteLine("Zadejte čísla 168 a 18.");
             Console.WriteLine("Kolik míst bude mít číslo, které chcete zadat ? (Méně než 10");
             int size = int.Parse(Console.ReadLine());
             int[] numbers = new int[size];
@@ -98,6 +98,8 @@ namespace h
 
             int pr = 0;
 
+
+            // MAIN COUNTING LOOP 
             for (var i = 0; i < numbers.Length; i++){
                 hold = 0;
 
@@ -110,18 +112,20 @@ namespace h
 
                 int b = numbers[numbers.Length - i]; // * every element of numbers
 
-
-                int get = a * b;
-                hold = getHold(get);
-
-
                 int tempres = 0;
+                int get = a * b + tempres;
+                 hold = getHold(get);
+
+
+               
                 if (i != 1){
                     tempres = a * b + hold;
+                    Console.WriteLine("yyy hold ");
                 } else {
                     tempres = a * b;
+                   
+                    Console.WriteLine("xxx");
                 }
-
 
 
                 Console.WriteLine("================================================================================================================");
@@ -135,7 +139,18 @@ namespace h
 
 
             Console.WriteLine("RESULT OF THE FIRST LINE: ");
-            Console.WriteLine(rev(firstline)); // Should be 1344
+
+            string res = rev(firstline);
+
+            Console.WriteLine(res); // Should be 1344
+
+
+
+
+            // Write to disc
+            StreamWriter writer = new StreamWriter("loggera.txt");
+            writer.WriteLine(res);
+            writer.Close();
 
 
         }
@@ -148,7 +163,7 @@ namespace h
             int hold = 0;
             int res = a;
 
-            Console.WriteLine("Hold is called with value " + res);
+            // Console.WriteLine("Hold is called with value " + res);
 
 
             if (res >= 10 && res < 20)
@@ -177,7 +192,7 @@ namespace h
                 hold = 0;  
             }
 
-            Console.WriteLine("Value of hold " + hold);
+            Console.WriteLine("Hold for  " + res + "is " + hold);
 
             return hold;
         }
