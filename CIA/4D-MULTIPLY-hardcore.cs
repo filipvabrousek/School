@@ -15,7 +15,7 @@ namespace h
         {
 
 
-            Console.WriteLine("Zadejte čísla 168 a 18.");
+            Console.WriteLine("Zadejte čísla 1897 a 93.");
             Console.WriteLine("Kolik míst bude mít číslo, které chcete zadat ? (Méně než 10");
             int size = int.Parse(Console.ReadLine());
             int[] numbers = new int[size];
@@ -120,19 +120,23 @@ namespace h
                
                 if (i != 1){
                     tempres = a * b + hold;
-                    Console.WriteLine("yyy hold ");
+                    // Console.WriteLine("i != 1 writing  " + (tempres % 10));
+                    Console.WriteLine("Writing: " + (tempres % 10) + "hold was " + hold);
+                    firstline += (tempres % 10);
                 } else {
                     tempres = a * b;
-                   
-                    Console.WriteLine("xxx");
+                    // Console.WriteLine("i == 1 writing  " + (tempres % 10));
+                    Console.WriteLine("Writing: " + (tempres % 10));
+                    firstline += (tempres % 10);
+            
                 }
 
 
-                Console.WriteLine("================================================================================================================");
-                Console.WriteLine("i is " + i + "a " + a + " * " + b + " is " + (a * b) + "  Result is " + tempres + " I am holding " + hold + " writing " + (tempres % 10));
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+               // Console.WriteLine("i is " + i + "a " + a + " * " + b + " is " + (a * b) + "  Result is " + tempres + " I am holding " + hold + " writing " + (tempres % 10));
 
-                // I am writing last digit of tempres
-                firstline += (tempres % 10);
+                // 168 * 18 (writing last 2 digits) numbers should be 3024 and is "24"
+              
 
             }
 
@@ -150,7 +154,7 @@ namespace h
             // Write to disc
             StreamWriter writer = new StreamWriter("loggera.txt");
             writer.WriteLine(res);
-            writer.Close();
+            writer.Close(); 
 
 
         }
@@ -180,7 +184,7 @@ namespace h
                 hold = 5;
             } else if (res >= 60 && res < 70){
                 hold = 6;
-                Console.WriteLine("Called for 6 because of " + res);
+              //  Console.WriteLine("Called for 6 because of " + res);
 
             } else if (res >= 70 && res < 80){
                 hold = 7;
@@ -192,7 +196,7 @@ namespace h
                 hold = 0;  
             }
 
-            Console.WriteLine("Hold for  " + res + "is " + hold);
+            Console.WriteLine("Hold for  " + res + " is " + hold);
 
             return hold;
         }
