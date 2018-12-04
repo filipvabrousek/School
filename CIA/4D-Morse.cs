@@ -10,6 +10,9 @@ namespace MorseCode
         public static void Main(string[] args)
         {
             // Convert text in Morse Code and beep
+
+
+            // Decide how to convert 
             Console.WriteLine("Enter text you would like to convert to morse code");
             string text = Console.ReadLine();
             string res = "";
@@ -97,7 +100,7 @@ namespace MorseCode
 
             // Write to file
 
-            sw = new StreamWriter("inmorse.txt");
+            sw = new StreamWriter("inmorseq.txt");
 
             for (var i = 0; i < resa.Length; i++)
             {
