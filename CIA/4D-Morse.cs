@@ -1,4 +1,4 @@
-// 29.11.2018
+// 4.12.2018
 
 using System;
 
@@ -35,7 +35,7 @@ namespace MorseCode
 
                 if (alphabet.Length == morse.Length){
                     var idx = Array.IndexOf(alphabet, ch);
-                    Console.WriteLine("Character is " + ch + " idx is " + idx);
+                   // Console.WriteLine("Character is " + ch + " idx is " + idx);
                     res += morse[idx] + "|";
                 } else {
                     Console.WriteLine("Length is invalid");
@@ -44,7 +44,7 @@ namespace MorseCode
             }
 
 
-            Console.WriteLine("Result is " + res);
+            Console.WriteLine(text + " to morse is " + res);
 
 
             // Beep
@@ -52,38 +52,46 @@ namespace MorseCode
             for (var i = 0; i < reschar.Length; i++){
                 var s = reschar[i].ToString();
 
-                Console.WriteLine("S is: " + s);
+
                 switch (s){
                     case ".":
-                        Console.Beep(600, 200);
-                        Console.WriteLine("Should beep short");
+                        Console.Beep(100, 200); // should beep short
                         break;
                     case "-": 
-                        Console.Beep(600, 100);
-                        Console.WriteLine("Should beep long");
+                        Console.Beep(50, 200); // Should beep long
                         break;
 
                     default:
-                        Console.WriteLine("Not the case");
+                      //  Console.WriteLine("Not the case");
                         break;
                 }
             }
 
 
+            // Convert back to normal text
 
+            var everystr = "";
+            for (var i = 0; i < reschar.Length; i++) // ..-.|..|.-..|..|.--.|
+            {
+                var ch = reschar[i].ToString();
+                everystr += ch;
+            }
+             
+            var resa = "";
 
+            string[] split = everystr.Split('|'); // Single quotes character
 
+            for (var i = 0; i < split.Length; i++){ 
 
+                var idx = Array.IndexOf(morse, split[i]);
 
-// 1 - convert text to array
-// 2 - 
+                if (idx != -1) {
+                    resa += alphabet[idx];
+                }
+            }
 
+            Console.WriteLine( everystr + " to text is " + resa);
 
         }
-
-
-
-
-
     }
 }
