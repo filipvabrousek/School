@@ -1,6 +1,7 @@
 // 4.12.2018
 
 using System;
+using System.IO;
 
 namespace MorseCode
 {
@@ -12,6 +13,8 @@ namespace MorseCode
             Console.WriteLine("Enter text you would like to convert to morse code");
             string text = Console.ReadLine();
             string res = "";
+
+            StreamWriter sw = null;
 
             string[] alphabet = { "A", "B", "C", "D", "E", "F", "G", "H", "CH", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " " };
            
@@ -91,6 +94,17 @@ namespace MorseCode
             }
 
             Console.WriteLine( everystr + " to text is " + resa);
+
+            // Write to file
+
+            sw = new StreamWriter("inmorse.txt");
+
+            for (var i = 0; i < resa.Length; i++)
+            {
+                sw.Write(resa[i]);
+            }
+
+            sw.Close();
 
         }
     }
