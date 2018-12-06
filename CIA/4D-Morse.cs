@@ -1,4 +1,4 @@
-// 4.12.2018
+// 6.12.2018
 
 using System;
 using System.IO;
@@ -9,23 +9,45 @@ namespace MorseCode
     {
         public static void Main(string[] args)
         {
-            // Convert text in Morse Code and beep
+
+            // get input from file
+            string text = "";
+            Console.WriteLine("Zadejte 1 pro načtení ze souboru a 3 pro přímý vstup 2");
+
+            int option = int.Parse(Console.ReadLine());
+
+            if (option == 1){ // get contens of file
+                Console.WriteLine("Zadejte název souboru ve kořenové složce porjektu");
+
+                var name = Console.ReadLine();
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "//" + name + "");
+               
+                if (File.Exists(path)){
+                    StreamReader sr = new StreamReader(path);
+                    string contents = sr.ReadToEnd();
+                    Console.WriteLine("Contents are " + contents);
+                } else {
+                    Console.WriteLine("File doesn't exist. DEFAULT text was used.");   
+                }
+
+                text = "DEFAULT";
+              
+
+            } else if (option == 2){
+                Console.WriteLine("Enter text you would like to convert to morse code");
+                text = Console.ReadLine();
+            }
 
 
             // Decide how to convert 
-            Console.WriteLine("Enter text you would like to convert to morse code");
-            string text = Console.ReadLine();
+           
             string res = "";
 
             StreamWriter sw = null;
 
             string[] alphabet = { "A", "B", "C", "D", "E", "F", "G", "H", "CH", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " " };
-           
-
             string[] morse = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "----", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", " " };
             // .-||-...||-.-.||-..||.||..-.||--.||....||----||..||.---||-.-||.-..||--||-.||---||.--.||--.-||.-.||...||-||..-||...-||-..-||-.--||--..|"
-
-
 
 
             char[] characters = text.ToCharArray();
@@ -36,7 +58,6 @@ namespace MorseCode
                 var ch = characters[i].ToString().ToUpper();
                 // get index of letter in Alphabet field
                 // add letter from morse array in morse field
-
 
 
                 if (alphabet.Length == morse.Length){
@@ -96,7 +117,7 @@ namespace MorseCode
                 }
             }
 
-            Console.WriteLine( everystr + " to text is " + resa);
+            Console.WriteLine(everystr + " to text is " + resa);
 
             // Write to file
 
