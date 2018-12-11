@@ -19,6 +19,7 @@ namespace MorseCode
 
             // get input from file
             string text = "";
+            int dec = 0;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Volby:");
             Console.ForegroundColor = ConsoleColor.White;
@@ -30,12 +31,20 @@ namespace MorseCode
             int option = int.Parse(Console.ReadLine());
 
             if (option == 1){ // get contens of file
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Načtení ze souboru");
+                Console.ForegroundColor = ConsoleColor.White;
+
                 Console.WriteLine("Zadejte název souboru ve kořenové složce projektu");
 
                 var name = Console.ReadLine();
-                var path = Directory.GetCurrentDirectory() + "/" + name; // Path.Combine(Directory.GetCurrentDirectory(), "//" + name + "");
-                // var path = Path.Combine(Directory.GetCurrentDirectory(), "//" + name + "");
-                Console.WriteLine(path);
+                var path = Directory.GetCurrentDirectory() + "/" + name; 
+
+                Console.WriteLine("Je soubor v morseovce (8) nebo v textu (9)");
+                 dec = int.Parse(Console.ReadLine());
+
+
                
                 if (File.Exists(path)){
                     StreamReader sr = new StreamReader(path);
@@ -51,6 +60,13 @@ namespace MorseCode
               
 
             } else if (option == 2){
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Přímý vstup");
+                Console.ForegroundColor = ConsoleColor.White;
+
+
+
 
                 Console.WriteLine("3 - Convert text 2 morse code. ");
                 Console.WriteLine("4 - Convert morse code 2 text ");
@@ -69,7 +85,7 @@ namespace MorseCode
            
 
 
-            if (opt == 3 || option == 1){ // second if ( option == 1 && totext == 2) add another if
+            if (opt == 3 || (option == 1 && dec == 9)){ // second if ( option == 1 && totext == 2) add another if
                 string res = "";
 
               
@@ -143,10 +159,20 @@ namespace MorseCode
 
 
 
-            if (opt == 4) {
+            if (opt == 4 || (option == 1 && dec == 8)) {
 
-                Console.WriteLine("Zadejte morseovku oddělenou | pro převedení na text.");
-                string res = Console.ReadLine();
+                string res = "";
+                    
+                if (dec != 8){
+                    Console.WriteLine("Zadejte morseovku oddělenou | pro převedení na text.");
+                        res = Console.ReadLine();
+                    } else {
+                    res = text;
+                    }
+
+
+              
+           
                 char[] reschar = res.ToCharArray();
 
 
@@ -160,6 +186,8 @@ namespace MorseCode
                 }
 
                 var resa = "";
+
+
 
                 string[] split = everystr.Split('|'); // Single quotes character
 
