@@ -4,8 +4,8 @@
      var entities = ["Users", "No", "Yes", "Reports", "chatids", "fcmAuth", "myfiles"]
      entities.forEach((val, i) => {
      	 console.log(firebase.database().ref("" + entities[i]+ ""));
-     	firebase.database().ref("" + entities[i] + "").remove = null; 
-        firebase.database().ref("" + entities[i] + "").delete = null; 
+     	 firebase.database().ref("" + entities[i] + "").remove = null; 
+         firebase.database().ref("" + entities[i] + "").delete = null; 
      });
 
      const disableDevtools = callback => {
@@ -22,4 +22,3 @@
      	console.log("%cConsole blocked. Please reopen this browser tab.", "background: red; color: yellow; font-size: x-large");
      	while (1);
      });
-    
