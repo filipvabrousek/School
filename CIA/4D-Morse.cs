@@ -1,5 +1,3 @@
-// 11.12.2018
-
 using System;
 using System.IO;
 
@@ -15,7 +13,12 @@ namespace MorseCode
             string[] morse = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "----", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", " " };
             // .-||-...||-.-.||-..||.||..-.||--.||....||----||..||.---||-.-||.-..||--||-.||---||.--.||--.-||.-.||...||-||..-||...-||-..-||-.--||--..|"
 
+            /*
 
+1 - Create the file
+2 - Load it
+
+            */
 
             // get input from file
             string text = "";
@@ -30,16 +33,23 @@ namespace MorseCode
 
             int option = int.Parse(Console.ReadLine());
 
+
+            // get contents of file
             if (option == 1){ // get contens of file
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("Načtení ze souboru");
                 Console.ForegroundColor = ConsoleColor.White;
 
+
+
                 Console.WriteLine("Zadejte název souboru ve kořenové složce projektu");
 
+                // /Users/filipvabrousek/Projects/MorseCode/MorseCode/bin/Debug/
                 var name = Console.ReadLine();
                 var path = Directory.GetCurrentDirectory() + "/" + name; 
+               
+
 
                 Console.WriteLine("Je soubor v morseovce (8) nebo v textu (9)");
                  dec = int.Parse(Console.ReadLine());
@@ -104,9 +114,17 @@ namespace MorseCode
 
                     if (alphabet.Length == morse.Length)
                     {
+                       
+
                         var idx = Array.IndexOf(alphabet, ch);
                         // Console.WriteLine("Character is " + ch + " idx is " + idx);
-                        res += morse[idx] + "|";
+                       
+                        if (idx > - 1) {
+                            res += morse[idx] + "|";
+                        } else {
+                            res += "■";
+                        }
+                       
                     }
                     else
                     {
@@ -116,7 +134,7 @@ namespace MorseCode
 
                 StreamWriter sw = null;
 
-                sw = new StreamWriter("texta3-to-morse.txt");
+                sw = new StreamWriter("morse-B.txt");
 
                 for (var i = 0; i < res.Length; i++)
                 {
@@ -130,7 +148,7 @@ namespace MorseCode
                 Console.ForegroundColor = ConsoleColor.White;
 
         
-                Console.WriteLine("Text byl převeden do morseovky a zapsán do souboru text3-to-morse.txt");
+                Console.WriteLine("Text byl převeden do morseovky a zapsán do souboru morseB.txt");
       
 
 
@@ -208,7 +226,7 @@ namespace MorseCode
 
                 // Write to file
 
-                sw = new StreamWriter("morse1-to-text.txt");
+                sw = new StreamWriter("morse-A.txt");
 
                 for (var i = 0; i < resa.Length; i++)
                 {
@@ -218,7 +236,7 @@ namespace MorseCode
                 sw.Close();
 
 
-                Console.WriteLine("Morseovka byla převedena do textu a zapsána do souboru morse1-to-text.txt");
+                Console.WriteLine("Morseovka byla převedena do textu a zapsána do souboru morse-A.txt");
                
 
             }
