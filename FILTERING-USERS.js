@@ -8,7 +8,7 @@ this.b = b;
 
 let arr = [
 new U("Filip", 0, 20),
-new U("Filip", 20, 30),
+new U("Filip", 20, 30)
 ];
 
 let f = arr.filter(x => x.b > 20);
