@@ -30,6 +30,11 @@ if (isset($_REQUEST["id"])){
 }else{
 	$id = "";
 }
+    
+    
+if (isset($_REQUEST["cathegory"])){
+    $cat = $_REQUEST["cathegory"];
+}
 
 if (isset($_REQUEST["aktualnistrana"])){
 	$aktualnistrana = $_REQUEST["aktualnistrana"];
@@ -89,8 +94,53 @@ if ($id == ""){
             
 			print("<div><p>".$row["descr"]."</p></div>");
 		}
-	}	
-}else{//zobrazeni konktretniho clanku
+	}
+    
+    
+    
+    for($i=1;$i<=$stran;$i++){
+		print("<a href=\"noviny.php?aktualnistrana=".$i."\">".$i."</a> ");
+	}
+    
+    
+  
+// STEP 1 --------------------------------------------------------------------------------------------------------
+
+    $sqlo = "SELECT name, idccathegory FROM renome_ccathegory"; //   $k = 2;          WHERE idccathegory = ".$k;
+    print("<p>".$sql."</p>");
+    $resulto = mysqli_query($conn, $sqlo);	
+
+	if (mysqli_num_rows($resulto) > 0) {
+		while($row = mysqli_fetch_assoc($resulto)) {
+			// print("<h2 style='color: green'>".$row["name"]."</h2>");
+            print("<a style='color: green' href ='noviny.php?cathegory=".$row["idccathegory"]."'>".$row["name"]."</a><br>");
+        }
+    } 
+}
+
+    
+    
+// STEP 2 --------------------------------------------------------------------------------------------------------
+// cat is defined ABOVE in $_REQUEST["cat"]
+    
+if ($cat != "") {
+    $sql = "SELECT heading, text FROM renome_tarticle WHERE idccathegory = ".$cat;
+    $result = mysqli_query($conn, $sql);	
+	
+	if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)) {
+            print("<script>document.querySelector('body').innerHTML = ''</script>");
+            print("<a href=\"noviny.php?aktualnistrana=".$aktualnistrana ."\">zpet na seznam</a>");
+            print("<h2>".$row["heading"]."</h2>");
+            print("<p>".$row["text"]."</p>");
+            
+        }
+      }
+   }
+    
+    
+
+if ($id != ""){//zobrazeni konktretniho clanku
 	$sql = "SELECT idtarticle, heading, text FROM renome_tarticle WHERE idtarticle = ".$id;
 	//print($sql);
 	
@@ -111,7 +161,3 @@ mysqli_close($conn);
 	
 </body>
 </html>
-
-<!--
-Add Files to Web folder in Favorites
-->
