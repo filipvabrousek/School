@@ -115,6 +115,9 @@ if ($id == ""){
 // cat is defined ABOVE in $_REQUEST["cat"]
     
 if ($cat != "") {
+    
+    $stop = 0;
+    
     $sqln = "SELECT heading, text FROM renome_tarticle WHERE idccathegory = ".$cat;
    // $sqln = $sqln."LIMIT 5";
     $result = mysqli_query($conn, $sqln);	
@@ -123,11 +126,27 @@ if ($cat != "") {
 	if (mysqli_num_rows($result) > 0) {
 		while($row = mysqli_fetch_assoc($result)) {
           
+            if ($stop < 1){
+                
+            
             print("<a href=\"noviny.php?aktualnistrana=".$aktualnistrana ."\">zpet na seznam</a>");
             print("<h2>".$row["heading"]."</h2>");
             print("<p>".$row["text"]."</p>");
+                
+            print("<h2 style='color: green'>".Zobrazuji." ".další." ".články.":</h2>");
+                $stop += 1;
+            } else {
+                if ($stop < 3){
+                    
+                
+                 print("<h2>".$row["heading"]."</h2>");
+                $stop += 1;
+                }
+                
+            }
            
-            
+            // http://127.0.0.1/noviny/noviny.php?cathegory=14
+          
           // 1 - 3 články ze stejné kategorie, ketré jsou nejčtenější
             
         }
@@ -136,7 +155,7 @@ if ($cat != "") {
         
       }
     
-     $array = array();
+  /*   $array = array();
         while($row = $result->fetch_assoc()){
             $array[] = $row; 
         }
@@ -144,7 +163,7 @@ if ($cat != "") {
     
    while($row = mysqli_fetch_assoc($result)){
                    print("<h2>".$row["text"]."</h2>");
-   }
+   }*/
         
        /* for ($i = 0; i < count($array); $i++){
            // print("".$row["text"]."");
