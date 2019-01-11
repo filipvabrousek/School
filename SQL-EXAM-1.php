@@ -118,7 +118,7 @@ if ($cat != "") {
     
     $stop = 0;
     
-    $sqln = "SELECT heading, text FROM renome_tarticle WHERE idccathegory = ".$cat;
+    $sqln = "SELECT heading, text, viewedcount FROM renome_tarticle WHERE idccathegory = ".$cat;
    // $sqln = $sqln."LIMIT 5";
     $result = mysqli_query($conn, $sqln);	
 	
@@ -133,13 +133,13 @@ if ($cat != "") {
             print("<h2>".$row["heading"]."</h2>");
             print("<p>".$row["text"]."</p>");
                 
-            print("<h2 style='color: green'>".Zobrazuji." ".další." ".články.":</h2>");
+            print("<h2 style='color: green'>".Zobrazuji." ".další." ".články." ".z." ".kategorie.":</h2>");
                 $stop += 1;
             } else {
                 if ($stop < 4){
                     
-                
-                 print("<h2>".$row["heading"]."</h2>");
+                print("<a href=\"noviny.php?&aktualnistrana=".$aktualnistrana."\">".$row[heading]." (".$row[viewedcount].")</a><br>");
+                // print("<h2>".$row["heading"]."</h2>");
                 $stop += 1;
                 }
                 
