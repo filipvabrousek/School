@@ -23,6 +23,9 @@ namespace MorseCode
             // get input from file
             string text = "";
             int dec = 0;
+            Console.WriteLine("Vítá Vás překladač morseovky.");
+            Console.WriteLine("===================================");
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Volby:");
             Console.ForegroundColor = ConsoleColor.White;
@@ -281,7 +284,7 @@ namespace MorseCode
 
 
         
-                Console.WriteLine("Text byl převeden do morseovky a zapsán do souboru" + name + ".txt");
+                Console.WriteLine("Text byl převeden do morseovky a zapsán do souboru " + name + ".txt");
                 Console.WriteLine("Cesta k souboru je " + "/Users/filipvabrousek/Desktop/morse" + "/" + name + ".txt");
 
 
