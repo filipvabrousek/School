@@ -50,6 +50,11 @@ namespace MorseCode
                 // var path = Directory.GetCurrentDirectory() + "/" + name + ".txt"; 
                 var path = "/Users/filipvabrousek/Desktop/morse" + "/" + name + ".txt";
 
+                if (File.Exists(path)) { 
+                    
+                } else {
+                    Console.WriteLine("Soubor nenalezen.");
+                }
                 // Je soubor 
 
                 StreamReader sr = new StreamReader(path); // here we can define our custom path
@@ -108,6 +113,10 @@ namespace MorseCode
                 // text = "DEFAULT";
               
 
+                /*
+                ::::::::::::::::::::::::::: Přímý vstup
+
+                */
             } else if (option == 2){
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -143,6 +152,21 @@ namespace MorseCode
                 if (opt == 3){
                     Console.WriteLine("Zadejte text, který chcete převést do morseovky.");
                     text = Console.ReadLine();
+
+                    var eqtottext = "";
+
+                    // remove diacritics
+                    foreach (char m in text){
+                        eqtottext += longToShort(m.ToString().ToUpper());
+                    }
+
+
+
+                    text = eqtottext;
+
+                    // EQTEXT
+                    Console.WriteLine("Text" + eqtottext);
+
                 }
 
             }
@@ -150,7 +174,11 @@ namespace MorseCode
 
 
            
-            // convert text 2 morse
+
+                /*
+            ::::::::::::::::::::::::::: Převod textu na morseovku
+
+            */
 
             if (opt == 3 || (option == 1 && dec == 9)){ // second if ( option == 1 && totext == 2) add another if
                 string res = "";
@@ -159,43 +187,6 @@ namespace MorseCode
 
 
                 char[] characters = text.ToCharArray();
-
-                /*
-          if (everystr.Contains("|||")){
-                    everystr.Replace("|||", "Γ"); // .
-                } 
-
-                if (everystr.Contains("||")){
-                    everystr.Replace("||", "Δ"); // 
-                } 
-
-
-
-
-
-                string[] split = everystr.Split('|'); // Single quotes character
-
-                for (var i = 0; i < split.Length; i++)
-                {
-
-                    var idx = Array.IndexOf(morse, split[i]);
-
-                    if (idx != -1)
-                    {
-                        resa += alphabet[idx];
-                    } else {
-                        if (split[i] == "Γ"){
-                            resa += ".";
-                        } else if (split[i] == "Δ"){
-                            resa += " ";
-                        }  else {
-                            resa += "⬛";
-                        }
-                    }
-                }
-                */
-
-
 
                 var stro = new String(characters);
 
@@ -214,13 +205,21 @@ namespace MorseCode
 
                     // var ch = characters[i].ToString().ToUpper();
                     var ch = stro[i].ToString().ToUpper();
+                   // Console.WriteLine("Ch pre:" + ch);
+                    ch = longToShort("" + ch + "");
+                
+                    Console.WriteLine("Ch CONVERTED: " + ch);
+
                     // get index of letter in Alphabet field
                     // add letter from morse array in morse field
 
 
                     if (alphabet.Length == morse.Length)
                     {
-                        Console.WriteLine("Char " + ch);
+                     //   Console.WriteLine("Char " + ch);
+
+
+
 
                         var idx = Array.IndexOf(alphabet, ch);
                         // Console.WriteLine("Character is " + ch + " idx is " + idx);
@@ -238,8 +237,8 @@ namespace MorseCode
                             }
                             else
                             {
-                                Console.WriteLine("SQUARE");
-                                Console.WriteLine(ch);
+                                Console.WriteLine("DO NOT FIRE");
+
                                 res += "⬛";
                             }
                             //res += "■";
@@ -251,6 +250,14 @@ namespace MorseCode
                         Console.WriteLine("Length is invalid");
                     }
                 }
+
+
+
+                /*
+                ::::::::::::::::::::::::::: Zápis do souboru
+
+                */
+
 
                 StreamWriter sw = null;
 
@@ -265,7 +272,7 @@ namespace MorseCode
                 sw.Close();
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(text + " v morseovce " + res);
+                Console.WriteLine(text + " v morseovce (275) " + res);
                 Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -274,12 +281,12 @@ namespace MorseCode
 
 
         
-                Console.WriteLine("Text byl převeden do morseovky a zapsán do souboru " + name + ".txt");
+                Console.WriteLine("Text byl převeden do morseovky a zapsán do souboru" + name + ".txt");
                 Console.WriteLine("Cesta k souboru je " + "/Users/filipvabrousek/Desktop/morse" + "/" + name + ".txt");
 
 
 
-                // Beep
+               
 
                
 
@@ -389,7 +396,7 @@ namespace MorseCode
                 }
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(everystr + " v textu " + resa);
+                Console.WriteLine(everystr + " v textu (399)\t" + resa);
                 Console.ForegroundColor = ConsoleColor.White;
 
                 // Write to file
@@ -421,6 +428,84 @@ namespace MorseCode
 
 
 
+        }
+
+        // VÍTEJTE !!!
+
+        static string longToShort(string a){
+
+
+            string ret = "";
+
+
+            switch (a){
+                case "Á":
+                    ret = "A";
+                    break;
+
+                case "Č":
+                    ret = "C";
+                    break;
+
+                case "Ď":
+                    ret = "A";
+                    break;
+
+                case "É":
+                    ret = "E";
+                    break;
+
+                case "Ě":
+                    ret = "E";
+                    break;
+
+                case "Í":
+                    ret = "I";
+                    break;
+
+                case "Ň":
+                    ret = "N";
+                    break;
+
+                case "Ó":
+                    ret = "O";
+                    break;
+
+                case "Ř":
+                    ret = "R";
+                    break;
+
+                case "Š":
+                    ret = "S";
+                    break;
+
+                case "Ú":
+                    ret = "U";
+                    break;
+
+                case "Ů":
+                    ret = "U";
+                    break;
+
+                case "Ý":
+                    ret = "Y";
+                    break;
+
+                case "Ž":
+                    ret = "Z";
+                    break;
+
+
+
+                
+                default:
+                    ret = a;
+                    break;
+            
+            
+            }
+
+            return ret;
         }
     }
 }
