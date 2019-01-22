@@ -1,0 +1,57 @@
+
+
+
+${2 \choose 3} =
+\frac{49!}{43!6!} =
+\frac{49 \cdot 48 \cdot \ldots \cdot 44}{6!} 
+\doteq
+14 \cdot 10 ^ 6$
+
+
+\bigskip
+Co je derivace $f'x$ ? Je to limita
+\bigskip
+
+$\lim_{n\to \infty}$
+$\frac{x}{x}$
+
+\bigskip
+$S = 4 \pi r^2 $
+\bigskip
+
+
+$
+\lceil 
+\frac{f(x) - f(x + \Delta x)}{ \Delta x }
+\rceil
+
+
+
+
+
+$
+
+\begin{eqnarray}
+
+\log 3
+\in 2 \leq 2
+\lim_{n\to \infty}
+
+\bigskip
+\end{eqnarray} 
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+\end{document}
