@@ -1,0 +1,486 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+
+
+\title{SIN}
+\author{Filip Vabroušek }
+\date{Březen 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Obsah}
+
+Motivace \hfill \break
+Technická část (Xcode, Swift)  \hfill \break
+Struktura aplikace  \hfill \break
+Problémy  \hfill \break
+Layout vs Storyboard  \hfill \break
+\vspace{10 mm}
+
+\section{Motivace}
+
+	V dnešní době se stále častěji používají mobilní telefony a vyvstává nutnost rychlého  přístupu k informacím. Mobilním aplikacím se v poslední době daří tuto potřebu splňovat. Ať už potřebujete zavolat známému, najít si nejbližší kino, nebo trasu do jiného města, bez mobilních aplikací byste se v dnešní době již neobešli. Jako nadšený sportovec a vývojář mobilních aplikací jsem se rozhodl, že se pokusím vytvořit celosvětovou párovací aplikaci na závody swimrun - Swimrun World.
+
+
+\vspace{10 mm}
+\section{Technická část}
+
+K vývoji aplikace jsem použil vývojářské prostředí od Applu Xcode 10, a programovací jazyk Swift 4.2. Aplikaci jsem začal tvořit 28. 8. 2018 a pracuji na ní dodnes. Aplikace byla schválena pro App Store 12. 12. 2018. 
+
+
+\vspace{10 mm}
+
+	Jedná se o operační systém od firmy Apple poprvé představený 29. 6. 2007 pro iPhone a v roce 2010 pro iPad.  Je od základu přizpůsobený pro ovládání dotykem bez použití stylusu. Aplikace pro tento systém jsou dostupné v AppStore. Většina aplikací je dostupná zdarma, a jejich kvalitu a bezpečnost zaručuje striktní review proces. Aktuální verzí je iOS 12 vydaná 17. 9. 2018, která přinesla zrychlení celého systému a všech animací. Systém je naprogramován v jazycích C, C++, Objective-C, a Swift.
+
+\vspace{10 mm}
+
+\section{Firebase}
+	Firebase je platforma od společnosti Google, která zabezpečuje backend a databázi pro webové a mobilní aplikace. Já ji využívám na správu uživatelských účtů a obrázků uživatele.
+
+
+
+\vspace{10 mm}
+
+\section{xCode}
+xCode je integrované vývojářské prostředí umožňující vývoj aplikací na platformy iOS a Mac OS. První verze byla vydaná na podzim 2003. Systém se skládá z textového 
+editoru, Interface Builderu a kompilátoru LLVM. Níže je ukázka porstředí z kódu obrazovky, která vytvoří uživatelský účet pomocí služby Firebase.
+
+[obr. 1.1 - zdroj: vlastní archiv]
+\vspace{10 mm}
+\section{UIKit}
+UIKit je knihovna na tvorbu uživatelského prostředí od Applu. Obsahuje základní elementy jako tlačítka, upozornění, nebo navigační lišty. Definuje také základní třídu, která řídí každou obrazovku (tzv. View Controller). Ten obsahuje základní metodu viewDidLoad, která se spustí po prvním spuštění aplikace.
+
+
+
+
+\section{Swift}
+Swift je multiplatformní objektově orientovaný programovací jazyk určený na tvorbu aplikací pro platformy iOS a Mac OS. Jazyk nahradil již zastaralý jazyk Objective-C, zjednodušil psaní kódu a zvýšil jeho čitelnost. Vývoj Swiftu začal v roce 2010, když do Applu nastoupil vývojář Chris Lattner, tvůrce kompilátoru LLVM. 
+Swift byl představen 2. 6. 2014 na světové vývojářské konferenci WWDC v San Jose. Verze 1.0 byla vydána 9. 9. 2014. Nejaktuálnější verzí je Swift 4.2 vydaný 17. září 2018. Na první polovinu roku 2019 je naplánováno vydání Swiftu 5, která zaručí binární kompatibilitu se všemi následujícími verzemi jazyka.
+\vspace{10 mm}
+
+[obr. 2 - Zdroj: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/2000px-Swift_logo.svg.png]
+
+\vspace{10 mm}
+\section{Apple Review Process}
+Všechny aplikace v AppStoru musí projít striktním review procesem, který zaručí že aplikace jsou bez chyb, poskytují to, co slibují a neobsahují žádný ofenzivní materiál. První verze mé aplikace byly odmítnuty, protože neobsahovaly mechanismus na nahlášení uživatele, který porušil smluvní podmínky. I po splnění tohoto bodu jsem byl odmítnut, protože Apple vyžadoval implementaci mechanismu, který by uživatelům umožnil přímo daného uživatele zablokovat. 
+
+\vspace{10 mm}
+\section{Screenshoty}
+Apple vyžaduje u každé aplikace přítomnost screenshotů. Screenshoty musí zobrazovat aplikaci v provozu na iPhonu s úhlopříčkou 5,5 palce a iPadu s úhlopříčkou 12,9 palce. Screenshoty na 10,5 palcový iPad a 6,1 palcový iPhone. Screenshoty musí mít přesné rozměry a na jejich tvorbu jsem využil Photoshop CC 2017.
+
+\vspace{10 mm}
+
+\section{Ikony}
+
+Na tvorbu ikon do Tab Baru a na tvorbu ikony samotné aplikace jsem použil Adobe Illustrator CC 2017. 
+\vspace{10 mm}
+        
+\section{Layout vs. Storyboard}
+
+Interface Builder (Storyboard)
+Interface Builder je vestavěné prostředí pro tvorbu uživatelského prstředí aplikace, které funguje na principu drag & drop. Mezi standardní elementy systému iOS patří: buttons, navbar, mapview, uiview atd.
+\vspace{10 mm}
+
+Já jsem se rozhodl použít celou aplikaci napsat v kódu bez použití Storyboardu. 
+Jedním z hlavních důvodů byla práce s AutoLayoutem, který v módu Storyboardu zahrnuje více klikání, je lehčí ho pochopit a snadnější měnit. 
+Pro tento postup jsme se rozhodl, kvůli snažší údržbě kódu a pohodlnější práci na menších úhlopříčkách monitoru. Pokud se rozhodnete napsat aplikaci pomocí kódu, je potřeba v metodě AppDelegate vytvořit vstupní okno, přiřadit k němu náležící třídu a zobrazit ho uživateli následujícím způsobem:
+\vspace{10 mm}
+
+\begin{minted}{swift}
+@UIApplicationMain
+
+class AppDelegate: UIResponder, UIApplicationDelegate,
+UNUserNotificationCenterDelegate, MessagingDelegate {
+  window = UIWindow(frame: UIScreen.main.bounds)
+  window?.rootViewController = UINavigationController(rootViewController: LogController())
+  window?.makeKeyAndVisible()
+}
+    
+\end{minted}
+\vspace{10 mm}
+
+
+
+
+\vspace{10 mm}
+\section{Struktura aplikace}
+
+1) Obrazovka Races - zobrazuje vybrané závody uživatele, a tlačítko, kterým lze závod přidat.
+
+\vspace{10 mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) Obrazovka Competitors - Zobrazuje všechny uživatele, bez ohledu na závod a řadí je podle výkonnosti. Je možné ja taky filtrovat dle státu, počtu závodů a pohlaví
+
+\vspace{10 mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+3) Obrazovka Messages
+\vspace{10 mm}
+Obrazovka Messages zobrazuje screenshoty od lidí, kteří Vám někdy napsali.
+\vspace{10 mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4) Obrazovka Settings - umožňuje měnit své plavecké a běžecké časy, přezdívku a počet dokončených závodů
+\vspace{10 mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5) Matches
+Po klepnutí na závod z obrazovky “Races” aplikace zobrazí pouze uživatele přihlášené na daný závod a seřadí je dle vaší výkonnosti. Po klepnutí na daného uživatele je možné spustit chat.
+\vspace{10 mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{3 - Problémy}
+\vspace{10 mm}
+
+\section{3.1 Notifikace}
+\vspace{10 mm}
+Jako u každé chatovací aplikace jsem musel vytvořit notifikace, které upozorní uživatele na příchozí zprávu. Jako první jsem se pokoušel použít observer, kterým sleduji poslání nové zprávy při používání chatovací obrazovky. Problémem však bylo, že systém iOS mou aplikaci v pozadí po krátkém čase vypnul, aby nespotřebovávala baterii. Řešením byla implemantce javascriptové cloudové funkce “Firebase Cloud Messaging", která umožňuje posílání push notifikací na daný token telefonu. 
+\vspace{10 mm}
+
+\begin{minted}{swift}
+exports.sendPushNotification = functions.database.ref("/Chat/{id}").onWrite((change, context) => {
+	
+    const snapshot = change.after;
+
+
+    let to = snapshot.child("to").val(); //……
+	 const payload = {
+    
+		notification: {
+			title: "" + sender + " (" + location + ")",
+			body: snapshot.child("body").val(),
+			...
+          	badge: "1",
+			sound: "default"
+		}
+	};
+    
+	return admin.database().ref("fcmAuth").once("value").then(all => {
+        
+         const tokens = [String(rectoken)];
+  	     return admin.messaging().sendToDevice(tokens, payload).then(response => {
+    	      console.log("SUCCESS: " + response.successCount);
+      		   });
+        
+		}); 
+	}); 
+
+\end{minted}
+
+
+
+
+
+
+
+
+
+\vspace{10 mm}
+Dále bylo potřeba zařídit aby se po klepnutí na notifikaci otevřela chatovací obrazovka, čehož jsem dosáhl implementací funkce DidReceiveResponse v metodě AppDelegate. V první části kódu získám data z notifikace:
+
+\vspace{10 mm}
+\begin{minted}{swift}
+ func userNotificationCenter(_ center: UNUserNotificationCenter,
+ didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+       
+        let data = response.notification.request.content.userInfo
+        
+        let uid:String = (Auth.auth().currentUser?.uid)!
+        
+        let to = data["gcm.notification.to"]!
+        let rectoken = data["gcm.notification.rectoken"]!
+        let from = data["gcm.notification.from"]!
+        let location = data["gcm.notification.location"]!
+        let imurl = data["gcm.notification.imageurl"]!
+        let sender = data["gcm.notification.sname"]!
+        let receiver = data["gcm.notification.rname"]!
+        let sendertoken = data["gcm.notification.sendertoken"]!
+        \end{minted}
+        
+        
+        
+    \vspace{10 mm}    
+Ve druhé části kódu jsem vytvořil novou instanci třídy Chat Controller a nastavil jsem proměnné uvnitř a poté jsem zobrazil pohled (o který se třída starala) uživateli. Tato třída umožňuje číst a reagovat na zprávy.
+
+
+
+\vspace{10 mm}
+        \begin{minted}{swift}
+        let vc = ChatController()
+        vc.location = "\(location)"
+        vc.from = "\(to)" // to and from are switched when from notifiation
+        vc.toid = "\(from)"
+        
+        vc.Sname = "\(receiver)" // is Filip but should be "Filippo"
+        vc.Rname = "\(sender)" // FIX THIS !!!
+        vc.rectoken = "\(rectoken)"
+        vc.sendertoken = "\(sendertoken)"
+        
+        vc.imurl = "\(imurl)"
+        vc.fromnotif = true
+        vc.Mnotifurl = "\(imurl)"
+        
+        vc.backtext = "Matches"
+        vc.allowd = true
+        print("IMGU \(imurl)")
+        
+        window?.rootViewController = vc
+        
+        completionHandler()
+        
+    }
+
+
+       \end{minted}
+
+
+
+
+
+\vspace{10 mm}
+\section{3.2 - Opuštění hlavní obrazovky}
+
+Další problém nastal, když uživatel opustil hlavní obrazovku a vrátil se zpět, tak se mu objevila úvodní (přihlašovací obrazovka). Tento problém jsem vyřešil implementací funkce, která při spuštění aplikace zapsala název aktuální obrazovky do paměti iPhonu pomocí objektu UserDefaults. Aplikace se v metodě AppDelegate zeptala na poslední zápis obrazovky, na jejímž základě zobrazila naposled spuštěnou obrazovku.
+
+
+\vspace{10 mm}
+\section{3.2 - Auto layout}
+
+Pro rozložení dokumentu v aplikaci se používá tzv. Auto Layout. Jedná se o systém, který slouží k responzivnímu rozložení prvků aplikace pro různé úhlopříčky displejů. 
+Já používám autolayout s pomocí vlastní knihovny Pin.swift, která umožňuje napsat běžně několikařádkový příkaz na jeden řádek. Zde je vytvořen příklad, který umístí tlačítko na přihlašovací obrazovce.
+
+
+
+\vspace{10 mm}
+\begin{minted}{swift}
+tosign.pin(a: .top, b: .center, ac: 320, bc: 0, w: 200, h: 30, to: nil)
+\end{minted}
+
+
+\vspace{10 mm}
+\section{3.3 - Řazení uživatelů}
+
+Ke správnému fungování aplikace bylo potřeba vymyslet algoritmus, který uživatele seřadí dle výkonosti relativně k vám. Proto jsem napsal funkci proximity, která vyžaduje následující argumenty:
+
+$myswim$: můj čas na 1km plavání ve fromátu “mm:ss”
+myrun: můj čas na 10km běhu “mm:ss”
+
+hisswim: čas uživatele na 1km plavání, se kterým se porovnávám 
+hisrun: čas uživatele na 10km běhu, se kterým se porovnávám 
+
+
+
+\vspace{10 mm}
+  \begin{minted}{swift}
+    func proximity(email: String, myswim: Int, myrun: Int, hisswim: String, hisrun:String) -> Double {
+        
+        let hisswim = hisswim.toSec()
+        let hisrun = hisrun.toSec()
+        
+        let sp = Double(myswim) / Double(hisswim)       
+        let spof = abs(sp - 1) * 100.0
+        
+        let rp = Double(myrun) / Double(hisrun)
+        let rdof = abs(rp - 1) * 100.0
+        
+        let diff = spof + rdof
+        
+        let ret = 0
+        
+        if diff.isInfinite || diff.isNaN {
+            return 0
+        }
+        
+        return Double(diff)
+    }
+ \end{minted}
+
+\vspace{10 mm}
+Tato funkce využívá rošíření objektu “String”, které převede text s časem na sekundy. Rozšíření očekává jako vstup např. textový řetězec “14:05” přičemž rozdělí čas na znaku “:” čímž vznikne pole [14, 05]. Následně se první člen vynásobí 60-ti a pak se k němu jen přičte druhý člen pole (sekundy).
+
+\vspace{10 mm}
+
+\begin{minted}{swift}
+extension String {
+    func toSec() -> Int {
+        var res = 0
+        if self.contains(":") && self.count == 5 {
+            let w = self.split(separator: ":")
+            res = Int(w[0])! * 60 + Int(w[1])!
+        }
+        return res
+    }
+}
+
+\end{minted}
+
+
+
+\vspace{10 mm}
+\section{4.0 - Webová verze}
+
+Pro ostatní uživatele jsem se rozhodl vytvořit webovou verzi aplikace. Využil jsem JavaScriptu a responzivity jsem dosáhl pomocí CSS Gridu, Flexboxu a Media Queries na tvorbu webu jsem použil software Brackets. 
+
+\vspace{5 mm}
+Příklad rozvržení úvodní obrazovky:
+\vspace{8 mm}
+
+HTML:
+\vspace{5 mm}
+\begin{minted}{html}
+<div id = "centersection">
+    
+<div class = "third">
+<h4>Search</h4>
+<p>Register with your swim and run times<br><br>
+Pick any swimrun in the world </p>
+</div>
+    
+
+<div class = "third">
+<h4>Find</h4>
+<p>You will immediately get list of potential partners for each race<br><br>
+Everyone will be sorted by the proximity of your times </p>    
+
+</div>
+\end{minted}
+
+\vspace{10 mm}
+CSS: 
+
+\begin{minted}{css}
+#centersection {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	height: 30em;
+}
+
+.third {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: #ecf0f1;
+	height: 24em;
+	width: 23em;
+	margin: 1em;
+	border-radius: 12px;
+}
+\end{minted}
+
+
+\vspace{10 mm}
+\section{Závěr}
+
+V dnešním světě se již bez mobilních aplikací opravdu neobejdeme. Aktivně sportuji, a také se zabývám swimrunem (úseky terénního běhu spojené plaváním ve dvojicích). Není jednoduché nalézt partnera, se kterým bych mohl absolvovat nějaký ze stovek závodů pořádaných na celém světě. Myslím, že tato aplikace, ať již ve webové nebo mobilní verzi, pomůže k rozšíření tohoto nového outdorového sportu.
+
+
+\end{document}
