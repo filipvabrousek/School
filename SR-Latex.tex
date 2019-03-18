@@ -17,7 +17,7 @@
 \vspace{130 mm}
 \section*{Obsah}
 
-Motivace....................................................................................................................3 \hfill \break
+Motivace.....................................................................................................................3 \hfill \break
 Technická část............................................................................................................3 \hfill \break
 Struktura aplikace......................................................................................................6  \hfill \break
 Problémy....................................................................................................................6  \hfill \break
@@ -84,7 +84,7 @@ Apple vyžaduje u každé aplikace přítomnost screenshotů. Screenshoty musí 
 Na tvorbu ikon do Tab Baru a na tvorbu ikony samotné aplikace jsem použil Adobe Illustrator CC 2017. 
 \vspace{10 mm}
         
-\section*{2.8 Layout in code vs. Storyboard}
+\section*{2.8 Layout pomocí kódu vs. Storyboard}
 
 Interface Builder (Storyboard)
 Interface Builder je vestavěné prostředí pro tvorbu uživatelského prstředí aplikace, které funguje na principu drag and drop. Mezi standardní elementy systému iOS patří: buttons, navbar, mapview, uiview atd.
@@ -307,13 +307,10 @@ tosign.pin(a: .top, b: .center, ac: 320, bc: 0, w: 200, h: 30, to: nil)
 \vspace{10 mm}
 \section*{4.4 Řazení uživatelů}
 
-Ke správnému fungování aplikace bylo potřeba vymyslet algoritmus, který uživatele seřadí dle výkonosti relativně k vám. Proto jsem napsal funkci proximity, která vyžaduje následující argumenty: \hfill \break
+Ke správnému fungování aplikace bylo potřeba vymyslet algoritmus, který uživatele seřadí dle výkonosti relativně k vám. Proto jsem napsal funkci proximity, která vyžaduje následující argumenty: 
+$myswim$: můj čas na 1km plavání ve formátu “mm:ss”
+$myrun$: můj čas na 10km běhu “mm:ss” a $hisswim$: čas uživatele se kterým se porovnávám na 1km plavání,  $hisrun$: čas uživatele se kterým se porovnávám na 10km běhu.
 
-$myswim$: můj čas na 1km plavání ve fromátu “mm:ss”
-myrun: můj čas na 10km běhu “mm:ss” a   \hfill \break
-$hisswim$: čas uživatele na 1km plavání, se kterým se porovnávám  \hfill \break
-hisrun: čas uživatele na 10km běhu, se kterým se porovnávám 
- \hfill \break
 
 
 \vspace{10 mm}
