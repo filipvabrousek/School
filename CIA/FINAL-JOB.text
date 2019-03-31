@@ -1,93 +1,113 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{minted}
+\usepackage{graphicx}
 
 
-\title{SIN}
+\title{Závěrečná práce ze Semináře z informatiky}
+
+
 \author{Filip Vabroušek }
 \date{Březen 2019}
 
+
 \begin{document}
-
+\clearpage\maketitle
+\thispagestyle{empty}
 \maketitle
+\vspace{130 mm}
+\section*{Obsah}
 
-\section{Obsah}
+Motivace....................................................................................................................3 \hfill \break
+Technická část............................................................................................................3 \hfill \break
+Struktura aplikace......................................................................................................6  \hfill \break
+Problémy....................................................................................................................6  \hfill \break
+Webová verze.............................................................................................................10  \hfill \break
+Závěr.........................................................................................................................12  \hfill \break
 
-Motivace \hfill \break
-Technická část (Xcode, Swift)  \hfill \break
-Struktura aplikace  \hfill \break
-Problémy  \hfill \break
-Layout vs Storyboard  \hfill \break
+
+\vspace{180 mm}
+\section*{Klíčová slova}
+Mobilní aplikace, Vývoj, iOS, Swift xCode, AppStore
+
+\section*{Keywords}
+mobile app, development, iOS, Swift, xCode, AppStore
+
+
+\vspace{180 mm}
+
+\section*{Abstrakt}
+Na tvorbu aplikace jsem použil vývojářská prostředí xCode 10 a programovací jazyk Swift 4.2. K tvorbě webové aplikace jsem použil textový editor Brackets a jazyk JavaScript verze ES6. Dále jsem použil MacBook Pro 2015 s operačním systémem Mac OS Mojave a iPhone Xs s operačním systémem iOS 12.
+
+\vspace{180 mm}
+\section*{ 1 Úvod}
+
+	V dnešní době se stále častěji používají mobilní telefony a vyvstává nutnost rychlého  přístupu k informacím. Mobilním aplikacím se v poslední době daří tuto potřebu splňovat. Ať už potřebujete zavolat známému, najít si nejbližší kino, nebo trasu do jiného města, bez mobilních aplikací byste se v dnešní době již neobešli. Jako nadšený sportovec a vývojář mobilních aplikací jsem se rozhodl, že se pokusím vytvořit celosvětovou párovací aplikaci na závody swimrun - Swimrun World.
+
+
+
+
+\vspace{10 mm}
+\section*{2 Technická část}
+
+K vývoji aplikace jsem použil vývojářské prostředí od Applu Xcode 10, a programovací jazyk Swift 4.2. Aplikaci jsem začal tvořit 28. 8. 2018 a pracuji na ní dodnes. Aplikace byla schválena pro App Store 12. 12. 2018.
+ \hfill \break
+ \hfill \break
+Jedná se o operační systém od firmy Apple poprvé představený 29. 6. 2007 pro iPhone a v roce 2010 pro iPad.  Je od základu přizpůsobený pro ovládání dotykem bez použití stylusu. Aplikace pro tento systém jsou dostupné v AppStore. Většina aplikací je dostupná zdarma, a jejich kvalitu a bezpečnost zaručuje striktní review proces. Aktuální verzí je iOS 12 vydaná 17. 9. 2018, která přinesla zrychlení celého systému a všech animací. Systém je naprogramován v jazycích C, C++, Objective-C a Swift.
+
 \vspace{10 mm}
 
-\section{Motivace}
-
-	V dnešní době se stále častěji používají mobilní telefony a vyvstává nutnost rychlého  přístupu k informacím. Mobilním aplikacím se v poslední době daří tuto potřebu splňovat. Ať už potřebujete zavolat známému, najít si nejbližší kino, nebo trasu do jiného města, bez mobilních aplikací byste se v dnešní době již neobešli. Jako nadšený sportovec a vývojář mobilních aplikací jsem se rozhodl, že se pokusím vytvořit celosvětovou párovací aplikaci na závody swimrun - Swimrun World.
-
-
-\vspace{10 mm}
-\section{Technická část}
-
-K vývoji aplikace jsem použil vývojářské prostředí od Applu Xcode 10, a programovací jazyk Swift 4.2. Aplikaci jsem začal tvořit 28. 8. 2018 a pracuji na ní dodnes. Aplikace byla schválena pro App Store 12. 12. 2018. 
-
-
-\vspace{10 mm}
-
-	Jedná se o operační systém od firmy Apple poprvé představený 29. 6. 2007 pro iPhone a v roce 2010 pro iPad.  Je od základu přizpůsobený pro ovládání dotykem bez použití stylusu. Aplikace pro tento systém jsou dostupné v AppStore. Většina aplikací je dostupná zdarma, a jejich kvalitu a bezpečnost zaručuje striktní review proces. Aktuální verzí je iOS 12 vydaná 17. 9. 2018, která přinesla zrychlení celého systému a všech animací. Systém je naprogramován v jazycích C, C++, Objective-C, a Swift.
-
-\vspace{10 mm}
-
-\section{Firebase}
+\section*{2.1 Firebase}
 	Firebase je platforma od společnosti Google, která zabezpečuje backend a databázi pro webové a mobilní aplikace. Já ji využívám na správu uživatelských účtů a obrázků uživatele.
 
 
 
 \vspace{10 mm}
 
-\section{xCode}
-xCode je integrované vývojářské prostředí umožňující vývoj aplikací na platformy iOS a Mac OS. První verze byla vydaná na podzim 2003. Systém se skládá z textového 
+\section*{2.2 xCode}
+xCode je integrované vývojářské prostředí umožňující vývoj aplikací na platformy iOS a Mac OS. První verze byla vydaná na podzim 2003. Systém se skládá z textového 
 editoru, Interface Builderu a kompilátoru LLVM. Níže je ukázka porstředí z kódu obrazovky, která vytvoří uživatelský účet pomocí služby Firebase.
 
-[obr. 1.1 - zdroj: vlastní archiv]
+
 \vspace{10 mm}
-\section{UIKit}
+\section*{2.3 UIKit}
 UIKit je knihovna na tvorbu uživatelského prostředí od Applu. Obsahuje základní elementy jako tlačítka, upozornění, nebo navigační lišty. Definuje také základní třídu, která řídí každou obrazovku (tzv. View Controller). Ten obsahuje základní metodu viewDidLoad, která se spustí po prvním spuštění aplikace.
 
 
 
 
-\section{Swift}
-Swift je multiplatformní objektově orientovaný programovací jazyk určený na tvorbu aplikací pro platformy iOS a Mac OS. Jazyk nahradil již zastaralý jazyk Objective-C, zjednodušil psaní kódu a zvýšil jeho čitelnost. Vývoj Swiftu začal v roce 2010, když do Applu nastoupil vývojář Chris Lattner, tvůrce kompilátoru LLVM. 
-Swift byl představen 2. 6. 2014 na světové vývojářské konferenci WWDC v San Jose. Verze 1.0 byla vydána 9. 9. 2014. Nejaktuálnější verzí je Swift 4.2 vydaný 17. září 2018. Na první polovinu roku 2019 je naplánováno vydání Swiftu 5, která zaručí binární kompatibilitu se všemi následujícími verzemi jazyka.
+\section*{2.4 Swift}
+Swift je multiplatformní objektově orientovaný programovací jazyk určený na tvorbu aplikací pro platformy iOS a Mac OS. Jazyk nahradil již zastaralý jazyk Objective-C, zjednodušil psaní kódu a zvýšil jeho čitelnost. Vývoj Swiftu začal v roce 2010, když do Applu nastoupil vývojář Chris Lattner, tvůrce kompilátoru LLVM. 
+Swift byl představen 2. 6. 2014 na světové vývojářské konferenci WWDC v San Jose. Verze 1.0 byla vydána 9. 9. 2014. Nejaktuálnější verzí je Swift 4.2 vydaný 17. září 2018. Na první polovinu roku 2019 je naplánováno vydání Swiftu 5, která zaručí binární kompatibilitu se všemi následujícími verzemi jazyka.
 \vspace{10 mm}
 
-[obr. 2 - Zdroj: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/2000px-Swift_logo.svg.png]
+
 
 \vspace{10 mm}
-\section{Apple Review Process}
+\section*{2.5 Apple Review Process}
 Všechny aplikace v AppStoru musí projít striktním review procesem, který zaručí že aplikace jsou bez chyb, poskytují to, co slibují a neobsahují žádný ofenzivní materiál. První verze mé aplikace byly odmítnuty, protože neobsahovaly mechanismus na nahlášení uživatele, který porušil smluvní podmínky. I po splnění tohoto bodu jsem byl odmítnut, protože Apple vyžadoval implementaci mechanismu, který by uživatelům umožnil přímo daného uživatele zablokovat. 
 
 \vspace{10 mm}
-\section{Screenshoty}
+\section*{2.6 Screenshoty}
 Apple vyžaduje u každé aplikace přítomnost screenshotů. Screenshoty musí zobrazovat aplikaci v provozu na iPhonu s úhlopříčkou 5,5 palce a iPadu s úhlopříčkou 12,9 palce. Screenshoty na 10,5 palcový iPad a 6,1 palcový iPhone. Screenshoty musí mít přesné rozměry a na jejich tvorbu jsem využil Photoshop CC 2017.
 
 \vspace{10 mm}
 
-\section{Ikony}
+\section*{2.7 Ikony}
 
 Na tvorbu ikon do Tab Baru a na tvorbu ikony samotné aplikace jsem použil Adobe Illustrator CC 2017. 
 \vspace{10 mm}
         
-\section{Layout vs. Storyboard}
+\section*{2.8 Layout pomocí kódu vs. Storyboard}
 
 Interface Builder (Storyboard)
-Interface Builder je vestavěné prostředí pro tvorbu uživatelského prstředí aplikace, které funguje na principu drag & drop. Mezi standardní elementy systému iOS patří: buttons, navbar, mapview, uiview atd.
+Interface Builder je vestavěné prostředí pro tvorbu uživatelského prstředí aplikace, které funguje na principu drag and drop. Mezi standardní elementy systému iOS patří: buttons, navbar, mapview, uiview atd.
 \vspace{10 mm}
 
-Já jsem se rozhodl použít celou aplikaci napsat v kódu bez použití Storyboardu. 
-Jedním z hlavních důvodů byla práce s AutoLayoutem, který v módu Storyboardu zahrnuje více klikání, je lehčí ho pochopit a snadnější měnit. 
-Pro tento postup jsme se rozhodl, kvůli snažší údržbě kódu a pohodlnější práci na menších úhlopříčkách monitoru. Pokud se rozhodnete napsat aplikaci pomocí kódu, je potřeba v metodě AppDelegate vytvořit vstupní okno, přiřadit k němu náležící třídu a zobrazit ho uživateli následujícím způsobem:
-\vspace{10 mm}
+Já jsem se rozhodl celou aplikaci napsat v kódu bez použití Storyboardu. 
+Jedním z hlavních důvodů byla práce se sytémem pro tvorbu rozvržení aplikace - systémem Auto Layout, který v módu Storyboard zahrnuje více klikání. V kódu je lehčí ho pochopit a snadnější měnit. 
+Pro tento postup jsme se také rozhodl kvůli pohodlnější práci na menších úhlopříčkách monitoru. Pokud se rozhodnete napsat aplikaci pomocí kódu, je potřeba v metodě AppDelegate vytvořit vstupní okno, přiřadit k němu náležící třídu a zobrazit ho uživateli následujícím způsobem:
+\vspace{18 mm}
 
 \begin{minted}{swift}
 @UIApplicationMain
@@ -106,94 +126,25 @@ UNUserNotificationCenterDelegate, MessagingDelegate {
 
 
 \vspace{10 mm}
-\section{Struktura aplikace}
+\section*{3 Struktura aplikace}
 
-1) Obrazovka Races - zobrazuje vybrané závody uživatele, a tlačítko, kterým lze závod přidat.
+Obrazovka Races - zobrazuje vybrané závody uživatele, a tlačítko, kterým lze závod přidat.
 
-\vspace{10 mm}
+\hfill \break
+Obrazovka Competitors - Zobrazuje všechny uživatele, bez ohledu na závod a řadí je podle výkonnosti. Je možné ja taky filtrovat dle státu, počtu závodů a pohlaví
 
 
 
+ \hfill \break
+Obrazovka Messages - zobrazuje screenshoty od lidí, kteří Vám někdy napsali.
 
+ \hfill \break
+Obrazovka Settings - umožňuje měnit své plavecké a běžecké časy, přezdívku a počet dokončených závodů
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-2) Obrazovka Competitors - Zobrazuje všechny uživatele, bez ohledu na závod a řadí je podle výkonnosti. Je možné ja taky filtrovat dle státu, počtu závodů a pohlaví
-
-\vspace{10 mm}
-
-
-
-
-
-
-
-
-
-
-
-
-
-3) Obrazovka Messages
-\vspace{10 mm}
-Obrazovka Messages zobrazuje screenshoty od lidí, kteří Vám někdy napsali.
-\vspace{10 mm}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4) Obrazovka Settings - umožňuje měnit své plavecké a běžecké časy, přezdívku a počet dokončených závodů
-\vspace{10 mm}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5) Matches
-Po klepnutí na závod z obrazovky “Races” aplikace zobrazí pouze uživatele přihlášené na daný závod a seřadí je dle vaší výkonnosti. Po klepnutí na daného uživatele je možné spustit chat.
+ \hfill \break
+Obrazovka Matches - po klepnutí na závod z obrazovky “Races” aplikace zobrazí pouze uživatele přihlášené na daný závod a seřadí je dle vaší výkonnosti. Po klepnutí na daného uživatele je možné spustit chat.
 \vspace{10 mm}
 
 
@@ -237,16 +188,17 @@ Po klepnutí na závod z obrazovky “Races” aplikace zobrazí pouze uživatel
 
 
 
-\section{3 - Problémy}
+\section*{4 Problémy}
 \vspace{10 mm}
 
-\section{3.1 Notifikace}
+\section*{4.1 Notifikace}
 \vspace{10 mm}
 Jako u každé chatovací aplikace jsem musel vytvořit notifikace, které upozorní uživatele na příchozí zprávu. Jako první jsem se pokoušel použít observer, kterým sleduji poslání nové zprávy při používání chatovací obrazovky. Problémem však bylo, že systém iOS mou aplikaci v pozadí po krátkém čase vypnul, aby nespotřebovávala baterii. Řešením byla implemantce javascriptové cloudové funkce “Firebase Cloud Messaging", která umožňuje posílání push notifikací na daný token telefonu. 
 \vspace{10 mm}
 
 \begin{minted}{swift}
-exports.sendPushNotification = functions.database.ref("/Chat/{id}").onWrite((change, context) => {
+exports.sendPushNotification = functions.database.ref("/Chat/{id}")  
+.onWrite((change, context) => {
 	
     const snapshot = change.after;
 
@@ -266,7 +218,8 @@ exports.sendPushNotification = functions.database.ref("/Chat/{id}").onWrite((cha
 	return admin.database().ref("fcmAuth").once("value").then(all => {
         
          const tokens = [String(rectoken)];
-  	     return admin.messaging().sendToDevice(tokens, payload).then(response => {
+  	     return admin.messaging().sendToDevice(tokens, payload).then(
+  	     response => {
     	      console.log("SUCCESS: " + response.successCount);
       		   });
         
@@ -346,15 +299,15 @@ Ve druhé části kódu jsem vytvořil novou instanci třídy Chat Controller a 
 
 
 \vspace{10 mm}
-\section{3.2 - Opuštění hlavní obrazovky}
+\section*{4.2 - Opuštění hlavní obrazovky}
 
 Další problém nastal, když uživatel opustil hlavní obrazovku a vrátil se zpět, tak se mu objevila úvodní (přihlašovací obrazovka). Tento problém jsem vyřešil implementací funkce, která při spuštění aplikace zapsala název aktuální obrazovky do paměti iPhonu pomocí objektu UserDefaults. Aplikace se v metodě AppDelegate zeptala na poslední zápis obrazovky, na jejímž základě zobrazila naposled spuštěnou obrazovku.
 
 
 \vspace{10 mm}
-\section{3.2 - Auto layout}
+\section*{4.3 Auto layout}
 
-Pro rozložení dokumentu v aplikaci se používá tzv. Auto Layout. Jedná se o systém, který slouží k responzivnímu rozložení prvků aplikace pro různé úhlopříčky displejů. 
+Pro rozložení aplikace se používá tzv. Auto Layout. Jedná se o systém, který slouží k responzivnímu rozložení prvků aplikace pro různé úhlopříčky displejů. 
 Já používám autolayout s pomocí vlastní knihovny Pin.swift, která umožňuje napsat běžně několikařádkový příkaz na jeden řádek. Zde je vytvořen příklad, který umístí tlačítko na přihlašovací obrazovce.
 
 
@@ -366,21 +319,18 @@ tosign.pin(a: .top, b: .center, ac: 320, bc: 0, w: 200, h: 30, to: nil)
 
 
 \vspace{10 mm}
-\section{3.3 - Řazení uživatelů}
+\section*{4.4 Řazení uživatelů}
 
-Ke správnému fungování aplikace bylo potřeba vymyslet algoritmus, který uživatele seřadí dle výkonosti relativně k vám. Proto jsem napsal funkci proximity, která vyžaduje následující argumenty:
-
-$myswim$: můj čas na 1km plavání ve fromátu “mm:ss”
-myrun: můj čas na 10km běhu “mm:ss”
-
-hisswim: čas uživatele na 1km plavání, se kterým se porovnávám 
-hisrun: čas uživatele na 10km běhu, se kterým se porovnávám 
+Ke správnému fungování aplikace bylo potřeba vymyslet algoritmus, který uživatele seřadí dle výkonosti relativně k vám. Proto jsem napsal funkci proximity, která vyžaduje následující argumenty: 
+$myswim$: můj čas na 1km plavání ve formátu “mm:ss”
+$myrun$: můj čas na 10km běhu “mm:ss” a $hisswim$: čas uživatele se kterým se porovnávám na 1km plavání,  $hisrun$: čas uživatele se kterým se porovnávám na 10km běhu.
 
 
 
 \vspace{10 mm}
   \begin{minted}{swift}
-    func proximity(email: String, myswim: Int, myrun: Int, hisswim: String, hisrun:String) -> Double {
+    func proximity(email: String, myswim: Int,
+    myrun: Int, hisswim: String, hisrun:String) -> Double {
         
         let hisswim = hisswim.toSec()
         let hisrun = hisrun.toSec()
@@ -424,17 +374,18 @@ extension String {
 
 
 
-\vspace{10 mm}
-\section{4.0 - Webová verze}
+\vspace{20 mm}
+\section*{5.0 - Webová verze}
 
 Pro ostatní uživatele jsem se rozhodl vytvořit webovou verzi aplikace. Využil jsem JavaScriptu a responzivity jsem dosáhl pomocí CSS Gridu, Flexboxu a Media Queries na tvorbu webu jsem použil software Brackets. 
 
-\vspace{5 mm}
+
+\hfill \break
 Příklad rozvržení úvodní obrazovky:
-\vspace{8 mm}
+\hfill \break
 
 HTML:
-\vspace{5 mm}
+\hfill \break
 \begin{minted}{html}
 <div id = "centersection">
     
@@ -453,7 +404,7 @@ Everyone will be sorted by the proximity of your times </p>
 </div>
 \end{minted}
 
-\vspace{10 mm}
+\vspace{30 mm}
 CSS: 
 
 \begin{minted}{css}
@@ -477,8 +428,8 @@ CSS:
 \end{minted}
 
 
-\vspace{10 mm}
-\section{Závěr}
+\vspace{130 mm}
+\section*{6 - Závěr}
 
 V dnešním světě se již bez mobilních aplikací opravdu neobejdeme. Aktivně sportuji, a také se zabývám swimrunem (úseky terénního běhu spojené plaváním ve dvojicích). Není jednoduché nalézt partnera, se kterým bych mohl absolvovat nějaký ze stovek závodů pořádaných na celém světě. Myslím, že tato aplikace, ať již ve webové nebo mobilní verzi, pomůže k rozšíření tohoto nového outdorového sportu.
 
