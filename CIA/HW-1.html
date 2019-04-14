@@ -1,0 +1,93 @@
+<head>
+
+</head>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<body>
+<h1>CSS 3 Vlastnosti</h1>
+<p>Toto je galerie obrázků.</p>
+
+<img src="A.JPG" class="a" alt = "Obrázek A"/>
+    <img src="B.JPG" class="b" alt = "Obrázek A"/>
+
+        <span class="vignette">
+     <img src="C.JPG" class="c" alt = "Obrázek A"/>
+    </span>
+       
+    
+    
+<p>
+Maecenas faucibus elit ac neque sagittis, dictum dignissim ligula vehicula. Suspendisse potenti. Sed eu leo aliquam, consequat nisl consectetur, iaculis mauris. In ac nibh vel neque tempor condimentum. Nulla nec urna vitae nisl molestie dictum. Duis suscipit sapien sit amet sem consequat, ut sollicitudin nisl iaculis. Vivamus mi elit, mattis maximus lacus vel, dictum luctus elit. Mauris quis laoreet odio. Quisque finibus lectus a nisi sollicitudin, eu lobortis libero suscipit. Ut gravida et nisl eget tincidunt.
+Ut mattis magna eu mauris vulputate aliquam id nec est. Ut urna metus, convallis mattis massa porttitor, bibendum feugiat tellus. Maecenas in sodales nulla. Praesent a est odio. Ut ut odio non turpis ullamcorper aliquam vehicula eu ipsum. Duis fermentum metus metus, ut aliquet est pharetra vitae. Maecenas mattis, urna at egestas suscipit, quam sem blandit ante, quis fringilla neque mauris sit amet nisl. Nulla porttitor laoreet sagittis. Pellentesque metus odio, elementum vitae volutpat venenatis, dignissim vel risus. Cras sed quam dolor. Pellentesque tristique blandit ipsum, eget congue purus dapibus sed. Pellentesque vel orci quis ipsum convallis dictum. Maecenas fringilla elit accumsan venenatis efficitur.
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla condimentum justo augue, vitae suscipit elit posuere id. Quisque egestas aliquet ligula, a maximus lorem volutpat in. Nunc mattis vehicula dui vel tristique. Integer non neque ut dui rutrum elementum sed a risus. Sed nunc justo, varius at egestas at, sollicitudin eu purus. Fusce porta felis non nisi tincidunt pharetra. Nam a tincidunt arcu. Sed eu ultrices purus. Donec congue lorem at mi aliquet, eget dapibus dolor pharetra. Nulla sed semper lorem.
+
+
+</p>
+   
+    <style>
+    
+</style>
+    <div id="back">
+    </div>
+    
+
+    <style>
+        
+        
+        p {
+            column-count: 3;
+        }
+        
+        
+        #back {
+            width: 30em;
+            height: 10em;
+            background-image: linear-gradient(to right, #3498db, #34495e);
+        }
+        
+        img {
+        width: 60vw;
+        margin: 1em;
+        /* box-shadow: 10px 10px 16px;*/
+           /* filter: grayscale(1.0);*/
+        }
+        
+        .a{
+           box-shadow: inset 0 0 150px black;
+            border-radius: 1em;
+            
+        }
+        
+        .b {
+            transform: rotate3d(1, 1, 1, -20deg);
+        }
+        
+           .vignette {
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            border-radius: 5px;
+        }    
+        
+        .vignette img {
+            vertical-align: middle;
+        
+        }
+        
+        
+        .vignette:after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            box-shadow: inset 1px 1px 10px black;
+        }
+    
+    </style>
+</body>
+
+
