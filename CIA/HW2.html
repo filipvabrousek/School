@@ -1,0 +1,106 @@
+<head>
+
+
+</head>
+
+
+<body>
+
+
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<header>
+Header    
+</header>
+    
+ 
+    <aside>
+    <h2>Sidebar</h2>
+    Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.   Some aside text.
+    </aside>  
+    
+    <main>
+    <h1>Responzivní design co je a jak funguje</h1>
+    
+  
+<p>
+
+
+Výraz Responzivní design je poměrný mladý. Poprvé ho použil americký programátor Ethan Marcotte v článku na blogu A List Apart 25. května 2010.
+
+Během pouhých 3 let vstoupil do povědomí větiny internetových vývojářů a stal se z něho de facto standard současných webů.
+
+Uživatelé internetu v dnení době nepřistupují pouze prostřednictvím svého počítače. Masivně narostlo množství uživatelů přistupujících k webových stránkám skrze mobilní telefony a tablety. Pomalu internet vniká i do obyváku, kde jsou opět jiné specifické požadavky na zobrazení webů.
+
+Některé zdroje uvádějí dokonce a 50% přístupů k internetovým stránkám přes mobilní telefony. Dle naich statistik se toto číslo pohybuje okolo 20-30%.
+
+Lidé si rychle zvykají informace hledat kdykoli a kdekoli se zrovna nacházejí a mobilní telefon s datovým tarifem tomuto účelu věrně poslouží. Nezdráhají se dokonce i nakupovat. Proto se přizpůsobení webových stránek těmto zařízením stává nutnosti, pokud na internetu hodláte vydělávat.    
+</p>
+    </main>
+    
+    
+   
+    
+    
+ <!--   <img src="l.jpg">-->
+    
+   <picture>
+  <source media="(min-width: 80em)" srcset="s.jpg">
+  <source media="(min-width: 56em)" srcset="m.jpg">
+ <img src="s.jpg" alt="Flowers" style="width:auto;">
+</picture>
+    <!-- sizes="(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px" --->
+
+<footer>Footer</footer>
+    
+<style>
+    header, footer {
+        width: 100vw;
+        background: orange;
+        height: 3em;
+    }
+    
+    footer {
+        margin-top: 1em;
+        background: #1abc9c;
+    }
+    
+    main {
+        width: 70vw;
+        background: #1abc9c;
+        color: white;
+    }
+    
+    aside {
+        float: right;
+        width: 30vw;
+    }
+    
+     p, aside, h1, header {
+            padding: 1em;
+        }
+    
+    @media only screen and (max-width: 600px) {
+        aside {
+            float: none;
+            width: 100vw;
+        }
+        
+        main {
+            width: 100vw;
+        }
+       
+    }
+</style>
+
+    
+    
+<!---
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+--->
+</body>
