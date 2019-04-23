@@ -10,16 +10,7 @@ namespace Spaces
         public static void Main(string[] args)
         {
 
-            // 2.4.2019 - 4.4.2019
-
-
-
-            /*
-1 - Zadat String, počítat mezery 2 jako 1)
-2 - rozmístit mezery rovnoměrně
-3 - 
-
-            */
+            // 2.4.2019 - 23.4.2019
 
             RegexOptions options = RegexOptions.None;
             Regex regex = new Regex("[ ]{2,}", options);
@@ -29,19 +20,17 @@ namespace Spaces
             char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-".ToCharArray();
 
 
-              string str = "F JE  TU";
+            // string str = "F JE     TU           X";
+            Console.WriteLine("Zadejte řetězec.");
+           // string str = Console.ReadLine();
+            string str = "F JE  TU";
 
-           // string str = "TU TU    TU";
-
-           
             List<int> tryout = new List<int>();
-
-
             List<char> charList = new List<char>();
 
 
 
-            int desired = 17;
+            int desired = 50;
             int count = 0;
 
             if (desired >= str.Length){
@@ -90,50 +79,29 @@ namespace Spaces
 
 
 
-                    var begin = desired / count / 2;
-
-                var end = charList.Count;
-
-                var inc = 0;
-
-                for (var i = 0; i < charList.Count; i++){
-          
-                    if (tryout.Contains(i)){
-                        Console.WriteLine("D " + desired / count);
-                        for (var n = tryout[0]; n < (tryout[1]); n++){
-                            inc += 1;
-                            charList.Insert(n, '-');
-                         
-                        }
 
 
 
-                     
-                      
-                    }
-                   
-                }
 
 
+                var w = tryout[0] + desired / 2;
+                Console.WriteLine("W" + w);
 
-                Console.WriteLine("TR " + tryout[1]);
+                var icc = 0;
 
-                for (var n = tryout[1] + inc; n < desired; n++)
+                for (var i = tryout[0]; i < desired / 2; i++)
                 {
-                    // Console.WriteLine("NOW " + (tryout[1] + 1) + "END" + end);
-                    if (n < desired)
-                    {
-                        Console.WriteLine("Insert at " + n);
-                        //space += '0';
-                        charList.Insert(n, '-');
-                    }
-
-
+                    icc += 1;
+                    charList.Insert(i, '-');
+                
                 }
 
-                Console.WriteLine("charlist.count  " + charList.Count);
 
+                for (var i = tryout[1] + icc; i < desired; i++)
+                {
+                    charList.Insert(i, '-');
 
+                }
 
                 for (var i = 0; i < tryout.Count; i++)
                 {
@@ -148,12 +116,9 @@ namespace Spaces
 
                 for (var i = 0; i < charList.Count; i++)
                 {
-                   // Console.WriteLine("CHI " + charList[i]);
                     if (Array.IndexOf(alpha, charList[i]) != -1 ){
                         Console.Write(charList[i]);
                     }
-                   
-
                 }
 
 
