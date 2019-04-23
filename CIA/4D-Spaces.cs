@@ -10,7 +10,7 @@ namespace Spaces
         public static void Main(string[] args)
         {
 
-            // 2.4.2019 - 9.4.2019
+            // 2.4.2019 - 4.4.2019
 
 
 
@@ -26,9 +26,9 @@ namespace Spaces
 
 
 
-            string str = "F JE  TU";
+              string str = "F JE  TU";
 
-
+           // string str = "TU TU    TU";
 
            
             List<int> tryout = new List<int>();
@@ -38,7 +38,7 @@ namespace Spaces
 
 
 
-            int desired = 9;
+            int desired = 17;
             int count = 0;
 
             if (desired >= str.Length){
@@ -58,11 +58,11 @@ namespace Spaces
                 }
 
 
-               
+              /* 
                 Console.WriteLine("STR is " + str);
                 Console.WriteLine("Number of spaces is " + count);
                 Console.WriteLine(desired - count + " spaces " + " need to be added.");
-
+*/
 
                 // 2 adding spaces to desired length
 
@@ -79,38 +79,57 @@ namespace Spaces
                     
                 string[] real = new string[str.Length];
 
-                Console.WriteLine("charlist.length " + charList.Count);
+                Console.WriteLine("charlist.count BEF " + charList.Count);
 
 
 
-                Console.WriteLine("toEach Index " + desired / count + " spaces");
+                Console.WriteLine("" + desired / count + " spaces need to be added to String");
 
 
 
 
 
                 for (var i = 0; i < charList.Count; i++){
+                    char space = '0';
                     if (tryout.Contains(i)){
+                        Console.WriteLine("D " + desired / count);
                         for (var n = 0; n < (desired / count); n++){
-                            charList.Insert(i, ' ');
-                            Console.WriteLine("----");
+                            space += '0';
+                            charList.Insert(i, space);
+                          //  Console.WriteLine("---- " + i);
+                           // Console.WriteLine("Addign X at " + n);
                         }
+                       // Console.WriteLine("II " + i);
+
+                       // charList.Insert(i, Convert.ToChar(space));
 
 
-                        Console.WriteLine("Now");
+
+
+                      
                     }
                     // Console.WriteLine("i + " + i);
                 }
 
 
-                Console.WriteLine("IP " + charList.Count);
+                Console.WriteLine("charlist.count  " + charList.Count);
 
 
 
                 for (var i = 0; i < charList.Count; i++)
                 {
-                    Console.WriteLine("PO " + charList[i]);
+                  //  Console.WriteLine("PO " + charList[i]);
                 
+                }
+
+
+                Console.WriteLine("Počateční " + str);
+
+
+                for (var i = 0; i < charList.Count; i++)
+                {
+                    Console.Write(charList[i]);
+
                 }
 
 
