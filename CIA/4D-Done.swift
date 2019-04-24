@@ -1,13 +1,13 @@
-import UIKit
+import Foundation
 
 
-// WOrks:
+// WORKS FOR ONLY EVEN NUMBER OF SPACES
 // var stro = "FR MM      PO"
 var stro = "FR MM      PO "
- //var stro = "F   JE        TU"
+//var stro = "F   JE        TU"
 
-
-var desired = 90
+// var stro = "FILDA      Rn          JI8   8"
+var desired = 60
 
 extension String {
     subscript(i:Int) -> Character {
@@ -25,6 +25,9 @@ extension String {
 
 var gross = [[Int]]()
 var sub = [Int]()
+var pos = [Int]()
+var spacecount = [Int]()
+
 
 var str = Array(stro)
 
@@ -65,17 +68,10 @@ for i in 0..<move.count {
 
 
 
-
-
-
-
-
-var pos = [Int]()
-var spacecount = [Int]()
-
 for x in gross{
     pos.append(x[0])
     spacecount.append(desired / gross.count - x.count)
+    // subtract 1 when working with even digits
 }
 
 
@@ -88,9 +84,6 @@ var mopy = copy.map {String($0)}
 func prepareDashe(n: Int) -> String {
     var ret = ""
     if n != 0 {
-        
-        
-        
         for i in 0..<n {
             ret += " "//"-"
         }
@@ -104,34 +97,16 @@ func prepareDashe(n: Int) -> String {
 
 // mopy = mopy.filter{$0 != " "}
 
-// insert at last prepared
+
 var lnn = 0
 
 var initLen = mopy.count
+
 for i in 0..<pos.count{
     let ct = spacecount[i]
     let prepared = prepareDashe(n: ct)
-    
-    print("Prep \(prepared.count) ATTTT \(pos[i])")
-    // let r:Character = Character(prepared)
-   
-     mopy.insert(prepared, at: pos[i] + 1)
-    
-    /*
-    if i == 0 {
-        print(mopy.count)
-        mopy.insert(prepared, at: pos[i])
-    } else {
-        print(mopy.count)
-        let diff = mopy.count - initLen
-        print("DIFF \(diff)")
-        
-        
-        initLen = mopy.count
-    }*/
-    
-   
-   
+    mopy.insert(prepared, at: pos[i] + 1)
+    //print("Prep \(prepared.count) ATTTT \(pos[i])")
 }
 
 
@@ -140,6 +115,7 @@ var final = ""
 for i in 0..<mopy.count{
     final += mopy[i]
 }
+
 
 print(stro)
 print(final)
