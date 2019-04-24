@@ -3,10 +3,8 @@ import UIKit
 
 // WOrks:
 // var stro = "FR MM      PO"
-// var stro = "FR MM      PO "
-
-// DOES NOT WORK
- var stro = "F   JE        TU"
+var stro = "FR MM      PO "
+ //var stro = "F   JE        TU"
 
 
 var desired = 90
@@ -94,7 +92,7 @@ func prepareDashe(n: Int) -> String {
         
         
         for i in 0..<n {
-            ret += "-"
+            ret += " "//"-"
         }
     }
     
