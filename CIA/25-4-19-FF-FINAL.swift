@@ -13,10 +13,9 @@ extension String {
 
 
 var desired = 20
-// var rt = "F      JE   TU"
-var rt = "F      JE   TU   I"
-
-
+// var rt = "AA   BB  CC"
+var rt = "F      JE   TU"
+//var rt = "F      JE   TU   I"
 // var rt = "AA I   U"
 //var rt = "AA I   U "
 
@@ -28,7 +27,6 @@ var final = ""
 
 if desired <= rt.count {
     final = "STRING IS TOO SHORT"
-    
 }
 
 var str = Array(rt)
