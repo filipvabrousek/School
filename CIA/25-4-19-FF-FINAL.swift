@@ -1,4 +1,5 @@
 import Foundation
+// 6 hours
 
 extension String {
     subscript(i:Int) -> Character {
@@ -15,7 +16,7 @@ extension String {
 var desired = 20
 // var rt = "AA   BB  CC"
 var rt = "F      JE   TU"
-//var rt = "F      JE   TU   I"
+// var rt = "F      JE   TU   I"
 // var rt = "AA I   U"
 //var rt = "AA I   U "
 
