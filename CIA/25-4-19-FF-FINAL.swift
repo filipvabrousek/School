@@ -12,12 +12,13 @@ extension String {
 
 
 
-var desired = 27
+var desired = 20
+// var rt = "F      JE   TU"
+var rt = "F      JE   TU   I"
 
-var rt = "F      JE   TU"
+
 // var rt = "AA I   U"
 //var rt = "AA I   U "
-
 
 var gross = [[Int]]()
 var sub = [Int]()
@@ -45,10 +46,6 @@ for i in 0..<str.count {
 }
 
 
-
-
-
-
 var move = Array(conv.map{String($0)})
 
 // Začátky děr
@@ -70,8 +67,6 @@ for i in 0..<move.count {
 
 
 let fe = Array(e)
-
-
 var fiedl = [Int]()
 
 for i in 0..<fe.count - 1{
@@ -132,6 +127,12 @@ for i in 0..<move.count {
     if let int = Int(el){
         print("INT \(int)")
         
+        if int == 0 {
+            move.remove(at: i)
+            move.insert("X", at: i)
+        }
+        
+        
         for x in 0..<int{
             res += "X"
             // print("FIX \(x)")
@@ -167,9 +168,11 @@ for i in 0..<savestr.count {
     }
 }
 
+
 print("----------------------------")
 print("Before \(rt.count)")
 print("After \(pres.count)")
 print(rt)
 print(pres)
 print("----------------------------")
+
