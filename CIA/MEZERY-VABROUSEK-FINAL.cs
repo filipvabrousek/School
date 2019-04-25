@@ -54,7 +54,7 @@ namespace FinalSpaces
                 if (r == ' ')
                 {
 
-                    conv += 'X';
+                    conv += '#';
                 }
                 else
                 {
@@ -89,9 +89,9 @@ namespace FinalSpaces
             {
                 string s = move[i];
 
-                if (s == "X")
+                if (s == "#")
                 {
-                    e += "X";
+                    e += "#";
                     // Console.WriteLine("X is at " + i);
                 }
                 else
@@ -121,7 +121,7 @@ namespace FinalSpaces
                 string s = fe[i].ToString();
                 string inc = fe[i + 1].ToString();
 
-                if (s == "X" && inc == "-")
+                if (s == "#" && inc == "-")
                 {
                     fiedl.Add(i + 1);
                 }
@@ -134,7 +134,7 @@ namespace FinalSpaces
             {
                 string w = move[i];
 
-                if (w == "X")
+                if (w == "#")
                 {
                     sub.Add(i);
                 }
@@ -202,13 +202,13 @@ namespace FinalSpaces
                     if (mint == 0)
                     {
                         move.RemoveAt(i);
-                        move.Insert(i, "X");
+                        move.Insert(i, "#");
                     }
 
 
                     for (var x = 0; x < mint; x++)
                     {
-                        res += "X";
+                        res += "#";
                         // Console.WriteLine("HIHI " + i);
                         move.RemoveAt(i);
                         move.Insert(i, res);
@@ -249,7 +249,7 @@ namespace FinalSpaces
 
             for (var i = 0; i < chrr.Count; i++)
             {
-                if (chrr[i] == "X")
+                if (chrr[i] == "#")
                 {
                     pres += " ";
 
@@ -268,7 +268,7 @@ namespace FinalSpaces
             var er = "";
             for (var i = 0; i < arr.Length; i++)
             {
-                if (arr[i] == 'X')
+                if (arr[i] == '#')
                 {
                     er += " ";
                 }
