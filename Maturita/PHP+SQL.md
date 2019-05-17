@@ -32,14 +32,9 @@ if (!$conn) {
 
 mysqli_query($conn, "SET CHARACTER SET utf8");
 
-if (isset($_REQUEST["id"])) {
-	$id = $_REQUEST["id"];
-} else {
-	$id = "";
-}
+
 
 $sqlo = "SELECT name, idccathegory FROM renome_ccathegory";
-print("<p>".$sql."</p>");
 $resulto = mysqli_query($conn, $sqlo);
 
 if (mysqli_num_rows($resulto) > 0) {
@@ -49,6 +44,8 @@ if (mysqli_num_rows($resulto) > 0) {
 			"</a><br>");
 	}
 }
+
+if (isset($_REQUEST["id"])) {  $id = $_REQUEST["id"]; } else {  $id = ""; }
 
 ...
 ```
