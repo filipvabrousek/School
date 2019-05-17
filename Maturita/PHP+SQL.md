@@ -15,7 +15,7 @@
 # SQL
 
 ```php
-< ? php
+<? php
 
 $servername = "localhost";
 $username = "root";
