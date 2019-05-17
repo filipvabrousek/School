@@ -15,37 +15,56 @@
 # SQL
 
 ```php
-<? php
+<?php
 
 $servername = "localhost";
 $username = "root";
 $password = "mysql";
 $db = "renome";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $db);
-
-// Check connection
-if (!$conn) {
-	die("Connection failed: ".mysqli_connect_error());
+    
+$conn = mysqli_connect("localhost", "root", "mysql", "renome");
+    
+if (!$conn){
+    die("Connection failed ".mysqli_connect_error());
 }
-
+    
 mysqli_query($conn, "SET CHARACTER SET utf8");
-
-
-
-$sqlo = "SELECT name, idccathegory FROM renome_ccathegory";
-$resulto = mysqli_query($conn, $sqlo);
-
-if (mysqli_num_rows($resulto) > 0) {
-	while ($row = mysqli_fetch_assoc($resulto)) {
-		print("<a style='color: green' href ='noviny.php?cathegory=".$row["idccathegory"].
-			"'>".$row["name"].
-			"</a><br>");
-	}
+    
+$sql = "SELECT name, idccathegory FROM renome_ccathegory";
+$res = mysqli_query($conn, $sql);
+    
+if (mysqli_num_rows($res) > 0) {
+    while ($row = mysqli_fetch_assoc($res)){
+        print("<a style='color: green' href ='novinyb.php?cathegory=".$row["idccathegory"]."'>".$row["name"]."</a><br>");
+    }
 }
+    
 
-if (isset($_REQUEST["id"])) {  $id = $_REQUEST["id"]; } else {  $id = ""; }
-
+if isset($_REQUEST["cathegory"]){
+    print("<p></p>");
+}
+    
+mysqli_close($conn);
+    
+    
+    /*
+    
+    if ($cat != "") {
+    
+    $stop = 0;
+    
+    $sqln = "SELECT heading, text, viewedcount, idtarticle FROM renome_tarticle WHERE idccathegory = ".$cat;
+    $sqln = $sqln." ORDER BY viewedcount DESC";
+    $sqln = $sqln." LIMIT 4";
+    $result = mysqli_query($conn, $sqln);	
+	
+      print("<script>document.querySelector('body').innerHTML = ''</script>");
+    
+	if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)) {
+        
+          print("<h2>".$row["heading"]."</h2>");
+    */
+?>	
 ...
 ```
