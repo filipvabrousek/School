@@ -68,3 +68,15 @@ mysqli_close($conn);
 ?>	
 ...
 ```
+
+# PHP Function
+
+```php
+echo "<br>";
+echo date(l);  //FRIDAY
+echo "<br>";
+echo pi();
+echo "<br>";
+echo abs(-2);
+
+```
