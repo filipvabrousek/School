@@ -39,8 +39,7 @@ if (isset($_REQUEST["id"])) {
 }
 
 $sqlo = "SELECT name, idccathegory FROM renome_ccathegory";
-print("<p>".$sql.
-	"</p>");
+print("<p>".$sql."</p>");
 $resulto = mysqli_query($conn, $sqlo);
 
 if (mysqli_num_rows($resulto) > 0) {
