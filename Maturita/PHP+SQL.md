@@ -10,3 +10,7 @@
 ```php
 <? echo $_GET["inp"] ?>
 ```
+
+
+# SQL
+
