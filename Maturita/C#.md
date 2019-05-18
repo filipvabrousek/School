@@ -1,5 +1,17 @@
 # C#
 
+
+## 21 Algoritimizace, Datové typy, proměnné
+* rezultativnost (vydá nějaký výsledek)
+* konečnost (konečný počet kroků)
+```csharp
+short, int, long, bool, double
+```
+* JS, Swift, CSharp, Kotlin, Java
+
+
+
+
 ## 22 Větvení :)
 ```csharp
 
