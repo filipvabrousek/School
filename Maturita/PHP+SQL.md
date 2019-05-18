@@ -11,6 +11,21 @@
 <? echo $_GET["inp"] ?>
 ```
 
+## 20
++ data ze souborů
+```php
+function square($x){
+    echo("Res".($x * $x));
+}
+
+square(6);
+
+$f = explode(".", "12.23.24");
+echo($f);
+strtoupper("Filip");
+trim("  Filip");
+```
+
 
 # SQL
 
