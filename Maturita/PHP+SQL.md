@@ -13,6 +13,24 @@
 
 ## 20
 + data ze souborů
+
+```php
+$name = "data/file.txt";
+
+if (file_exists($name)){
+    $file = fopen($name, "r");
+    if ($file){
+        while(!feof($file)){
+            $line = fgets($file, 3000);
+            print($line);
+            print("<br>");
+        }
+    }
+}
+```
+
+
+
 ```php
 function square($x){
     echo("Res".($x * $x));
