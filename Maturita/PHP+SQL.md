@@ -55,14 +55,12 @@ SELECT * FROM renome_ccathegory JOIN renome_tarticle ON viewedcount > 20
 
 
 ```php
-  
-<?php
+ <?php
     
 $conn = mysqli_connect("localhost", "root", "mysql", "renome");
 mysqli_query($conn, "SET CHARACTER SET utf8");
     
 $res = mysqli_query($conn, "SELECT name, idccathegory FROM renome_ccathegory");
-    
     
 if (mysqli_num_rows($res) > 0) {
     while ($row = mysqli_fetch_assoc($res)){
