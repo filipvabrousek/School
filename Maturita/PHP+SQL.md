@@ -72,7 +72,8 @@ if (mysqli_num_rows($res) > 0) {
     
 
 $cat = $_REQUEST["cathegory"];
-if (isset($_REQUEST["cathegory"])){
+if (isset($cat)){
+    
     $sqln = "SELECT heading FROM renome_tarticle WHERE idccathegory = ".$cat;
     $pres = mysqli_query($conn, $sqln);
 
