@@ -102,6 +102,12 @@ mysqli_close($conn);
 ...
 ```
 
+
+# SQL
+```sql
+SELECT * FROM renome_ccathegory WHERE idccathegory = 2 ORDER BY viewedcount ASC
+```
+
 # PHP Function
 
 ```php
