@@ -46,6 +46,12 @@ trim("  Filip");
 
 
 # SQL
+```sql
+SELECT * FROM renome_ccathegory WHERE idccathegory = 2 ORDER BY viewedcount ASC
+SELECT * FROM renome_tarticle WHERE viewedcount > 10 ORDER BY viewedcount ASC
+```
+
+
 
 ```php
 <?php
@@ -103,10 +109,6 @@ mysqli_close($conn);
 ```
 
 
-# SQL
-```sql
-SELECT * FROM renome_ccathegory WHERE idccathegory = 2 ORDER BY viewedcount ASC
-```
 
 # PHP Function
 
