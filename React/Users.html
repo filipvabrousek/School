@@ -51,7 +51,7 @@ class SignUp extends React.Component {
 				<input type="text" onChange={this.onChangeNick} placeholder="Nick"/> <br></br>
 				<input type="text" onChange={this.onChangeMail} placeholder="E-mail"/> <br></br>
 				<input type="password" onChange={this.onChangePassword} placeholder="Password"/> <br></br>
-				<button onClick={this.signUp}>Sign up</button>
+				<button class={"hello"} onClick={this.signUp}>Sign up</button>
 			</div>
 			
 		);
@@ -65,42 +65,28 @@ class SignUp extends React.Component {
 class UserList extends React.Component {
 	constructor(p){
 		super(p);
-		
-		
 		this.state = {users: []}
-		
-		
-		var users = [];
-		
+	}
+	
+	componentDidMount(){
 		let db = firebase.database();
-		db.ref("Users").orderByKey().once("value", (snap) => { // filter just users with same race
+		db.ref("Users").orderByKey().on("value", (snap) => { // filter just users with same race
+			
+			var users = [];
 			snap.forEach((ch) => {
 				var item = ch.val();
 			    var nick = item.nick;
-				
 				console.log(nick);
-				
-				
 				users.push(nick);
-				
-				this.setState({
+			})
+			
+			this.setState({
 					users: users
 				});
-				
-			})
+			
 		});
-		
 	}
-	
-	
-	load(){
-		
-	}
-	
-		
-	
-	
-	
+
 	render(){
 		return (<div>
 		<h3>Users </h3>
@@ -139,11 +125,28 @@ document.querySelector("#root")
 	
 	input {
 		margin: 0.5em;
-		padding: 0.5em;
+		padding: 1em;
+		border: 2px solid gray;
+		border-radius: 6px;
 	}
+	
+	h1 {
+		color: #1abc9c;
+	}
+	
 	
 	h1, h3, button {
 		margin: 1em;
+	}
+	
+	.hello {
+	color: white;
+		background: #1abc9c;
+		font-weight: bold;
+		padding: 1em;
+		border: none;
+		border-radius: 6px;
+		
 	}
 	
 </style>
@@ -165,4 +168,9 @@ document.querySelector("#root")
   firebase.analytics();
 	  </script>
 	
+	
+
 </html>
+
+
+
