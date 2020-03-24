@@ -2,14 +2,14 @@
 # React
 
 ```js
-class Hello extends React.Component {
+class App extends React.Component {
    render(){
       return <h1>Hello</h1>;
    }
 }
 
 ReactDOM.render(
-<Hello/>,
+<App/>,
 document.querySelector("#root")
 );
 ```
