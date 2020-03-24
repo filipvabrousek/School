@@ -66,14 +66,34 @@ class UserList extends React.Component {
 	constructor(p){
 		super(p);
 		
+		
+		this.state = {users: []}
+		
+		
+		var users = [];
+		
 		let db = firebase.database();
-		db.ref("Users").orderByKey().once("value", function(snap) { // filter just users with same race
-			snap.forEach(function(ch) {
+		db.ref("Users").orderByKey().once("value", (snap) => { // filter just users with same race
+			snap.forEach((ch) => {
 				var item = ch.val();
 			    var nick = item.nick;
+				
 				console.log(nick);
-			});
+				
+				
+				users.push(nick);
+				
+				this.setState({
+					users: users
+				});
+				
+			})
 		});
+		
+	}
+	
+	
+	load(){
 		
 	}
 	
@@ -82,8 +102,12 @@ class UserList extends React.Component {
 	
 	
 	render(){
-		return (
+		return (<div>
 		<h3>Users </h3>
+			<ul>
+	 <li>{this.state.users.map(u => <h1>{u}</h1>)}</li>
+	 </ul>
+	 </div>
 		);
 	}
 }
@@ -141,9 +165,4 @@ document.querySelector("#root")
   firebase.analytics();
 	  </script>
 	
-	
-
 </html>
-
-
-
