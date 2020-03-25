@@ -4,11 +4,11 @@ class LogIn extends React.Component {
 		this.state = {email: "", password: ""}
 		
 		firebase.auth().onAuthStateChanged(function(user) {
-	if (user) {
+		if (user) {
 		window.open("group.html", "_top");
-	}
- });
-}
+		}
+		 });
+		}
 	emailChanged = (e) => {
 		console.log(e.target.value);
 		this.setState({email: e.target.value});
@@ -45,11 +45,11 @@ class LogIn extends React.Component {
 			<h1>Swimrun World</h1>
 			<div id="login">
 			<input type={"text"} onChange = {this.emailChanged} placeholder="E-mail"/>
-	    	<input type={"password"} onChange = {this.passChanged} placeholder="password"/> <br></br>
+	    		<input type={"password"} onChange = {this.passChanged} placeholder="password"/> <br></br>
 			<button id={"loginb"} onClick={this.login}>Log in</button><br></br>
 			<button id={"toSignup"} onClick={this.signUp}>Sign up</button>
 			</div>
-		</div>
+			</div>
 		);
 	}
 }
