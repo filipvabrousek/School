@@ -1,326 +1,430 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
- 
-	
-	<body>
+<head>
 
-    <div id="root"></div>
-
- <script type="text/babel">
-
-
-
-class SignUp extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {nick: "", email: "", password: ""}
-	}
-	
-	onChangeNick = (e) => {
-		this.setState({nick: e.target.value});
-	}
-	
-	onChangeMail = (e) => {
-		this.setState({email: e.target.value});
-	}
-	
-	onChangePassword = (e) => {
-		this.setState({password: e.target.value});
-	}
-	
-	signUp = (e) => {
-		firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
-			let uid = firebase.auth().currentUser.uid;
-			firebase.database().ref("Users/" + uid).set({
-				nick: this.state.nick,
-				uid: uid
-			});
-		});
-	} // 21:30:38  
-	
-	
-	render(){
-		return (
-			<div>
-				<h1>Create user</h1>
-				<input type="text" onChange={this.onChangeNick} placeholder="Nick"/> <br></br>
-				<input type="text" onChange={this.onChangeMail} placeholder="E-mail"/> <br></br>
-				<input type="password" onChange={this.onChangePassword} placeholder="Password"/> <br></br>
-				<button class={"hello"} onClick={this.signUp}>Sign up</button>
-			</div>
-			
-		);
-	}
-}
+	<script src="https://unpkg.com/react@16/umd/react.production.min.js">
+	</script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js">
+	</script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js">
+	</script>
+	<title></title>
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
 
 
 
-
-class UserList extends React.Component {
-	constructor(p){
-		super(p);
-		this.state = {users: [], selected: "none", hisID: "empty"}
-	}
-	
-	do = (e, n) => {
-		/*alert(e);
-		alert(n);*/
-		this.setState({selected: e, hisID: n});
-	}
-	
-	render(){
-		return (
-		<div class="userList">
-		<ChatScreen selected={this.state.selected} hisID={this.state.hisID}/>			
-
-		<div id="columns">
-		{this.props.users.map(u => <h2 onClick={e => this.do(u.nick, u.id)}>{u.nick}</h2>)}
-		</div>	
-				
-	 </div>
-		);
-	}
-}
-
-
-
-class App extends React.Component {
-	render(){
-		return (
-			<div>
-		
-		<UserList users = {this.props.users}/>
-		<SignUp/>
-		</div>);
-	}
-}
-
-class ChatScreen extends React.Component {
-	constructor(p){
-		super(p);
-		this.state = {value: "", messages: [], name: "", with: "none"}
+ class SignUp extends React.Component {
+	   constructor(props){
+	       super(props);
+	       this.state = {nick: "", email: "", password: ""}
+	   }
+	   
+	   onChangeNick = (e) => {
+	       this.setState({nick: e.target.value});
+	   }
+	   
+	   onChangeMail = (e) => {
+	       this.setState({email: e.target.value});
+	   }
+	   
+	   onChangePassword = (e) => {
+	       this.setState({password: e.target.value});
+	   }
+	   
+	   signUp = (e) => {
+	       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
+	           let uid = firebase.auth().currentUser.uid;
+	           firebase.database().ref("Users/" + uid).set({
+	               nick: this.state.nick,
+	               uid: uid
+	           });
+	       });
+	   } // 21:30:38  
+	   
+	   
+	   render(){
+	       return (
+	           <div>
+	               <h1>Create user</h1>
+	               <input type="text" onChange={this.onChangeNick} placeholder="Nick"/> <br></br>
+	               <input type="text" onChange={this.onChangeMail} placeholder="E-mail"/> <br></br>
+	               <input type="password" onChange={this.onChangePassword} placeholder="Password"/> <br></br>
+	               <button class={"hello"} onClick={this.signUp}>Sign up</button>
+	           </div>
+	           
+	       );
+	   }
 	}
 
-	componentDidMount(){
-		let db = firebase.database();
-		
-		
-			db.ref("Users").orderByKey().on("value", (snap) => {
-				snap.forEach((ch) => {
-				var item = ch.val();
-			    var nick = item.nick;
-					
-				if (item.uid == firebase.auth().currentUser.uid){	
-					this.setState({name: item.nick});
-					db.ref("Chat").orderByKey().on("value", (snap) => { // filter just users with same race
-			
-			var messages = [];
-			snap.forEach((ch) => {
-				var item = ch.val();
-			    var nick = item.message;
-				console.log(nick);
-				messages.push(nick);
-			})
-			
-			this.setState({
-					messages: messages
-				});		
-	
-			let el = document.querySelector("#messages");
-			let topPos = el.offsetTop;
-			el.scrollTop = topPos;
-		});
-			
-				}});
-				});
+
+	class Loggera extends React.Component {
+	   constructor(p){
+	       super(p);
+	       this.state = {value: ""};
+	   }
+	   
+	   onChange = (e) => {
+	       this.setState({value: e.target.value});
+	   }
+	   
+	   logIn = () => {
+	       
+	       let email = this.state.value;
+	       let password = "123456";
+	       
+	       if (email.length > 0 && password.length > 0) {    
+	       firebase.auth().signInWithEmailAndPassword(email, password).catch(err => {
+	         
+	       });
+	   } else {
+	       alert("You must fill-in all fields.");
+	   }
+	   }
+	   
+	   render(){
+	       
+	       return (
+	           <div>
+	               <h2>Log in user</h2>
+	               <input type="text" placeholder="E-mail."  onChange={this.onChange} value={this.state.value}/>
+	       <button onClick={this.logIn}>Log in</button>
+	       </div>);
+	       
+	   }
 	}
-	
-	
-	send = () => {	
-		firebase.database().ref("Chat").push().set({
-				from: "A",
-				to: "B",
-				message: this.state.value
-			});
+
+	class UserList extends React.Component {
+	   constructor(p){
+	       super(p);
+	       this.state = {users: [], selected: "none", hisID: "empty"}
+	   }
+	   
+	   do = (e, n) => {
+	       this.setState({selected: e, hisID: n});
+	   }
+	   
+	   render(){
+	       return (
+	       <div class="userList">
+	       
+	               <div id="below">
+	   
+	               <Loggera/>
+	               <SignUp/>
+	                    </div>
+	               
+	               
+	               
+	       <div id="columns">
+	       {this.props.users.map(u => <h2 class="userRow" onClick={e => this.do(u.nick, u.id)}>{u.nick}</h2>)}
+	       </div>  
+	               
+	       <ChatScreen selected={this.state.selected} hisID={this.state.hisID}/>
+	               
+	    </div>
+	       );
+	   }
 	}
-	
-	onChange = (e) => {
-		this.setState({value: e.target.value});
+
+
+
+	class App extends React.Component {
+	   render(){
+	       return (
+	           <div>
+	       
+	       <UserList users = {this.props.users}/>
+	       
+	       </div>);
+	   }
 	}
-	
-	render(){
-		return (
-			<section id="chat"> 
-				<h3>{`I am ${this.state.name}.`}</h3>
-				<h3>{`Chatting with ${this.props.selected}.`}</h3>
-				<h3>{`His ID is ${this.props.hisID}.`}</h3>
-				<div id="messages">
-					{this.state.messages.map(x => <h3 class="m">{`${x}`}</h3>)}
-	 			</div>
-				
-				<div id="sideBtn">
-					<input type="text" placeholder="Enter a message."  onChange={this.onChange}/>
-					<button class={"hello"} onClick={this.send}>Senda</button>
-	 			</div>
-				
-				
-	 		</section>
-		)
-	}
-}
 
 
 
 
-class User {
-constructor(nick, id){
-	this.nick = nick;
-	this.id = id;
-}	
-}
+	class M {
+	   constructor(from, to, text){
+	       this.from = from;
+	       this.to = to;
+	       this.text = text;
+	   }
+	}
+
+	class ChatScreen extends React.Component {
+	   constructor(p){
+	       super(p);
+	       this.state = {value: "", messages: [], name: "", with: "none"}
+	       
+	       firebase.auth().onAuthStateChanged((user) => {
+	       if (user) {
+	       // window.open("group.html", "_top");
+	       let db = firebase.database();
+	       db.ref("Users").orderByKey().on("value", (snap) => {
+	               snap.forEach((ch) => {
+	               var item = ch.val();
+	               var nick = item.nick;
+	               var uid = firebase.auth().currentUser.uid;
+	               if (item.uid == uid){   
+	                   this.update(nick);
+	               }
+	       
+	           });
+	       });
+	   }
+	       });
+	   }
+	   
+	   update = (nick) => {    
+	       this.setState({name: nick});
+	   }
+
+	   componentDidMount(){
+	       
+	       
+	           let db = firebase.database();
+	           db.ref("Users").orderByKey().on("value", (snap) => {
+	               snap.forEach((ch) => {
+	               var item = ch.val();
+	               var nick = item.nick;
+	                   
+	                   
+	               var uid = firebase.auth().currentUser.uid;
+	                   
+	               if (item.uid == firebase.auth().currentUser.uid){   
+	                   this.setState({name: item.nick});
+	                   db.ref("Chat").orderByKey().on("value", (snap) => { // filter just users with same race
+	           
+	           var messages = [];
+	           snap.forEach((ch) => {
+	               var item = ch.val();
+	               var nick = item.message;
+	               console.log(nick);
+	               
+	               let m = new M(item.from, item.to, item.message);
+	               
+	               let curr = firebase.auth().currentUser.uid
+	               
+	               let pass = (m.to === this.props.hisID && m.from === curr) || (m.to === curr && m.from === this.props.hisID);
+	               
+	               // if (pass){
+	                   messages.push(m);
+	               // }
+	               
+	           })
+	           
+	           this.setState({
+	                   messages: messages
+	               });     
+	   
+	           let el = document.querySelector("#messages");
+	           let topPos = el.offsetTop;
+	           el.scrollTop = topPos;
+	       });
+	           
+	               }});
+	               });
+	   }
+	   
+	   
+	   send = () => {  
+	       firebase.database().ref("Chat").push().set({
+	               from: firebase.auth().currentUser.uid,
+	               to: this.props.hisID,
+	               message: this.state.value
+	           });
+	       
+	       
+	       
+	       this.setState({value: ""});
+	   }
+	   
+	   onChange = (e) => {
+	       this.setState({value: e.target.value});
+	   }
+	   
+	   
+	   render(){
+	       return (
+	           <section id="chat"> 
+	               <h3>{`I am ${this.state.name}.`}</h3>
+	               <h3>{`Chatting with ${this.props.selected}`}</h3>
+	               
+	               <div id="messages">
+	                   {this.state.messages
+	                       .filter(m => ((m.to === this.props.hisID && m.from === firebase.auth().currentUser.uid) || (m.to === firebase.auth().currentUser.uid && m.from === this.props.hisID)))
+	                       .map(x => <h3 class="m">{`${x.text}`}</h3>)}
+	               </div>
+	               
+	               <div id="sideBtn">
+	                   <input type="text" placeholder="Enter a message."  onChange={this.onChange} value={this.state.value}/>
+	                   <button class={"hello"} onClick={this.send}>Senda</button>
+	               </div>
+	           </section>
+	       )
+	   }
+	}
+
+	// 19:04:27 - First chat!
 
 
-class Chat extends React.Component {
-	constructor(p){
-		super(p);
-		this.state = {users: []}
+	class User {
+	constructor(nick, id){
+	   this.nick = nick;
+	   this.id = id;
+	}   
 	}
-	
-	componentDidMount(){
-		let db = firebase.database();
-		db.ref("Users").orderByKey().on("value", (snap) => { // filter just users with same race
-			
-			var users = [];
-			snap.forEach((ch) => {
-				var item = ch.val();
-			    var nick = item.nick;
-				 var id = item.uid;
-				
-				console.log(nick);
-				
-				
-				let u = new User(nick, id);
-				users.push(u);
-			})
-			
-			this.setState({
-					users: users
-				});
-			
-		});
-	}
-	
-	render(){
-		return (<section class="side">
-				<App users={this.state.users}/>
-				</section>)
-	}
-}
 
-ReactDOM.render(
-<Chat/>,
-document.querySelector("#root")
-);
-	  
-	  </script>
-  </body>
-	
-	
-<style>
-	* {
-		margin: 0;
-		padding: 0;
-		font-family: Arial;
-	}	
-	
-	.m {
-		padding: 1em;
-		background: #1abc9c;
-		max-width: 4em;
-	}
-	
-	#messages {
-		
-		
-		border: 2px solid gray;
-		border-radius: 1em;
-		height: 20em;
-		width: 80vw;
-		overflow-y: scroll;
-	}
-	
-	
-	.side {
-		display:  flex;
-		flex-direction: row;
-	}
-	
-	input {
-		margin: 0.5em;
-		padding: 1em;
-		border: 2px solid gray;
-		border-radius: 6px;
-	}
-	
-	h1 {
-		color: #1abc9c;
-	}
-	
-	
-	h1, h3, button {
-		margin: 1em;
-	}
-	
-	.hello {
-	color: white;
-		background: #1abc9c;
-		font-weight: bold;
-		padding: 1em;
-		border: none;
-		border-radius: 6px;	
-	}
-	
-	.userList{
-		width: 50vw;
-		height: 60em;
-		margin: 1em;
-	}
-	
-	
-	#columns {
-		column-count: 2;
-	}
-	
-</style>
-	
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyD5JA2291p6vIk74kPBhhBIaPLX2v0ox3o",
-    authDomain: "react-chat-d4ada.firebaseapp.com",
-    databaseURL: "https://react-chat-d4ada.firebaseio.com",
-    projectId: "react-chat-d4ada",
-    storageBucket: "react-chat-d4ada.appspot.com",
-    messagingSenderId: "593998427063",
-    appId: "1:593998427063:web:aeacb6120eb2425566ae32",
-    measurementId: "G-F6XZ3E135P"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-	  </script>
-	
-	
 
+	class Chat extends React.Component {
+	   constructor(p){
+	       super(p);
+	       this.state = {users: []}
+	   }
+	   
+	   componentDidMount(){
+	       let db = firebase.database();
+	       db.ref("Users").orderByKey().on("value", (snap) => { // filter just users with same race
+	           
+	           var users = [];
+	           snap.forEach((ch) => {
+	               var item = ch.val();
+	               var nick = item.nick;
+	                var id = item.uid;
+	               
+	               console.log(nick);
+	               
+	               
+	               let u = new User(nick, id);
+	               users.push(u);
+	           })
+	           
+	           this.setState({
+	                   users: users
+	               });
+	           
+	       });
+	   }
+	   
+	   render(){
+	       return (<section class="side">
+	               <App users={this.state.users}/>
+	               </section>)
+	   }
+	}
+
+	ReactDOM.render(
+	<Chat/>,
+	document.querySelector("#root")
+	);
+	     
+	</script>
+	<style>
+	   * {
+	       margin: 0;
+	       padding: 0;
+	       font-family: Arial;
+	   }
+
+	   .userRow {
+	       padding: 0.6em;
+	       background: #ecf0f1;
+	       border-radius: 0.5em;
+	       margin: 0.8em;
+	   }
+
+	   .m {
+	       padding: 0.3em;
+	       background: #1abc9c;
+	       max-width: 8em;
+		   border-radius: 0.6em;
+		   
+	   }
+
+	   #messages {
+	       border: 2px solid gray;
+	       border-radius: 1em;
+	       height: 20em;
+	       width: 80vw;
+	       overflow-y: scroll;
+	   }
+
+	   .side {
+	       display: flex;
+	       flex-direction: row;
+	   }
+
+	   input {
+	       margin: 0.5em;
+	       padding: 1em;
+	       border: 2px solid gray;
+	       border-radius: 6px;
+	   }
+
+	   h1 {
+	       color: #1abc9c;
+	   }
+
+
+	   h1,
+	   h3,
+	   button {
+	       margin: 1em;
+	   }
+
+	   .hello {
+	       color: white;
+	       background: #1abc9c;
+	       font-weight: bold;
+	       padding: 1em;
+	       border: none;
+	       border-radius: 6px;
+	   }
+
+	   .userList {
+	       width: 50vw;
+	       height: 40em;
+	       margin: 1em;
+	       margin-right: 4em;
+	       display: flex;
+	       flex-direction: row;
+	   }
+
+
+	   #below {
+	       display: flex;
+	       flex-direction: column;
+	   }
+
+	</style>
+	<script>
+	   // Your web app's Firebase configuration
+	   var firebaseConfig = {
+	       apiKey: "AIzaSyD5JA2291p6vIk74kPBhhBIaPLX2v0ox3o",
+	       authDomain: "react-chat-d4ada.firebaseapp.com",
+	       databaseURL: "https://react-chat-d4ada.firebaseio.com",
+	       projectId: "react-chat-d4ada",
+	       storageBucket: "react-chat-d4ada.appspot.com",
+	       messagingSenderId: "593998427063",
+	       appId: "1:593998427063:web:aeacb6120eb2425566ae32",
+	       measurementId: "G-F6XZ3E135P"
+	   };
+	   // Initialize Firebase
+	   firebase.initializeApp(firebaseConfig);
+	   firebase.analytics();
+
+	</script> 
+</body>
 </html>
-
-
-
